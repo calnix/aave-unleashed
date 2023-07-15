@@ -58,5 +58,5 @@ No hassle of KYC, AML or credit assessments. As long you have a wallet and some 
 {% endhint %}
 
 {% hint style="info" %}
-Managing an on-chain debt position is very similar to managing a leveraged trading position due the requirements of overcollateralization and liquidation. We will talking explain more in the Liquidation section.
+Read more about on-chain lending: [article](https://www.treehouse.finance/insights/the-holy-grail-of-defi-lending-undercollateralized-loans)
 {% endhint %}

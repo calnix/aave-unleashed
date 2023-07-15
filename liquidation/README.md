@@ -4,6 +4,8 @@ description: https://docs.aave.com/risk/asset-risk/risk-parameters#liquidation-t
 
 # Liquidation
 
+Managing an on-chain debt position is very similar to managing a leveraged trading position due the requirements of overcollateralization and liquidation. We will explain more in the Liquidation section.
+
 ## Overview
 
 Liquidation on Aave is a mechanism designed to protect lenders and incentivize repayment of outstanding loans.&#x20;

@@ -1,18 +1,18 @@
 ---
-description: DD -> Utilization -> Borrow -> Supply
+description: Borrow Demand -> Utilization -> Borrow rate -> Supply rate
 ---
 
-# On borrow demand and interest rates
+# Market forces x Interest Rates
 
 ## Summary
 
-In a nutshell, market demand for loans (borrow demand) determines the level of utilization (U), which in turn determines the borrow interest rate. The borrow interest rate is the supply interest rate marked up with a premium.
+In a nutshell, market demand for loans (borrow demand) determines the level of utilization (U), which in turn determines the borrow interest rate. The borrow interest rate discounted by a factor is the supply interest rate.&#x20;
 
 $$
 Borrow Demand => Utilization => InterestRate_{borrow} => InterestRate_{supply}
 $$
 
-The relationship between utilization and borrow rates are defined by the lending protocol via their interest rate model. The model dictates how borrow interest rate would scale with utilization level, for a specific asset.&#x20;
+The relationship between utilization and borrow rates is defined by the lending protocol via their interest rate model. The model dictates how borrow interest rate would increase with utilization levels, for a specific asset.&#x20;
 
 Typically, the interest model is kinked, comprising of two different gradients; one for low levels of utilization and another for high levels of utilization. This allows for a more efficient pricing of the cost of borrowing against fluctuating market demand for loans.
 
@@ -24,19 +24,13 @@ $$
 Borrow Interest = Supply Interest + Premium
 $$
 
-The interest accrued by borrowers is the interest accrued by suppliers, with a premium on the top. The premium essentially is the cost of using the service. This margin could go in part to the protocol as revenue, accumulated in the treasury or a number of other things.&#x20;
+The interest accrued by borrowers is the interest accrued by suppliers, with a premium on the top. The premium essentially is the cost of using the service. This margin could go to the protocol as revenue, accumulated in the treasury or a number of other things, depending on the protocol.&#x20;
 
 {% hint style="info" %}
-In the case of Aave, the premium goes to the protocol's treasury
+In the case of Aave, the premium goes to the Aave Ecosystem Reserve.
 {% endhint %}
 
 ## Determining interest rates
-
-From earlier, it seems like protocols pick an attractive supply rate, slap on a premium and package that out as the borrowing rate. Not quite, let's explore the underlying dynamics.&#x20;
-
-Firstly, it is important to note that protocols can only lend a portion of their deposits out. If all the deposits were lent out, the protocol would be insolvent, and be unable to honor withdrawals should some users look to withdraw their deposits.
-
-Therein lies the first conundrum, how much to lend and at what interest rate, given a finite amount of deposits?
 
 Aave's interest rates are determined algorithmically to strike a balance between utilization and protocol solvency. This approach allows the protocol to dynamically adjust interest rates based on supply and demand dynamics, ensuring efficient allocation of liquidity and maintaining the financial stability of the protocol.
 
@@ -54,21 +48,21 @@ The level of utilization is a reflection of market demand for borrowing. Utiliza
 
 **When the utilization rate is high:** (indicative of high demand for borrowing)
 
-* both borrow and supply interest rates rises&#x20;
-* incentivize lenders to supply more assets, disincentivize wanton borrowing&#x20;
-* Consequently, increasing the available liquidity within the protocol and tempers borrowing demand, leading to an equilibrium point in capital efficiency.&#x20;
+* Borrow and supply interest rates rises&#x20;
+* Incentivize lenders to supply more assets, disincentivize wanton borrowing&#x20;
+* Consequently, increasing the available liquidity within the protocol and tempers borrowing demand, leading to an equilibrium point.&#x20;
 
-**On the other hand, if the utilization rate is low:** (indicating excess available liquidity)
+**On the other hand, if the utilization rate is low:** (indicating excess idle liquidity)
 
-* both borrow and supply rates are lowered&#x20;
-* incentivize borrowing and disincentivize excessive lending&#x20;
-* consequently, reducing idle liquidity and maximizing the utilization of assets within the protocol.&#x20;
+* Borrow and supply rates fall
+* Incentivizes borrowing and disincentivizes lending&#x20;
+* Consequently, reducing idle liquidity and maximizing the utilization of assets within the protocol.&#x20;
 
 {% hint style="info" %}
-This dynamic adjustment mechanism ensures that the interest rates reflect the real-time supply and demand conditions, fostering efficient capital allocation.
+This dynamic adjustment mechanism ensures that interest rates are reflective of the real-time supply and demand conditions, fostering efficient capital allocation.
 {% endhint %}
 
-Protocol solvency is another critical consideration in determining interest rates algorithmically. Aave takes into account the overall health and solvency of the protocol. If interest rates were solely determined by market forces without considering the solvency aspect, there could be a risk of instability or insolvency of the protocol. Therefore, the interest rate mechanism aims to maintain a delicate balance between competitiveness in the market and the financial health of the protocol.
+Protocol solvency is another critical consideration in determining interest rates algorithmically. If interest rates were solely determined by market forces without considering the solvency aspect, there could be a risk of instability or insolvency of the protocol. Therefore, the interest rate mechanism aims to maintain a delicate balance between competitiveness in the market and the financial health of the protocol.
 
 {% hint style="info" %}
 Aave v3 complements the interest rate mechanism with borrow caps to manage insolvency risk.
@@ -103,18 +97,27 @@ The total borrow rate is composed of the rate at zero utilization ( $$R_{interce
 
 #### For   $$U > U_{optimal}$$ &#x20;
 
-####
 
-#### Parameters
 
-Each asset has its interest rate parameters stored on-chain via the DefaultReserveInterestRateStrategy contract.&#x20;
 
-* DAI: [https://etherscan.io/address/0x694d4cFdaeE639239df949b6E24Ff8576A00d1f2#readContract](https://etherscan.io/address/0x694d4cFdaeE639239df949b6E24Ff8576A00d1f2#readContract)
 
-From time to time, parameters are modified to better suit market conditions in pursuit of higher capital efficiency&#x20;
+When utilization exceeds optimal levels, concerns of insolvency become more significant. Hence, the variable borrow interest rate increases at a much higher rate - represented by the steeper gradient.&#x20;
 
-* talk about proposal by gauntlet&#x20;
-* put link to proposal&#x20;
+This would serve to more heavily incentivize suppliers to lend, thereby increasing liquidity, while simultaneously tempering borrowing to restore healthy idle liquidity levels and avoid insolvency.&#x20;
+
+### Parameters
+
+Each asset has its interest rate parameters stored on-chain via a `DefaultReserveInterestRateStrategy` contract.&#x20;
+
+* DAI: [https://etherscan.io/address/0x694d4cFdaeE639239df949b6E24Ff8576A00d1f2](https://etherscan.io/address/0x694d4cFdaeE639239df949b6E24Ff8576A00d1f2#readContract)
+
+<figure><img src=".gitbook/assets/image.png" alt=""><figcaption><p>on-chain parameters</p></figcaption></figure>
+
+From time to time, parameters are modified to better suit market conditions. Proposals to update these parameters are submitted and passed via Aave's governance.
+
+{% hint style="info" %}
+See Gauntlet's proposals on Aave: [example](https://governance.aave.com/t/arfc-aave-v3-interest-rate-curve-recommendations-from-gauntlet-2023-04-27/12921)
+{% endhint %}
 
 ### Supply Interest Rate
 
@@ -155,3 +158,4 @@ Notice the introduction of the reserve factor - that determines the split betwee
 {% hint style="info" %}
 The reserve factor is a percentage of protocol interest which goes to the Aave Ecosystem Reserve
 {% endhint %}
+
