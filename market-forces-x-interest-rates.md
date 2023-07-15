@@ -93,13 +93,13 @@ The total borrow rate is composed of the rate at zero utilization ( $$R_{interce
 
 #### For   $$U \leq U_{optimal}$$ &#x20;
 
-<figure><img src=".gitbook/assets/image (142).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (142).png" alt="" width="563"><figcaption></figcaption></figure>
 
 #### For   $$U > U_{optimal}$$ &#x20;
 
+<figure><img src=".gitbook/assets/image.png" alt="" width="563"><figcaption></figcaption></figure>
 
-
-
+**Why piecewise, instead of a single linear function?**
 
 When utilization exceeds optimal levels, concerns of insolvency become more significant. Hence, the variable borrow interest rate increases at a much higher rate - represented by the steeper gradient.&#x20;
 
@@ -107,7 +107,7 @@ This would serve to more heavily incentivize suppliers to lend, thereby increasi
 
 ### Combined
 
-Here the combined graph for the piecewise function, using DAI as an example.
+Here is the combined graph for the piecewise function, using DAI as an example.
 
 <figure><img src=".gitbook/assets/image (105).png" alt=""><figcaption></figcaption></figure>
 
@@ -122,13 +122,13 @@ U_optimal = 0.80
 
 These parameters were obtained from DAI's `DefaultReserveInterestRateStrategy` contract, and are accurate at time of writing.&#x20;
 
-### Parameters
+#### Parameters
 
 Each asset has its interest rate parameters stored on-chain via a `DefaultReserveInterestRateStrategy` contract.&#x20;
 
 * DAI: [https://etherscan.io/address/0x694d4cFdaeE639239df949b6E24Ff8576A00d1f2](https://etherscan.io/address/0x694d4cFdaeE639239df949b6E24Ff8576A00d1f2#readContract)
 
-<figure><img src=".gitbook/assets/image.png" alt=""><figcaption><p>on-chain parameters</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (1).png" alt=""><figcaption><p>on-chain parameters</p></figcaption></figure>
 
 From time to time, parameters are modified to better suit market conditions. Proposals to update these parameters are submitted and passed via Aave's governance.
 
@@ -148,17 +148,17 @@ Supply interest rate is also referred to as the liquidity rate.
 
 <figure><img src=".gitbook/assets/image (129).png" alt="" width="563"><figcaption><p>change picture with your notes</p></figcaption></figure>
 
-To illustrate this with an example, let's assume a lending protocol where the borrow rate is 10% and the utilization rate is 50%. In this case, the interest rate offered to depositors would be:
+**Example:** assume a lending protocol where the borrow rate is 10% and the utilization rate is 50%. In this case, the interest rate offered to depositors would be:
 
 * Interest Rate = Borrow Rate \* Utilization Rate&#x20;
 * Interest Rate = 10% \* 50%&#x20;
 * Interest Rate = 5%
 
-Therefore, depositors would earn an interest rate of 5% on their deposits. This corresponds to the amount paid by borrowers, ensuring that the interest earned from lending activities is equivalent to the interest paid to depositors. This mechanism helps to create a fair and balanced ecosystem within the lending protocol, aligning the incentives of both depositors and borrowers.
+Depositors would earn an interest rate of 5% on their deposits. The total interest payment received by depositors would be equivalent to the total interest paid out by borrowers.&#x20;
 
-This simple example while useful for our understanding, ignores the margin we mentioned at the start; which could reflect fees, treasury contribution, etc.
+While this simple example is useful for our understanding, it ignores the margin we mentioned at the start; the cut that goes to the protocol, which could reflect fees, treasury contribution, etc.
 
-In Aave supply interest rate is calculated as such:
+In Aave, supply interest rate is calculated as such:
 
 ```solidity
 liquidityRate = overallBorrowRate * supplyUsageRatio * (1 - reserveFactor)
@@ -170,9 +170,8 @@ In the later stages, we will get a higher resolution understanding of what `over
 liquidityRate = borrowRate * UtilizationRate  * (1 - reserveFactor)
 ```
 
-Notice the introduction of the reserve factor - that determines the split between what the depositors enjoy versus what flows into Aave's treasury.&#x20;
+Notice the introduction of the reserve factor - it determines the split between what the depositors enjoy versus what flows into Aave's treasury.&#x20;
 
 {% hint style="info" %}
-The reserve factor is a percentage of protocol interest which goes to the Aave Ecosystem Reserve
+The reserve factor is a percentage of protocol interest which goes to the Aave Ecosystem Reserve.
 {% endhint %}
-
