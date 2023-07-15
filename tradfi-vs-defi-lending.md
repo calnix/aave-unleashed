@@ -1,4 +1,4 @@
-# TradFi: Lending x Borrowing
+# TradFi vs DeFi: Lending
 
 In the tradfi world, lending and borrowing are the cornerstone of economic growth and financial stability. Banks and financial institutions have facilitated these essential activities, providing individuals and businesses with access to capital and liquidity.&#x20;
 
@@ -23,7 +23,7 @@ The lending process is facilitated by smart contracts, **removing the need for i
 
 {% hint style="info" %}
 * While tradfi interest rates are influenced through money market operations and other policies, defi interest rates are determined by on-chain interest rate models.
-* The parameters of these models are periodically updated to achieve higher capital efficieny in-line with market conditions
+* The parameters of these models are periodically updated to achieve higher capital efficiency in-line with market conditions
 * See Gauntlet's proposals on Aave: [example](https://governance.aave.com/t/arfc-aave-v3-interest-rate-curve-recommendations-from-gauntlet-2023-04-27/12921)
 {% endhint %}
 

@@ -1,7 +1,7 @@
 # Table of contents
 
 * [Introduction](README.md)
-* [TradFi: Lending x Borrowing](tradfi-lending-x-borrowing.md)
+* [TradFi vs DeFi: Lending](tradfi-vs-defi-lending.md)
 * [On borrow demand and interest rates](on-borrow-demand-and-interest-rates.md)
 * [On Indexes](on-indexes/README.md)
   * [Why use Indexes](on-indexes/why-use-indexes.md)
