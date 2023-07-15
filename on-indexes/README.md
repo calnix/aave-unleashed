@@ -16,7 +16,7 @@ layout:
 
 Now that we understand how interest rates are modelled, let's look at how on-chain interest accrual works. Central to this is the concept of indexes.
 
-Aave uses indexes to track interest and manage accruing interest on deposits and loans over time. This is crucial in the context of a blockchain, where events are tracked not by timestamps, but by blocks.
+Aave uses indexes to track interest accumulation. This is crucial in the context of a blockchain, where events are tracked not by timestamps, but by blocks.
 
 There are two types of indexes in Aave:
 
@@ -26,7 +26,9 @@ There are two types of indexes in Aave:
 Both indexes represent the cumulative growth of interest over time for a specific asset, and continually increment over time.
 
 {% hint style="info" %}
-An index cannot decrement as cumulative interest always increases. Meaning to say, interest always adds up over time, however the actual interest rates themselves may vary.&#x20;
+An index cannot decrement as cumulative interest always increases.&#x20;
+
+* Interest always adds up over time, regardless of how interest rates themselves may vary.&#x20;
 {% endhint %}
 
 {% hint style="warning" %}
@@ -41,10 +43,10 @@ In traditional finance, interest is typically calculated based on the amount of 
 
 However, blockchains operate based on block confirmations, not real-world time. Updating rates in real-time, on a per second basis would be extremely gas-intensive and not scalable approach.&#x20;
 
-Hence, the solution was to use indexes, which would accumulate interest across blocks and updating the protocol on an ad-hoc basis.&#x20;
+Hence, the solution was to use indexes, which would accumulate interest across blocks and update the protocol on an ad-hoc basis.&#x20;
 
 {% hint style="info" %}
-Whenever a state-changing function is called: supply, withdraw, borrow, repay, etc, both indexes and rates are are updated.&#x20;
+Whenever a state-changing function is called (supply, withdraw, borrow, repay, etc) indexes and rates are are updated to reflect this state-change.
 {% endhint %}
 
 ## How does it work?&#x20;
@@ -99,13 +101,21 @@ As the interest rates change over time, the liquidity index updates, and the use
 To accurately value each user's deposit and loan positions within the system, we will need to track the timestamps of all the instances of:
 
 * deposits, withdrawals,&#x20;
-* borrows taken, borrows repaid (in full or otherwise)
+* borrows taken, borrows repaid (in full or partial)
 
-Then the headache of tracking multiple instances of these actions for just one user. In a tradfi setting, with a centralized database, one could simply spin up a system that tracks every action and position independently, and aggregate them all to value a user holistically.&#x20;
+Tracking, calculating and storing each individual's balances by initializing indexes at a user-level would be both gas and storage intensive.&#x20;
 
-Tracking each action as an independent object in an on-chain system would be taxing to say the least. Hence, instead of initializing a liquidity index to track interest for each deposit - Aave has a single global liquidity index for each asset.&#x20;
+Hence, the streamlined approach is to have two global indexes, one to track deposit interest from inception and another to track borrow interest.&#x20;
 
-Users' deposits and withdrawals are scaled against this global index. Let me illustrate.
+Let me give an analogy. Imagine a hotel that continually adds floors to its building. The hotel represents the liquidity index (increasing deposit interest).
+
+* each floor added represents additional interest accumulated&#x20;
+* a new depositor checks-in at the highest floor&#x20;
+* his interest earned is represented by the floors added above his entry level
+
+However, w.r.t to the floors **below** his arrival, that is interest accumulated prior to his deposit, of which he has no claim. Hence, users' deposits and withdrawals are scaled against the indexes - to discount prior interest.&#x20;
+
+Let me illustrate.
 
 #### Scaling Positions
 
@@ -135,5 +145,3 @@ We will talk about `_userState[account].balance` when we dive deeper into AToken
 * The index and rate are updated for every deposit, borrow, withdrawal, repay of ANY Aave user.&#x20;
 * The update works like this: Utilization Rate -> Variable Borrow rate -> Liquidity rate -> Liquidity Index
 {% endhint %}
-
-\
