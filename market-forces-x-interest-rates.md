@@ -105,6 +105,23 @@ When utilization exceeds optimal levels, concerns of insolvency become more sign
 
 This would serve to more heavily incentivize suppliers to lend, thereby increasing liquidity, while simultaneously tempering borrowing to restore healthy idle liquidity levels and avoid insolvency.&#x20;
 
+### Combined
+
+Here the combined graph for the piecewise function, using DAI as an example.
+
+<figure><img src=".gitbook/assets/image (105).png" alt=""><figcaption></figcaption></figure>
+
+The parameters are as follows:
+
+```python
+R_intercept = 0
+R_slope1 = 0.04
+R_slope2 = 0.75
+U_optimal = 0.80
+```
+
+These parameters were obtained from DAI's `DefaultReserveInterestRateStrategy` contract, and are accurate at time of writing.&#x20;
+
 ### Parameters
 
 Each asset has its interest rate parameters stored on-chain via a `DefaultReserveInterestRateStrategy` contract.&#x20;
