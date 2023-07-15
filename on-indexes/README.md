@@ -37,18 +37,6 @@ This positive relationship between indexes and time can be broken if we somehow 
 This has been talked about in mainstream economics, with central banks experimenting with negative rates to stimulate growth. Hopefully, it will not come to pass.&#x20;
 {% endhint %}
 
-## Why use an index?
-
-In traditional finance, interest is typically calculated based on the amount of time your money has been deposited. The level of granularity in such calculations can be such that valuations are updated on a per second basis, like in the banking system.&#x20;
-
-However, blockchains operate based on block confirmations, not real-world time. Updating rates in real-time, on a per second basis would be extremely gas-intensive and not scalable approach.&#x20;
-
-Hence, the solution was to use indexes, which would accumulate interest across blocks and update the protocol on an ad-hoc basis.&#x20;
-
-{% hint style="info" %}
-Whenever a state-changing function is called (supply, withdraw, borrow, repay, etc) indexes and rates are are updated to reflect this state-change.
-{% endhint %}
-
 ## How does it work?&#x20;
 
 Instead of updating the index every block, Aave timestamps specific values of the index during state-changing transactions.
@@ -95,6 +83,10 @@ Based on the evolving liquidity index, we can calculate how the user's deposit g
 | End of Month 3 | 10.20105 ETH \* 1.0113 = 10.31344665 ETH |
 
 As the interest rates change over time, the liquidity index updates, and the user's deposit grows accordingly. The deposit value increases each month based on the compounded interest earned from the changing interest rates and the corresponding time periods.
+
+{% hint style="info" %}
+Whenever a state-changing function is called (supply, withdraw, borrow, repay, etc) indexes are updated. Hence, indexes are said to be updated on user interaction, in a non-periodic manner.&#x20;
+{% endhint %}
 
 ### One Index to rule them all&#x20;
 
