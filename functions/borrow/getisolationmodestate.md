@@ -88,7 +88,7 @@ uint256 ceiling = reservesData[assetAddress].configuration.getDebtCeiling();
 
 <summary>Reference: ReserveConfigurationMap</summary>
 
-![](<../../.gitbook/assets/image (229).png>)
+![](<../../.gitbook/assets/image (229) (1).png>)
 
 </details>
 

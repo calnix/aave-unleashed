@@ -2,7 +2,7 @@
 
 * [Introduction](README.md)
 * [TradFi vs DeFi: Lending](tradfi-vs-defi-lending.md)
-* [Market forces x Interest Rate Models](market-forces-x-interest-rate-models.md)
+* [Market forces x Interest Rate Models](market-forces-x-interest-rates.md)
 * [On Indexes](on-indexes/README.md)
   * [Why use indexes?](on-indexes/why-use-indexes.md)
 * [Scaling and ATokens](scaling-and-atokens.md)

@@ -25,9 +25,24 @@ Using bitmaps can provide several benefits in terms of storage efficiency and ga
 1. **Compact Storage**: Bitmaps allow for efficient storage of multiple boolean or binary attributes within a single variable. Instead of using separate boolean variables or larger data types, a bitmap can represent multiple flags or states using a minimal amount of storage.
 2. **Gas Efficiency:** Working with bitmaps can lead to gas savings in contract execution. Since bitwise operations operate on the binary representation of the data, they are generally less costly in terms of gas consumption compared to other operations like conditional statements or looping through individual flags.
 
-{% hint style="info" %}
-EVM operates on 32 bytes registers (256 bits) and anything below that requires additional conversion.
-{% endhint %}
+### Aave's bitmaps
+
+**From** [**Aave-v2-whitepaper**](https://github.com/aave/protocol-v2/blob/master/aave-v2-whitepaper.pdf)**:**
+
+In the initial V1 release, the protocol loops through all the active assets to identify the user deposits and loans. This resulted in high gas consumption and reduced scalability - as the cost of withdrawing/borrowing/repaying/liquidating assets would increase as more assets are listed on the protocol.
+
+<figure><img src="../../.gitbook/assets/image.png" alt="" width="554"><figcaption><p>Figure 4: UserConfiguration Bitmask</p></figcaption></figure>
+
+* Create a bitmask with the structure in figure 4. The bitmask has a 256 bit size, it is divided in pairs of bits, one for each asset. The first bit of the pair indicates if an asset is used as collateral by the user, the second whether an asset is borrowed by the user.&#x20;
+* This implementation imposes the constraints:&#x20;
+  * Only 128 assets can be supported, to add more, another uint256 needs to be used.&#x20;
+  * For the calculation of the account data, the protocol would still need to query all listed assets.
+
+#### Reserve configuration with bitmask
+
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption><p>ReserveConfigrationMap</p></figcaption></figure>
+
+A bitmask has also been introduced to store the reserve configuration, defined in figure 5. A similar packing could have been achieved by using uint32 and booleans, the bitmask benefits from more gas efficiency, and more so when updating multiple configurations at once.
 
 ## Bitwise Operators
 

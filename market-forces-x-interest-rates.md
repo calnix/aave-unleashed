@@ -97,7 +97,7 @@ The total borrow rate is composed of the rate at zero utilization ( $$R_{interce
 
 #### For   $$U > U_{optimal}$$ &#x20;
 
-<figure><img src=".gitbook/assets/image (1).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (229).png" alt="" width="563"><figcaption></figcaption></figure>
 
 **Why piecewise, instead of a single linear function?**
 
@@ -128,7 +128,7 @@ Each asset has its interest rate parameters stored on-chain via a `DefaultReserv
 
 * DAI: [https://etherscan.io/address/0x694d4cFdaeE639239df949b6E24Ff8576A00d1f2](https://etherscan.io/address/0x694d4cFdaeE639239df949b6E24Ff8576A00d1f2#readContract)
 
-<figure><img src=".gitbook/assets/image (1) (1).png" alt=""><figcaption><p>on-chain parameters</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (1) (2).png" alt=""><figcaption><p>on-chain parameters</p></figcaption></figure>
 
 From time to time, parameters are modified to better suit market conditions. Proposals to update these parameters are submitted and passed via Aave's governance.
 
