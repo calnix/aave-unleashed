@@ -68,7 +68,7 @@ The resulting value preserves only the bits in the borrowing positions, while se
 
 </details>
 
-To summarize, the BORROWING\_MASK works as a bitmask by preserving only the borrowing-related bits within the data field. Applying the BORROWING\_MASK using a bitwise AND operation helps identify the borrowed assets by setting all non-borrowing bits to 0 and preserving the borrowing bits.
+To summarize, `BORROWING_MASK` is a bitmask that preserves only the **borrowing-related bits** within the data field. Applying the BORROWING\_MASK using a bitwise AND operation helps identify the borrowed assets by setting all non-borrowing bits to 0 and preserving the borrowing bits.
 
 If the user is borrowing any asset, AND has been using the asset about to be withdrawn as collateral => need to validate HF and LTV.
 
@@ -78,10 +78,10 @@ If the user is borrowing any asset, AND has been using the asset about to be wit
 
 <figure><img src="../../.gitbook/assets/image (35).png" alt=""><figcaption></figcaption></figure>
 
-One of the following two conditions must be true for this function to not revert:
+Etiher one of the following two conditions must be true for this function to not revert:
 
-1. `!hasZeroLtvCollateral`: user has a non-zero LTV value across all assets
-2. the asset being withdrawn has an LTV ratio of 0
+1. **`!hasZeroLtvCollateral`**: user has a non-zero LTV value across all assets
+2. Asset being withdrawn has an LTV of `0`
 
 Condition 1 serves as a sanity check, given that `validateHFAndLtv` is executed in the context that the user `isBorrowingAny` .
 
@@ -93,7 +93,7 @@ This function is primarily a wrapper around `.calculateUserAccountDataParams`.
 
 The require statement ensures that the calculated health factor (after withdrawal) is above the liquidation threshold. If its not, user will be unable to withdraw asset.
 
-### `.calculateUserAccountDataParams`
+## `.calculateUserAccountDataParams`
 
 This function calculates and returns the following user data across all the assets:
 
@@ -105,4 +105,45 @@ This function calculates and returns the following user data across all the asse
 * `hasZeroLtvCollateral`
 
 <figure><img src="../../.gitbook/assets/image (53).png" alt=""><figcaption></figcaption></figure>
+
+### check if `userConfig` is empty
+
+```solidity
+    if (params.userConfig.isEmpty()) {
+      return (0, 0, 0, 0, type(uint256).max, false);
+    }
+```
+
+<figure><img src="../../.gitbook/assets/image (144).png" alt="" width="563"><figcaption><p>UserConfiguration.sol</p></figcaption></figure>
+
+If all the bits in UserConfiguration is set to 0, `data == 0` will evaluate to be true. This indicates that the user did not undertake any borrow or supply as collateral action.
+
+* returns health factor as `type(uint256).max`
+* returns `hasZeroLTVCollateral` as **`false`**
+
+### **If user is in e-mode**
+
+We need to obtain e-mode specific info such as LTV, liquidationThreshold and eModeAssetPrice.
+
+{% code overflow="wrap" %}
+```solidity
+if (params.userEModeCategory != 0) {
+  (vars.eModeLtv, vars.eModeLiqThreshold, vars.eModeAssetPrice) = EModeLogic
+    .getEModeConfiguration(
+      eModeCategories[params.userEModeCategory],
+      IPriceOracleGetter(params.oracle)
+    );
+}
+```
+{% endcode %}
+
+<figure><img src="../../.gitbook/assets/image (58).png" alt=""><figcaption></figcaption></figure>
+
+Get e-mode configuration details, by passing the user's eModeCategory id (`params.userEModeCategory`) into the mapping `eModeCategories.`&#x20;
+
+<figure><img src="../../.gitbook/assets/image (131).png" alt=""><figcaption><p>PoolStorage.sol</p></figcaption></figure>
+
+`This will return the e`
+
+<figure><img src="../../.gitbook/assets/image (143).png" alt=""><figcaption></figcaption></figure>
 

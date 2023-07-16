@@ -6,7 +6,7 @@ This section will cover interest rate calculations for both deposits and loans. 
 Simple and compound interest: [Refresher ](appendix/simple-compound-apr-apy.md)
 {% endhint %}
 
-<figure><img src=".gitbook/assets/image (73).png" alt=""><figcaption><p>_updateIndexes</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (73) (2).png" alt=""><figcaption><p>_updateIndexes</p></figcaption></figure>
 
 * **`calculateLinearInterest`** updates liquidity index => determines how deposit interest accumulates.
 * **`calculateCompoundInterest`** updates variableBorrowIndex => determines how borrow interest accumulates.
@@ -23,7 +23,7 @@ This function is executed within [`updateState`](functions/common-functions/.upd
 
 The order of operations might be misleading; with a little re-arranging, it should be obvious:
 
-<figure><img src=".gitbook/assets/image (144).png" alt=""><figcaption><p>simplified <code>_calculateLinearInterest</code></p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (144) (1).png" alt=""><figcaption><p>simplified <code>_calculateLinearInterest</code></p></figcaption></figure>
 
 This should not be surprising to the reader; this is how simple interest is calculated.&#x20;
 
