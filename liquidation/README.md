@@ -193,5 +193,5 @@ Liquidators must already have sufficient balance of the debt asset, which will b
 
 #### Compeititve liquidaiton
 
-* how/.why competitive
-* compare to otehr mechanisms
+* how/why competitive
+* compare to other mechanisms
