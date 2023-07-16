@@ -195,7 +195,7 @@ The above applies to rays just the same, as such we will not go through them in 
 * wad: 1e18, ray: 1e27
 * difference: 1e(27-9) = **1e9**
 
-#### **wad to ray**
+### **wad to ray**
 
 Scaling a wad up to ray is easy: simply multiply by the difference in precision:
 
@@ -209,7 +209,7 @@ uint256 internal constant WAD_RAY_RATIO = 1e9;
 
 * If `b/WAD_RAY_RATIO`**`!=`**`a`,  the function will revert as there has been overflow
 
-#### **ray to wad**
+### **ray to wad**
 
 Scaling a ray down involves some loss of precision, as we move from 27 dp to 18 dp.
 
@@ -228,8 +228,10 @@ Use of `iszero` + `lt` to represent $$\geq$$
 
 
 
+{% hint style="success" %}
+**From** [**Aave-v2-whitepaper**](https://github.com/aave/protocol-v2/blob/master/aave-v2-whitepaper.pdf)**:**
 
-
-###
-
-###
+* The V1 WadRayMathlibrary internally uses SafeMath to guarantee the integrity of operations.&#x20;
+* After an in depth analysis, SafeMath incurred intensive high costs in critical areas of the protocol, with a 30 gas fee for each call.&#x20;
+* This supported the refactoring of WadRayMath to remove SafeMath, which saves 10-15k gas on some operations.
+{% endhint %}

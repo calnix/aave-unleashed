@@ -43,6 +43,9 @@ Instead of updating the index every block, Aave timestamps specific values of th
 
 An index starts with a value of 1.0 at inception. As time passes and interest accrues, the liquidity index increases. For example, after a certain period, the liquidity index might be 1.05, indicating that 5% interest has been accrued on all deposits specific to that asset.
 
+* Indexes start at 1.0
+* Indexes always increase over time
+
 {% hint style="info" %}
 This interest comes from borrowers who are paying interest on their loans.
 {% endhint %}

@@ -2,12 +2,11 @@
 
 * [Introduction](README.md)
 * [TradFi vs DeFi: Lending](tradfi-vs-defi-lending.md)
-* [Market forces x Interest Rates](market-forces-x-interest-rates.md)
+* [Market forces x Interest Rate Models](market-forces-x-interest-rate-models.md)
 * [On Indexes](on-indexes/README.md)
   * [Why use indexes?](on-indexes/why-use-indexes.md)
 * [Scaling and ATokens](scaling-and-atokens.md)
 * [Deposit & Borrow Interest](deposit-and-borrow-interest.md)
-* [Interest Rate models](interest-rate-models.md)
 * [Stable borrowing](stable-borrowing.md)
 * [Liquidation](liquidation/README.md)
   * [oracles](liquidation/oracles.md)

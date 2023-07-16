@@ -6,13 +6,22 @@ This section will cover interest rate calculations for both deposits and loans. 
 Simple and compound interest: [Refresher ](appendix/simple-compound-apr-apy.md)
 {% endhint %}
 
+<figure><img src=".gitbook/assets/image.png" alt=""><figcaption><p>_updateIndexes</p></figcaption></figure>
+
+* **`calculateLinearInterest`** updates liquidity index => determines how deposit interest accumulates.
+* **`calculateCompoundInterest`** updates variableBorrowIndex => determines how borrow interest accumulates.
+
 ## Deposit Interest
 
-Supply interest in Aave accrues via linear interest (simple interest), as described in the function `_calculateLinearInterest`.
+Supply interest in Aave accrues via linear interest (simple interest), as described in the function `calculateLinearInterest`.
 
 <figure><img src=".gitbook/assets/image (103).png" alt=""><figcaption><p><code>_calculateLinearInterest</code></p></figcaption></figure>
 
-Now the order of operations might be confusing, so with a little re-arranging, it should be obvious:
+{% hint style="info" %}
+This function is executed within [`updateState`](functions/common-functions/.updatestate.md), which is called at the start of any state-changing function.&#x20;
+{% endhint %}
+
+The order of operations might be misleading; with a little re-arranging, it should be obvious:
 
 <figure><img src=".gitbook/assets/image (144).png" alt=""><figcaption><p>simplified <code>_calculateLinearInterest</code></p></figcaption></figure>
 
@@ -29,45 +38,49 @@ This has to do with the calculation for `nextLiquidityIndex`:
 
 <figure><img src=".gitbook/assets/image (172).png" alt="" width="563"><figcaption><p>nextLiquidityIndex</p></figcaption></figure>
 
-Given that `nextLiquidityIndex` is calculated as such, we can conclude that the liquidity index is a multiplicative series, wherein the index beings with the value of 1 :
+Given that `nextLiquidityIndex` is calculated as seen above, we can conclude that the liquidity index is a multiplicative series, where the index begins with the value of 1:
 
 $$
 Index  = 1 * (1 + r_{1}t_{1})* (1+ r_{2}t_{2}) * (1+ r_{3}t_{3})...
 $$
 
-* The index beings with 1
-* The index always increases
-
 {% hint style="info" %}
-Recall what was reviewed in the earlier section on [Indexes](on-indexes/)
+Notice the similarities with $$Total = P(1 + r * T)$$.  Also, notice that the multiplicative series indicates compounding. The interplay between simple interest calculation and compounding is explained further down.&#x20;
 {% endhint %}
 
 ### Example: calculating the next index
 
 Given the details below, what would be the index at t1?
 
-* Index = 1.0, at t0
-* supply rate, per second = 0.04
+At t0:&#x20;
 
-<figure><img src=".gitbook/assets/image (70).png" alt="" width="563"><figcaption></figcaption></figure>
+* liquidity index = 1.0
+* supply interest rate, per second = 0.04
+
+<figure><img src=".gitbook/assets/image (70).png" alt=""><figcaption></figcaption></figure>
 
 The liquidity index at t1 would be 1.2 as a result of the accumulated interest over 5 seconds where the supply interest rate (per second) was 0.04.
 
 ### Compounding frequency
 
-Given the manner in which deposit interest is calculated, it would seem that depositors on Aave do not enjoy the compounding of their interest.&#x20;
+Let's connect the dots between interest and indexes by how they are calculated:
 
 <figure><img src=".gitbook/assets/image (45).png" alt=""><figcaption><p>Looks like simple interest!</p></figcaption></figure>
 
-This is not true. Deposit interest does compound, but only [when the market is touched](https://github.com/aave/protocol-v2/blob/baeb455fad42d3160d571bd8d3a795948b72dd85/contracts/protocol/libraries/logic/ReserveLogic.sol#L349).&#x20;
+Given the manner in which deposit interest is calculated, it would seem that depositors on Aave do not enjoy the compounding of their interest.&#x20;
 
-Recall that previously we mentioned that indexes were updated when certain state-changing transactions were made: supply, borrow, repay, withdraw, etc.
+**This is not true.** Deposit interest does compound, but only **when the market is touched.**&#x20;
 
-These types of transactions cause a change in quantity of deposits or debts for a specific asset; as such the indexes and interest rates are updated to reflect the new state, post-transaction.
+{% hint style="info" %}
+**When the market is touched?**
 
-Each time index is updated, interest is calculated from the lastUpdatedTimestamp till now. This is a simple interest calculation.&#x20;
+* Indexes are updated when state-changing transactions are made: supply, borrow, repay, withdraw, etc.
+* Each time the index is updated, interest is calculated for the interval from`lastUpdatedTimestamp` till now.&#x20;
+* This is a simple interest calculation: $$(1 + rt)$$
+* However, the new index is obtained by **multiplying** the prior index with $$(1 + rt)$$, which means that incoming interest is applied upon both the principal and previously accrued interest.
 
-However, the new index is obtained by multiplying the prior index with $$(1 + rt)$$, which means that incoming interest is applied upon both the principal and previously accrued interest.
+**Every time the index is updated, a new entry is created in the multiplicative series which contributes to compounding. However, the t in (1 + rt), for each period is irregular.**
+{% endhint %}
 
 **Let me illustrate with a 2-period example**
 
@@ -100,10 +113,22 @@ Interest:(1+r)^t \approx
  1+rt+\frac{t}{2}(t-1)r^2+\frac{t}{6}(t-1)(t-2)r^3
 $$
 
-For obvious reasons, the level of approximation has to be chosen such that the tradeoff between accuracy and gas-savings is optimized.&#x20;
+For obvious reasons, the level of approximation has to be chosen such that the trade-off between accuracy and gas-savings is optimized.&#x20;
 
 <figure><img src=".gitbook/assets/image (171).png" alt=""><figcaption></figcaption></figure>
 
+**From** [**Aave-v2-whitepaper**](https://github.com/aave/protocol-v2/blob/master/aave-v2-whitepaper.pdf)**:**
+
+* The function calculateCompoundedInterest, (MathUtils.sol line 46) implements the firrst three expansions which gives a good approximation of the compounded interest for up to a 5 year loan duration.&#x20;
+* This results in a slight underpayment offset by the gas optimisation benefits.&#x20;
+*   It's important to note that this behaves a little differently for variable and stable borrowing:&#x20;
+
+    * For variable borrows, interests are accrued on any action of any borrower;&#x20;
+    * For stable borrows, interests are accrued only when a specific borrower performs an action, increasing the impact of the approximation. Still, the difference seems reasonable given the savings in the cost of the transaction.
+
+
+
 {% hint style="warning" %}
-Deposit interest compounds only [when the market is touched](https://github.com/aave/protocol-v2/blob/baeb455fad42d3160d571bd8d3a795948b72dd85/contracts/protocol/libraries/logic/ReserveLogic.sol#L349) while borrow interest compounds every second due to an [additional calculation](https://github.com/aave/protocol-v2/blob/baeb455fad42d3160d571bd8d3a795948b72dd85/contracts/protocol/libraries/logic/ReserveLogic.sol#L359) performed in the contract.&#x20;
+Deposit interest compounds only when the market is touched while borrow interest compounds every second due to an [additional calculation](https://github.com/aave/protocol-v2/blob/baeb455fad42d3160d571bd8d3a795948b72dd85/contracts/protocol/libraries/logic/ReserveLogic.sol#L359) performed in the contract.&#x20;
 {% endhint %}
+
