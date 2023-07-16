@@ -81,7 +81,7 @@ If the asset is not being used as either, increment the counter and `continue`; 
 
 #### isUsingAsCollateralOrBorrowing
 
-<figure><img src="../../.gitbook/assets/image (69).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 * require statement performs a boundary check to ensure that `reserveIndex` value is within the valid range of `[0 - 127]`.
 * If you are unclear on the bitmap manipulations, please see that section.
@@ -112,9 +112,54 @@ Would there be gas savings by checking for zero address first, then followed by 
 
 ### 3. Get asset's params
 
-Now that we have established
+Now that we have established that the asset is defined and being used by the user as either collateral or borrowing, let us obtain the following key details:
 
-<figure><img src="../../.gitbook/assets/image (145).png" alt=""><figcaption></figcaption></figure>
+* LTV
+* liquidationThreshold
+* decimals
+* Emode category
 
-<figure><img src="../../.gitbook/assets/image (134).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
+This is achieved via `getParams`, which utilizes bitmasks to extract the relevant information from the ReserveConfigurationMap; which is a bitmap.
+
+<figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+
+### 4. Set decimals and oracle interface
+
+* Define the decimal precision of 1 unit if the asset (`1 Ether = 10**18` | `1 USDC = 10**6`)
+* Define the oracle interface
+
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+If both the user and the asset are in the same e-mode category, and `vars.eModeAssetPrice !=0`, use `vars.eModeAssetPrice`
+
+{% code overflow="wrap" %}
+```solidity
+// this was set earlier via getEModeConfiguration
+vars.eModeAssetPrice = IPriceOracleGetter(params.oracle).getAssetPrice(eModePriceSource)
+```
+{% endcode %}
+
+Else, default to using the following as the oracle interface:
+
+```solidity
+IPriceOracleGetter(params.oracle).getAssetPrice(vars.currentReserveAddress);
+```
+
+### 5. If asset is used as collateral
+
+If the asset's liquidation threshold is defined and it is being used by the user as collateral, execute the following.
+
+* get user's balance in base CCY and increment `totalCollateralInBaseCurrency`
+* `totalCollateralInBaseCurrency` will value the user's total collateral across all asset classes, normalized into the same base currency.&#x20;
+* E.g. get user's total collateral in USD.
+
+
+
+{% hint style="info" %}
+Each market has an AaveOracle contract where you can query token prices in the base currency. BaseCCY:&#x20;
+
+* ETH on V2 mainnet/polygon&#x20;
+* USD on all other markets)
+{% endhint %}

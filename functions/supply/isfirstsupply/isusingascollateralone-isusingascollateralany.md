@@ -7,7 +7,7 @@ The function isUsingAsCollateralAny in Aave is used to determine if a user has s
 * takes  `UserConfigurationMap` as input, which contains `data`; bitmap of the user's collaterals and borrows.
 * returns `FALSE` if user has NOT supplied ANY asset so far
 
-<figure><img src="../../../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (19) (1).png" alt=""><figcaption></figcaption></figure>
 
 * `COLLATERAL_MASK`, is used to isolate the collateral bits within data.&#x20;
 * In binary representation, it consists of alternating `1`s and `0`s: `1010...1010`.

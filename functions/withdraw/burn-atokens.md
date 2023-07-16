@@ -19,7 +19,7 @@
 
 * `burn` calls `_burnScaled`
 
-<figure><img src="../../.gitbook/assets/image (69) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (69).png" alt=""><figcaption></figcaption></figure>
 
 Amount of tokens burnt is scaled against current liquidity index
 

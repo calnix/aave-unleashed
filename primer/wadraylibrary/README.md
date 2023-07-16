@@ -88,7 +88,7 @@ So we cannot natively rely on Solidity for rounding to the nearest integer, or s
 * Rounding deals with fractional values.&#x20;
 * Since solidity always rounds down, we can allow for rounding to the nearest integer by adding half
 
-<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 * if remainder < 0.5 -> remainder +0.5 < 1  => **rounded down to 0**
 * if remainder $$\geq$$ 0.5 ->  remainder + 0.5 $$\geq$$ 1  => **rounded up to 1**
@@ -235,3 +235,4 @@ Use of `iszero` + `lt` to represent $$\geq$$
 * After an in depth analysis, SafeMath incurred intensive high costs in critical areas of the protocol, with a 30 gas fee for each call.&#x20;
 * This supported the refactoring of WadRayMath to remove SafeMath, which saves 10-15k gas on some operations.
 {% endhint %}
+

@@ -17,7 +17,7 @@
 
 ## validateSupply
 
-<figure><img src="../../.gitbook/assets/image (133) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (133).png" alt=""><figcaption></figcaption></figure>
 
 <img src="../../.gitbook/assets/file.excalidraw (16).svg" alt="" class="gitbook-drawing">
 
@@ -40,7 +40,7 @@ Function takes `ReserveConfigurationMap` struct as parameter. `ReserveConfigurat
 
 ### Check supply cap
 
-<figure><img src="../../.gitbook/assets/image (134) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (134).png" alt=""><figcaption></figcaption></figure>
 
 The long require statement simply means:
 

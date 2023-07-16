@@ -105,7 +105,7 @@ give example on when inputs lead to overflow?
 
 ## percentDiv
 
-<figure><img src="../.gitbook/assets/image (145) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (145).png" alt=""><figcaption></figcaption></figure>
 
 ### division operation
 

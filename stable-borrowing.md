@@ -56,7 +56,7 @@ To better understand the model and how it is implemented, we dissect `calculateI
 
 <div data-full-width="false">
 
-<figure><img src=".gitbook/assets/image (6).png" alt=""><figcaption><p>stable rate calculation</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (6) (1).png" alt=""><figcaption><p>stable rate calculation</p></figcaption></figure>
 
 </div>
 

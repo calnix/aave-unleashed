@@ -84,7 +84,7 @@ However, if `isUsingAsCollateralAny` is true; user has executed supply action so
 
 ## setUsingAsCollateral
 
-<figure><img src="../../../.gitbook/assets/image (72) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (72).png" alt=""><figcaption></figcaption></figure>
 
 #### `(reserveIndex << 1) + 1`
 
