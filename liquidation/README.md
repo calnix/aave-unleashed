@@ -27,7 +27,7 @@ _**maybe move LTV to under borrowing**_
 * For example, ETH has an LTV of 75% -> for every 1 ETH worth of collateral, borrowers will be able to borrow 0.75 ETH worth of the corresponding asset
 
 {% hint style="warning" %}
-LTV is always < 100%. Recall that Aave operates on overcollateralized lending.
+LTV is always < 100% => Aave operates on overcollateralized lending.
 {% endhint %}
 
 #### Average LTV
@@ -117,7 +117,9 @@ When $$H_f < 1$$ the position may be liquidated to maintain solvency.
 * This means that his collateral can no longer support the loan position of $500; eligible for liquidation
 * This is reflected in the account health which falls to **< 1**\[$$\frac{666* 0.75}{500}$$].
 
-
+{% hint style="info" %}
+To see how health factor is calculated from a code perspective: [calculateUserAccountDataParams](../functions/common-functions/calculateuseraccountdataparams.md)
+{% endhint %}
 
 ## Liquidation&#x20;
 
@@ -171,8 +173,6 @@ The liquidation factor directs a share of the liquidation penalty to a collector
 5. Collateral Seizure: During the liquidation, the borrower's collateral is seized and sold in the open market to repay the outstanding loan. The liquidation process ensures lenders are repaid and incentivizes borrowers to maintain a healthy collateralization ratio.
 6. Liquidation Penalty: In addition to the discount received by the liquidator, a liquidation penalty is applied to the borrower. The penalty is a fee charged to the borrower to discourage them from allowing their position to become unhealthy. The penalty amount is typically a percentage of the outstanding loan.
 
-
-
 {% hint style="info" %}
 Liquidators must already have sufficient balance of the debt asset, which will be used by the `liquidationCall` to pay back the debt. They can use `flashLoan` for liquidations.
 {% endhint %}
@@ -189,9 +189,9 @@ Liquidators must already have sufficient balance of the debt asset, which will b
 
 
 
+## TO-DO
 
-
-#### Compeititve liquidaiton
+#### Competitive liquidation
 
 * how/why competitive
 * compare to other mechanisms

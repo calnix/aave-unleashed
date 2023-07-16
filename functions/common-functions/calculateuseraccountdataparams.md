@@ -244,4 +244,9 @@ $$
 * collateral \* liquidationThreshold => max debt possible for that collateral asset
 * the ratio of the sum of max debt possible against the totalDebt presently held constitutes the health factor of a wallet&#x20;
 
-If hf = 1,&#x20;
+#### **If hf < 1,**&#x20;
+
+* numerator **<** denominator
+* $$\sum{Collateral_{i, baseCCY} \: \times \: Liquidation \: Threshold_i}$$ **<**  $${TotalDebt_{baseCCY}}$$
+
+**User's current total debt exceeds his max loan value possible; hence considered undercollateralized.**&#x20;
