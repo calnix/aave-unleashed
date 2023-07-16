@@ -21,7 +21,7 @@ If on minting ATokens, `isFirstSupply` is returned as `TRUE`, and the nested `va
   * OR,
   * `!isolationMode && getDebtCeiling == 0`: TRUE => there is no debt ceiling on incoming supplied asset AND the user is not in isolation mode.
 
-<img src="../../../.gitbook/assets/file.excalidraw (1).svg" alt="" class="gitbook-drawing">
+<img src="../../../.gitbook/assets/file.excalidraw (1) (1).svg" alt="" class="gitbook-drawing">
 
 ## isFirstSupply
 
@@ -94,7 +94,7 @@ However, if `isUsingAsCollateralAny` is true; user has executed supply action so
 
 #### **`bit = 1 << offset`**
 
-<img src="../../../.gitbook/assets/file.excalidraw (13) (1).svg" alt="" class="gitbook-drawing">
+<img src="../../../.gitbook/assets/file.excalidraw (13).svg" alt="" class="gitbook-drawing">
 
 If `usingAsCollateral` is **true**, indicating that the reserve should be marked as used for collateral,&#x20;
 

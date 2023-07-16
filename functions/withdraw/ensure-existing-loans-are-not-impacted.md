@@ -106,44 +106,4 @@ This function calculates and returns the following user data across all the asse
 
 <figure><img src="../../.gitbook/assets/image (53).png" alt=""><figcaption></figcaption></figure>
 
-### check if `userConfig` is empty
-
-```solidity
-    if (params.userConfig.isEmpty()) {
-      return (0, 0, 0, 0, type(uint256).max, false);
-    }
-```
-
-<figure><img src="../../.gitbook/assets/image (144).png" alt="" width="563"><figcaption><p>UserConfiguration.sol</p></figcaption></figure>
-
-If all the bits in UserConfiguration is set to 0, `data == 0` will evaluate to be true. This indicates that the user did not undertake any borrow or supply as collateral action.
-
-* returns health factor as `type(uint256).max`
-* returns `hasZeroLTVCollateral` as **`false`**
-
-### **If user is in e-mode**
-
-We need to obtain e-mode specific info such as LTV, liquidationThreshold and eModeAssetPrice.
-
-{% code overflow="wrap" %}
-```solidity
-if (params.userEModeCategory != 0) {
-  (vars.eModeLtv, vars.eModeLiqThreshold, vars.eModeAssetPrice) = EModeLogic
-    .getEModeConfiguration(
-      eModeCategories[params.userEModeCategory],
-      IPriceOracleGetter(params.oracle)
-    );
-}
-```
-{% endcode %}
-
-<figure><img src="../../.gitbook/assets/image (58).png" alt=""><figcaption></figcaption></figure>
-
-Get e-mode configuration details, by passing the user's eModeCategory id (`params.userEModeCategory`) into the mapping `eModeCategories.`&#x20;
-
-<figure><img src="../../.gitbook/assets/image (131).png" alt=""><figcaption><p>PoolStorage.sol</p></figcaption></figure>
-
-`This will return the e`
-
-<figure><img src="../../.gitbook/assets/image (143).png" alt=""><figcaption></figcaption></figure>
-
+See [calculateUserAccountDataParams](../common-functions/calculateuseraccountdataparams.md) for the full breakdown explanation.&#x20;

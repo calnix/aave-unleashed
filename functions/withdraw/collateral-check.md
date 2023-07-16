@@ -17,7 +17,7 @@
 Interest rates are updated to account for the withdrawal of deposits, and therefore the reduction of supply. See [.updateInterestRates](../common-functions/.updateinterestrates.md)
 {% endhint %}
 
-<img src="../../.gitbook/assets/file.excalidraw.svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (1).svg" alt="" class="gitbook-drawing">
 
 ## isUsingCollateral
 
@@ -47,7 +47,7 @@ Set the collateral bit for a specific asset to either `0` or `1`, depending on b
 
 #### **`bit = 1 << offset`**
 
-<img src="../../.gitbook/assets/file.excalidraw (13) (1).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (13).svg" alt="" class="gitbook-drawing">
 
 If `usingAsCollateral` is **true**, indicating that the reserve should be marked as used for collateral,&#x20;
 

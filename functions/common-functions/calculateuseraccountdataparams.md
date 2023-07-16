@@ -13,7 +13,7 @@ This function calculates and returns the following user data across all the asse
 
 ## Visual Aid
 
-<img src="../../.gitbook/assets/file.excalidraw (13).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw.svg" alt="" class="gitbook-drawing">
 
 ## check if `userConfig` is empty
 
