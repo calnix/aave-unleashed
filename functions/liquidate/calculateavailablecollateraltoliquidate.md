@@ -22,4 +22,4 @@
 
 ## calculateAvailableCollateralToLiquidate
 
-<img src="../../.gitbook/assets/file.excalidraw (26).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (21).svg" alt="" class="gitbook-drawing">

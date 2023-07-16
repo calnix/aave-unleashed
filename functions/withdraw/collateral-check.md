@@ -47,7 +47,7 @@ Set the collateral bit for a specific asset to either `0` or `1`, depending on b
 
 #### **`bit = 1 << offset`**
 
-<img src="../../.gitbook/assets/file.excalidraw (13).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (13) (1).svg" alt="" class="gitbook-drawing">
 
 If `usingAsCollateral` is **true**, indicating that the reserve should be marked as used for collateral,&#x20;
 

@@ -1,5 +1,7 @@
 # calculateUserAccountDataParams
 
+<figure><img src="../../.gitbook/assets/image (53).png" alt=""><figcaption></figcaption></figure>
+
 This function calculates and returns the following user data across all the assets:
 
 * `totalCollateralInBaseCurrency`
@@ -9,7 +11,9 @@ This function calculates and returns the following user data across all the asse
 * `healthFactor`
 * `hasZeroLtvCollateral`
 
-<figure><img src="../../.gitbook/assets/image (53).png" alt=""><figcaption></figcaption></figure>
+## Visual Aid
+
+<img src="../../.gitbook/assets/file.excalidraw (13).svg" alt="" class="gitbook-drawing">
 
 ## check if `userConfig` is empty
 
