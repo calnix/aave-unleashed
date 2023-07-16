@@ -1,4 +1,4 @@
-# Ensure existing loans are not impacted
+# Ensure existing loans are collateralized
 
 ## Overview
 
@@ -11,7 +11,7 @@
 * [x] <mark style="color:orange;">updateInterestRates</mark>
 * [x] collateral check
 * [x] burn ATokens
-* [ ] Ensure existing loans are not impacted&#x20;
+* [ ] Ensure existing loans are collateralized
 
 <img src="../../.gitbook/assets/file.excalidraw (12).svg" alt="" class="gitbook-drawing">
 

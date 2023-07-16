@@ -42,7 +42,7 @@
   * [validateWithdraw](functions/withdraw/validatewithdraw.md)
   * [collateral check](functions/withdraw/collateral-check.md)
   * [burn ATokens](functions/withdraw/burn-atokens.md)
-  * [Ensure existing loans are not impacted](functions/withdraw/ensure-existing-loans-are-not-impacted.md)
+  * [Ensure existing loans are collateralized](functions/withdraw/ensure-existing-loans-are-collateralized.md)
 * [borrow](functions/borrow/README.md)
   * [getIsolationModeState](functions/borrow/getisolationmodestate.md)
   * [.validateBorrow](functions/borrow/.validateborrow.md)

@@ -2,7 +2,7 @@
 
 ## Overview
 
-<img src="../../.gitbook/assets/file.excalidraw (14).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (14) (1).svg" alt="" class="gitbook-drawing">
 
 * `executeSupply` contains the core logics of the supply function
 

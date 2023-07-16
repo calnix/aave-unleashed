@@ -11,7 +11,7 @@
 * [ ] <mark style="color:orange;">updateInterestRates</mark>
 * [ ] collateral check
 * [ ] burn ATokens
-* [ ] Ensure existing loans are not impacted&#x20;
+* [ ] Ensure existing loans are collateralized
 
 ## validateWithdraw
 

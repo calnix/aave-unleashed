@@ -11,13 +11,13 @@
 * [x] <mark style="color:orange;">updateInterestRates</mark>
 * [ ] collateral check
 * [ ] burn ATokens
-* [ ] Ensure existing loans are not impacted&#x20;
+* [ ] Ensure existing loans are collateralized
 
 {% hint style="info" %}
 Interest rates are updated to account for the withdrawal of deposits, and therefore the reduction of supply. See [.updateInterestRates](../common-functions/.updateinterestrates.md)
 {% endhint %}
 
-<img src="../../.gitbook/assets/file.excalidraw (1).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw.svg" alt="" class="gitbook-drawing">
 
 ## isUsingCollateral
 
