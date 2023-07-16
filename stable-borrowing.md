@@ -16,12 +16,18 @@ Not all assets offer stable rates: assets that are most exposed to liquidity ris
 
 Users who engage in stable borrowing will enjoy a fixed interest rate for the duration of their loan, with one caveat - see rebalancing condition below.
 
-This means while there will be on-going transactions that continually update the variable borrow rate, their rate will remain unchanged.&#x20;
-
 However, the stable rate for new loans varies on each interaction. Opening stable debt positions at different periods would likely result in different stable interest rates; due to differing liquidity state of the reserve pool. Ignoring rebalancing, these rates remain fixed for the lifetime of the position.
 
 {% hint style="info" %}
-The stable rate **for new loans** varies on each interaction, to better suit the current state of the protocol. Once you've borrowed, your stable rate is fixed and can only be rebalanced.
+The stable rate **for new loans** varies on each interaction.
+
+Example:
+
+* Alice and Bob take on stable loans at different points in time
+* They enjoy stable rates of 4% and 6% respectively
+* Different rates consequence of the differing liquidity state of the asset at that time.
+* For the duration of their loans, their respective rates remains fixed.&#x20;
+* However, in extreme liquidity conditions, their stable rates can be rebalanced to a higher rate; hence the nomenclature of **stable rate**, not fixed.
 {% endhint %}
 
 ## Stable rate model
@@ -36,13 +42,13 @@ $$if \hspace{1mm} U > U_{optimal}: \hspace{1cm} R^s_t = baseStableBorrowRate + R
 * $$R_{slope1}$$: variable rate slope1
 * premium is a markup decided by Aave
 
-The model adds an **additional premium** in the event that the stableToTotalDebt exceeds the optimal ratio of stableToTotalDebt as in the system.
+The model adds an **additional premium** in the event that the `stableToTotalDebt` exceeds the optimal ratio of `stableToTotalDebt` as in the system.
 
 $$
 if \hspace{1mm} \frac{stableDebt_{t}}{TotalDebt} > \frac{stableDebt_{optimal}}{TotalDebt}: \hspace{0.3cm} R^s_t \,\, \texttt{+=} \,\,additionalPremium\frac{U^s_t-U^s_{optimal}}{1-U^s_{optimal}}
 $$
 
-* **additionalPremium** is similarly set like baseStableBorrowRate&#x20;
+* **additionalPremium** is similarly set like `baseStableBorrowRate`&#x20;
 
 ### Visual aid
 
@@ -87,7 +93,13 @@ Rebalancing can occur when depositors are earning $$\leq$$ 90% of their earnings
 
 <figure><img src=".gitbook/assets/image (185).png" alt=""><figcaption><p><a href="https://github.com/aave/aave-v3-core/blob/29ff9b9f89af7cd8255231bc5faf26c3ce0fb7ce/contracts/protocol/libraries/logic/ValidationLogic.sol#L394">validateRebalanceStableBorrowRate</a></p></figcaption></figure>
 
-## Incentive to rebalance?
+
+
+## WIP
+
+
+
+## Incentive to rebalance
 
 if your position is not so big you may never get rebalanced even if the rebalancing conditions are reached.&#x20;
 
