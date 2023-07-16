@@ -37,7 +37,7 @@ It the result of the bitwise operations is not equal to 0, the function would re
 
 Set the collateral bit for a specific asset to either `0` or `1`, depending on bool `usingAsCollateral`.
 
-<figure><img src="../../.gitbook/assets/image (72).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (72) (1).png" alt=""><figcaption></figcaption></figure>
 
 #### `(reserveIndex << 1) + 1`
 

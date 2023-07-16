@@ -101,7 +101,7 @@ When $$H_f < 1$$ the position may be liquidated to maintain solvency.
 
 #### Example: Putting it all together
 
-<figure><img src="../.gitbook/assets/image (124).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (124) (1).png" alt=""><figcaption></figcaption></figure>
 
 **Initially, when ETH/USDT = $4000,**
 

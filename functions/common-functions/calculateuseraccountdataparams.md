@@ -71,8 +71,50 @@ Loops through all the active reserves there are in the protocol. `reservesCount`
 ```
 {% endcode %}
 
+For each asset, the following is executed.&#x20;
+
 ### 1. Check if asset isUsingAsCollateralOrBorrowing
 
 <figure><img src="../../.gitbook/assets/image (73).png" alt=""><figcaption></figcaption></figure>
 
-If the asset is not being used as either, increment the counter and `continue`; skip the remaining block of code and progress to the next iteration.&#x20;
+If the asset is not being used as either, increment the counter and `continue`; skip the remaining block of code and moving to the next `reserveIndex`.&#x20;
+
+#### isUsingAsCollateralOrBorrowing
+
+<figure><img src="../../.gitbook/assets/image (69).png" alt=""><figcaption></figcaption></figure>
+
+* require statement performs a boundary check to ensure that `reserveIndex` value is within the valid range of `[0 - 127]`.
+* If you are unclear on the bitmap manipulations, please see that section.
+
+### 2. Check if zero address
+
+```solidity
+// reservesList: List of reserves as a map (reserveId => reserve).
+        vars.currentReserveAddress = reservesList[vars.i];
+
+    if (vars.currentReserveAddress == address(0)) {
+      unchecked {
+        ++vars.i;
+      }
+      continue;
+    }
+```
+
+Get the asset address of the current iteration by passing the counter into mapping `reservesList`
+
+* reservesList is defined on PoolStorage
+
+If asset address is undefined, increment counter and continue.
+
+{% hint style="warning" %}
+Would there be gas savings by checking for zero address first, then followed by isUsingAsCollateralOrBorrow?&#x20;
+{% endhint %}
+
+### 3. Get asset's params
+
+Now that we have established
+
+<figure><img src="../../.gitbook/assets/image (145).png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/image (134).png" alt=""><figcaption></figcaption></figure>
+

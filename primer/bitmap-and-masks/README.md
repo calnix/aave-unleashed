@@ -181,6 +181,6 @@ The mask is a 64 digit hexadecimal number, representing 256 bits.&#x20;
 
 And that is how the reserve factor is extracted from the bitmap as a uint256 value.
 
-
-
 ### **UserConfigurationMap**
+
+* consider **isUsingAsCollateralOrBorrowing**
