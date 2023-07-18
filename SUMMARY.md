@@ -56,7 +56,7 @@
   * [burn debt tokens](functions/repay/burn-debt-tokens.md)
   * [Cleanup + Collect repay](functions/repay/cleanup-+-collect-repay.md)
 * [liquidate](functions/liquidate/README.md)
-  * [\_calclateDebt](functions/liquidate/\_calclatedebt.md)
+  * [\_calculateDebt](functions/liquidate/\_calculatedebt.md)
   * [validateLiquidationCall](functions/liquidate/validateliquidationcall.md)
   * [getConfigurationData](functions/liquidate/getconfigurationdata.md)
   * [calculateAvailableCollateralToLiquidate](functions/liquidate/calculateavailablecollateraltoliquidate.md)
