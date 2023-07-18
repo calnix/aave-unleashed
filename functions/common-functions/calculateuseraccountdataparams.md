@@ -85,7 +85,7 @@ If the asset is not being used as either, increment the counter and `continue`; 
 
 #### isUsingAsCollateralOrBorrowing
 
-<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 * require statement performs a boundary check to ensure that `reserveIndex` value is within the valid range of `[0 - 127]`.
 * If you are unclear on the bitmap manipulations, please see that section.
@@ -213,7 +213,7 @@ Liquidation threshold is the percentage at which a position is defined as **unde
 
 ### 6. isBorrowing
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
 If user is borrowing this asset, calculate its value in base CCY, and increment `vars.totalDebtInBaseCurrency`
 
@@ -227,7 +227,7 @@ Now that we have traversed across the entire universe of assets and increments t
 
 We have the prerequisites to calculate a wallet's health factor.
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 First we obtain **avgLtv** and **avgLiquidationThreshold** by dividing them each against `totalCollateralInBaseCurrency`.&#x20;
 
@@ -237,7 +237,7 @@ Remember, we previously only obtained their respective numerators for the weight
 
 Then the calculation for health factor:
 
-<figure><img src="../../.gitbook/assets/image (4).png" alt="" width="451"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (1).png" alt="" width="451"><figcaption></figcaption></figure>
 
 **`avgLiquidationThreshold`** was obtained by dividing the weighted sum by totalCollateral, therefore this can be expressed as:
 

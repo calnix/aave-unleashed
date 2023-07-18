@@ -4,27 +4,54 @@ description: https://docs.aave.com/risk/asset-risk/risk-parameters#liquidation-t
 
 # Liquidation
 
-Managing an on-chain debt position is very similar to managing a leveraged trading position due the requirements of overcollateralization and liquidation. We will explain more in the Liquidation section.
-
 ## Overview
 
-Liquidation on Aave is a mechanism designed to protect lenders and incentivize repayment of outstanding loans.&#x20;
+#### **There are two ways that a loan can become unhealthy:**&#x20;
 
-* Borrowers must maintain a **minimum health factor**, which compares their collateral value to their outstanding loan value.&#x20;
-* If a borrower's loan position falls below the minimum health factor, their position becomes eligible for liquidation.
+1. collateral asset(s) provided could decrease in value,&#x20;
+2. borrowed debt could increase in value against the collateral provided, or the user could fail to keep up with their interest payments.&#x20;
+
+Conversely, a user’s health factor can be directly improved by either paying off part of the debt or by offering more collateral.&#x20;
+
+{% hint style="success" %}
+Managing an on-chain debt position is very similar to managing a leveraged trading position due the requirements of overcollateralization and liquidation.&#x20;
+{% endhint %}
+
+#### **What happens to an unhealthy loan?**
+
+It gets liquidated.&#x20;
+
+The liquidation mechanism protects lenders from the risk of default and maintains the solvency of the lending platform. It incentivizes borrowers to maintain sufficient collateralization and encourages active participation from liquidators who can profit from liquidating unhealthy positions.
+
+**Liquidation process**
+
+* Borrowers must maintain a **minimum health factor**, which compares their total collateral value to their outstanding loan value.&#x20;
+* If borrower's loan position falls below the minimum health factor, their position becomes eligible for liquidation.
 * During the liquidation, the borrower's collateral is seized and sold in the open market to repay the outstanding loan.
 * A liquidation penalty is applied to discourage borrowers from allowing their position to become unhealthy.
 * Liquidators are offered incentives to liquidate unhealthy positions; this is financed by the liquidation penalty.&#x20;
 
-The liquidation mechanism aims to protect lenders from the risk of default and maintain the stability and security of the lending platform. It incentivizes borrowers to maintain sufficient collateralization and encourages active participation from liquidators who can profit from liquidating unhealthy positions.
+**Example**
+
+* Bob deposits 5 ETH and 4 ETH worth of YFI, and borrows 5 ETH worth of DAI&#x20;
+*  If Bob’s Health Factor drops below 1 his loan will be eligible for liquidation.&#x20;
+* A liquidator can repay up to 50% of a single borrowed amount = **2.5 ETH worth of DAI**.
+* In return, the liquidator **can claim a single collateral;** as the liquidation bonus is higher for YFI (15%) than ETH (5%) the liquidator chooses to claim YFI. &#x20;
+* Liquidation incentive: 15% \* 2.5 ETH = 0.375 ETH
+* Liquidator claims 2.5 + 0.375 ETH worth of YFI for repaying 2.5 ETH worth of DAI.
+
+{% hint style="info" %}
+* user’s health factor: $$0.95 < hf < 1$$, the loan is eligible for a liquidation of 50%.
+* user’s health factor: $$hf <= 0.95$$, the loan is eligible for a liquidation of 100%.
+{% endhint %}
 
 ### Loan To Value: LTV
 
-_**maybe move LTV to under borrowing**_
-
 * Defines the maximum amount of assets that can be borrowed with a specific collateral.
-* Expressed as a percentage
-* For example, ETH has an LTV of 75% -> for every 1 ETH worth of collateral, borrowers will be able to borrow 0.75 ETH worth of the corresponding asset
+* Expressed as a percentage.
+* Example:
+  * ETH has an LTV of 75%&#x20;
+  * For every 1 ETH worth of collateral, can borrow 0.75 ETH worth of some asset.
 
 {% hint style="warning" %}
 LTV is always < 100% => Aave operates on overcollateralized lending.
@@ -47,15 +74,17 @@ Each market has an AaveOracle contract where you can query token prices in the b
 ### **Liquidation Threshold**
 
 * The liquidation threshold is the percentage at which a debt position is defined as undercollateralized.&#x20;
-* For example, a Liquidation threshold of 80% means that if the loan value rises above 80% of the collateral value, the position is undercollateralized and could be liquidated.
+* A Liquidation threshold of 80% means that if the loan value rises above 80% of the collateral value, the position is undercollateralized and can be liquidated.
 * The delta between the LTV and the Liquidation Threshold is a safety mechanism in place for borrowers.
 
 {% hint style="info" %}
-For example LTV at 70% and a liquidation threshold of 75% means that users have a 5% margin of safety.
+**Example**&#x20;
 
-* can take on a max debt position valued at 70% of collateral
-* will be liquidated if debt position is valued at 75% of collateral
-* 5% safety margin to endure price volatility&#x20;
+LTV at 70% and a liquidation threshold of 75% means that users have a 5% margin of safety.
+
+* can maximally borrow up to 70% of collateral value.
+* will be liquidated if loan value increases to  75% of collateral value.
+* 5% safety margin to endure price volatility.&#x20;
 {% endhint %}
 
 #### Average Liquidation Threshold
@@ -121,11 +150,10 @@ When $$H_f < 1$$ the position may be liquidated to maintain solvency.
 To see how health factor is calculated from a code perspective: [calculateUserAccountDataParams](../functions/common-functions/calculateuseraccountdataparams.md)
 {% endhint %}
 
-## Liquidation&#x20;
-
 ### **Close Factor**
 
-* The percent, ranging from 0% to 100%, of a liquidatable account's borrow that can be repaid in a single liquidate transaction.
+The percentage of an unhealthy loan that can be repaid in a single liquidate transaction.
+
 * Therefore **`maxLiquidatableDebt = userTotalDebt * closeFactor`**
 
 If user's health factor > **0.95** \[`CLOSE_FACTOR_HF_THRESHOLD`]
@@ -157,6 +185,16 @@ The liquidation penalty is a fee rendered on the price of assets of the collater
 
 The liquidation factor directs a share of the liquidation penalty to a collector contract from the ecosystem treasury.
 
+##
+
+##
+
+##
+
+## TODO:
+
+
+
 ## Example
 
 <figure><img src="../.gitbook/assets/image (71).png" alt=""><figcaption></figcaption></figure>
@@ -186,10 +224,6 @@ Liquidators must already have sufficient balance of the debt asset, which will b
 * [https://docs.aave.com/risk/asset-risk/risk-parameters](https://docs.aave.com/risk/asset-risk/risk-parameters)
 * [https://docs.aave.com/faq/liquidations](https://docs.aave.com/faq/liquidations)
 * [https://docs.aave.com/developers/guides/liquidations](https://docs.aave.com/developers/guides/liquidations)
-
-
-
-## TO-DO
 
 #### Competitive liquidation
 

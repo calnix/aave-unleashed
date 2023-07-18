@@ -15,6 +15,15 @@ This function is called by liquidators to liquidate "bad loans". Accounts with a
 
 Liquidators are rewarded as they receive \_\_\_\_\_\_\_\_\_\_ of the collateral. Can opt to be paid in ATokens as well.&#x20;
 
+
+
+{% hint style="info" %}
+* user’s health factor: $$0.95 < hf < 1$$, the loan is eligible for a liquidation of 50%.
+* user’s health factor: $$hf <= 0.95$$, the loan is eligible for a liquidation of 100%.
+
+
+{% endhint %}
+
 <figure><img src="../../.gitbook/assets/image (208).png" alt=""><figcaption></figcaption></figure>
 
 <img src="../../.gitbook/assets/file.excalidraw (23).svg" alt="" class="gitbook-drawing">

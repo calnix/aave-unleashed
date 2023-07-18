@@ -22,12 +22,16 @@
 
 ## validateLiquidationCall
 
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
 <img src="../../.gitbook/assets/file.excalidraw (29).svg" alt="" class="gitbook-drawing">
 
 A valid liquidationCall must fulfil the following criteria:
 
-* status flags for both collateral and borrow asset must be ACTIVE and NOT PAUSED
+* Status flags for both collateral and borrow asset must be ACTIVE and NOT PAUSED
 * L2 check
-* ensure user's health factor < 1
-* collateral enabled check
+* Ensure user's health factor < 1
+* Collateral check
+  * check that liquidation threshold is non-zero
+  * confirm that user is using the collateral&#x20;
 
