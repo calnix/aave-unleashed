@@ -1,4 +1,4 @@
-# \_calclateDebt
+# \_calculateDebt
 
 ## Overview
 

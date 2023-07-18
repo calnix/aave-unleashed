@@ -57,7 +57,7 @@ Returns the address of the first asset flagged in the bitmap given the correspon
 
 * if collateral\_mask, find the first asset which has its collateral bit set to `1`
 
-<figure><img src="../../.gitbook/assets/image (47).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (47) (1).png" alt=""><figcaption></figcaption></figure>
 
 ```solidity
 uint256 internal constant COLLATERAL_MASK = 

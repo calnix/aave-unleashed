@@ -127,7 +127,7 @@ Now that we have established that the asset is defined and being used by the use
 
 This is achieved via `getParams`, which utilizes bitmasks to extract the relevant information from the ReserveConfigurationMap; which is a bitmap.
 
-<figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### 4. Set decimals and oracle interface
 

@@ -12,7 +12,7 @@ This function is called when the user wishes to withdraw their previously suppli
 
 ## executeWithdraw
 
-<figure><img src="../../.gitbook/assets/image (14) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
 ### Execution flow
 
