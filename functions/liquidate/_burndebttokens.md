@@ -22,9 +22,9 @@
 
 ## \_burnDebtTokens
 
-<img src="../../.gitbook/assets/file.excalidraw (21).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw.svg" alt="" class="gitbook-drawing">
 
-
+Burn either stable or variable debt tokens, based on the amount of **`actualDebtToLiquidate`,** which was previously established.
 
 
 
