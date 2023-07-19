@@ -42,11 +42,11 @@ validateUseAsCollateral ensures that liquidator is not in isolation mode and the
 
 If these conditions are met, the reserve transferred to the liquidator is set to be used as collateral.&#x20;
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 `transferOnLiquidiation` calls `_transfer`, which executes the transfer of aTokens.
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 * `validate` is set to **`false`**, therefore `finalizeTransfer` is not executed
 
@@ -57,4 +57,32 @@ For explanations on validateUseAsCollateral and setUsingAsCollateral, please see
 
 {% hint style="info" %}
 Where possible, Aave opts to set supplied assets as collateral automatically. The exception to this are isolated assets.&#x20;
+{% endhint %}
+
+## \_burnCollateralATokens
+
+If the liquidator does not wish to receive ATokens, the alternative would be to transfer the underlying asset to them (instead of aDAI, transfer DAI).
+
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
+To enact a transfer of the underlying asset, its corresponding aTokens must be "redeemed". Effectively, this means that liquidity is being removed from the system. This would therefore impact interest rates, and they have to be updated.&#x20;
+
+**Hence, `updateInterestRates` is executed with parameters:**
+
+* liquidityAdded = 0
+* liquidityRemoved = actualCollateralToLiquidate
+
+Lastly, **`burn`** is executed.&#x20;
+
+<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+
+* **`_burnScaled`**: burn scaledAmount and update user balances
+* safeTransfer underlying asset from target user to liquidator
+
+{% hint style="warning" %}
+TO-DO:
+
+* does updateState need to be run again here?
+* nothing material would have changed between its inital execution to this point
+* confirm this.
 {% endhint %}
