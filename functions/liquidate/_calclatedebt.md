@@ -28,7 +28,7 @@ Calculates the total debt of the user and the actual amount to liquidate dependi
 * userTotalDebt
 * actualDebtToLiquidate
 
-<img src="../../.gitbook/assets/file.excalidraw (25).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw.svg" alt="" class="gitbook-drawing">
 
 * [getUserCurrentDebt](../repay/get-current-debt.md) will return the user's balance of debt tokens (stable & variable)
 * `healthFactor` was obtained previously through `calculateUserAccountData`

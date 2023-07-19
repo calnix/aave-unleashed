@@ -79,13 +79,13 @@ For each asset, the following is executed.&#x20;
 
 ### 1. Check if asset isUsingAsCollateralOrBorrowing
 
-<figure><img src="../../.gitbook/assets/image (73).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (73) (2).png" alt=""><figcaption></figcaption></figure>
 
 If the asset is not being used as either, increment the counter and `continue`; skip the remaining block of code and moving to the next `reserveIndex`.&#x20;
 
 #### isUsingAsCollateralOrBorrowing
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 * require statement performs a boundary check to ensure that `reserveIndex` value is within the valid range of `[0 - 127]`.
 * If you are unclear on the bitmap manipulations, please see that section.
@@ -123,18 +123,18 @@ Now that we have established that the asset is defined and being used by the use
 * decimals
 * Emode category
 
-<figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (6) (2).png" alt=""><figcaption></figcaption></figure>
 
 This is achieved via `getParams`, which utilizes bitmasks to extract the relevant information from the ReserveConfigurationMap; which is a bitmap.
 
-<figure><img src="../../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5) (2).png" alt=""><figcaption></figcaption></figure>
 
 ### 4. Set decimals and oracle interface
 
 * Define the decimal precision of 1 unit if the asset (`1 Ether = 10**18` | `1 USDC = 10**6`)
 * Define the oracle interface
 
-<figure><img src="../../.gitbook/assets/image (9) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
 If both the user and the asset are in the same e-mode category, and `vars.eModeAssetPrice !=0`, use `vars.eModeAssetPrice`
 
@@ -179,7 +179,7 @@ vars.isInEModeCategory = EModeLogic.isInEModeCategory(params.userEModeCategory, 
 
 **If the asset's LTV is defined: avgLTV**
 
-<figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (7) (2).png" alt=""><figcaption></figcaption></figure>
 
 * calculate the user's max debt for each asset&#x20;
 * the sum of these across all assets will give us the numerator for the avgLTV calculation
@@ -213,7 +213,7 @@ Liquidation threshold is the percentage at which a position is defined as **unde
 
 ### 6. isBorrowing
 
-<figure><img src="../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (111).png" alt=""><figcaption></figcaption></figure>
 
 If user is borrowing this asset, calculate its value in base CCY, and increment `vars.totalDebtInBaseCurrency`
 
@@ -227,7 +227,7 @@ Now that we have traversed across the entire universe of assets and increments t
 
 We have the prerequisites to calculate a wallet's health factor.
 
-<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (4).png" alt=""><figcaption></figcaption></figure>
 
 First we obtain **avgLtv** and **avgLiquidationThreshold** by dividing them each against `totalCollateralInBaseCurrency`.&#x20;
 

@@ -46,7 +46,7 @@ wadDiv = a / b + 0.5
 
 As the rounding would have already occurred as part of the division operation. We need to repackage this such that the division occurs last:
 
-<figure><img src="../../.gitbook/assets/image (111).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (111) (1).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 General Form: To allow for rounding to nearest integer, add half of the divisor to the dividend&#x20;

@@ -6,7 +6,7 @@ This section will cover interest rate calculations for both deposits and loans. 
 Simple and compound interest: [Refresher ](appendix/simple-compound-apr-apy.md)
 {% endhint %}
 
-<figure><img src=".gitbook/assets/image (73) (2).png" alt=""><figcaption><p>_updateIndexes</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (73) (2) (1).png" alt=""><figcaption><p>_updateIndexes</p></figcaption></figure>
 
 * **`calculateLinearInterest`** updates liquidity index => determines how deposit interest accumulates.
 * **`calculateCompoundInterest`** updates variableBorrowIndex => determines how borrow interest accumulates.

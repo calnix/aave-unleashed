@@ -105,7 +105,7 @@ Earlier, we stated that instead of the deposit amount, the scaled amount is pass
 
 AToken::`mint` -> ScaledBalanceTokenBase::`_mintScaled` ->  MintableIncentivizedERC20::`_mint`
 
-<figure><img src=".gitbook/assets/image (13) (1).png" alt=""><figcaption><p>AToken inherits ScaledBalanceTokenBase</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (13).png" alt=""><figcaption><p>AToken inherits ScaledBalanceTokenBase</p></figcaption></figure>
 
 The abovementioned scaling can be seen from the first line in `_mintScaled`. Subsequently, `amountScaled` is passed into `_mint`, which increments the user's balance which is captured in `_userState[account].balance`.
 
