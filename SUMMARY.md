@@ -62,6 +62,8 @@
   * [calculateAvailableCollateralToLiquidate](functions/liquidate/calculateavailablecollateraltoliquidate.md)
   * [\_burnDebtTokens](functions/liquidate/\_burndebttokens.md)
   * [liquidate/burn collateral](functions/liquidate/liquidate-burn-collateral.md)
+  * [liquidation Fee](functions/liquidate/liquidation-fee.md)
+  * [Wrap-up](functions/liquidate/wrap-up.md)
 * [swapBorrowRateMode](functions/swapborrowratemode.md)
 * [setUserUseReserveAsCollateral](functions/setuserusereserveascollateral.md)
 

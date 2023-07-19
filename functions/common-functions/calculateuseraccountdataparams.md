@@ -123,7 +123,7 @@ Now that we have established that the asset is defined and being used by the use
 * decimals
 * Emode category
 
-<figure><img src="../../.gitbook/assets/image (6) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (6) (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 This is achieved via `getParams`, which utilizes bitmasks to extract the relevant information from the ReserveConfigurationMap; which is a bitmap.
 
@@ -227,7 +227,7 @@ Now that we have traversed across the entire universe of assets and increments t
 
 We have the prerequisites to calculate a wallet's health factor.
 
-<figure><img src="../../.gitbook/assets/image (1) (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (4) (1).png" alt=""><figcaption></figcaption></figure>
 
 First we obtain **avgLtv** and **avgLiquidationThreshold** by dividing them each against `totalCollateralInBaseCurrency`.&#x20;
 

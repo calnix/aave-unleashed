@@ -41,9 +41,8 @@ The close factor determines the maximum liquidatable debt, per valid liquidation
 close factor = 0.5, means only a maximum of 50% of the debt can be liquidated within that liquidationCall.
 {% endhint %}
 
-**On Partial and Full liquidation**
+**On Partial and Full liquidation: `actualDebtToLiquidate`**
 
 If the liquidator's `debtToCover` is > `maxLiquidatableDebt`, set the `actualDebtToLiquidate` to be `maxLiquidatableDebt`.
 
 Else, If the liquidator's `debtToCover` is **<=** `maxLiquidatableDebt`, set the `actualDebtToLiquidate` to be `debtToCover`.
-

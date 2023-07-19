@@ -20,26 +20,26 @@
 * [ ] liquidation fee
 * [ ] Wrap-up
 
+<img src="../../.gitbook/assets/file.excalidraw (26).svg" alt="" class="gitbook-drawing">
+
 ## \_calculateAvailableCollateralToLiquidate
 
 Calculates how much of a specific collateral can be liquidated, given a certain amount of debt asset.
 
-![](<../../.gitbook/assets/image (121).png>)
+<figure><img src="../../.gitbook/assets/image (121).png" alt=""><figcaption></figcaption></figure>
 
 * `actualDebtToLiquidate` is passed as the value for parameter`debtToCover`
 * `actualDebtToLiquidate` => user's debt \* close factor
 * `actualDebtToLiquidate` was obtained in \_calculateDebt
 
-Returns
+**Returns:**
 
-* collateralAmount to be liquidated (baseCollateral + liq. bonus)
-* debtAmountNeeded (baseCollateral valued in debt asset)
+* `collateralAmount` to be liquidated (`baseCollateral` + liq. bonus)
+* `debtAmountNeeded` (`baseCollateral` valued in debt asset)
 
 {% hint style="info" %}
 Liquidator repays debt and take equivalent value in collateral from user. However, user must additionally pay a haircut to the liquidator as a penalty.&#x20;
 {% endhint %}
-
-<img src="../../.gitbook/assets/file.excalidraw (26).svg" alt="" class="gitbook-drawing">
 
 ### 1. Get prices of both collateral and debt assets&#x20;
 
@@ -62,7 +62,7 @@ When liquidating, the protocol may apply a liquidation fee that goes to the prot
 
 <figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-* getLiquidationProtocolFee applies a bitmask and bitwise operations similar to getFlags or getDecimals.
+* `getLiquidationProtocolFee` applies a bitmask and bitwise operations similar to getFlags or getDecimals.
 * See Common functions section or the Bitmap function to understand.
 
 ### 4. Calculate amount of collateral to liquidate (+ liq. bonus)

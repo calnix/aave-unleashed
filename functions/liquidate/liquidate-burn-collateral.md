@@ -42,11 +42,11 @@ validateUseAsCollateral ensures that liquidator is not in isolation mode and the
 
 If these conditions are met, the reserve transferred to the liquidator is set to be used as collateral.&#x20;
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
 `transferOnLiquidiation` calls `_transfer`, which executes the transfer of aTokens.
 
-<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (2).png" alt=""><figcaption></figcaption></figure>
 
 * `validate` is set to **`false`**, therefore `finalizeTransfer` is not executed
 
@@ -63,7 +63,7 @@ Where possible, Aave opts to set supplied assets as collateral automatically. Th
 
 If the liquidator does not wish to receive ATokens, the alternative would be to transfer the underlying asset to them (instead of aDAI, transfer DAI).
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (4).png" alt=""><figcaption></figcaption></figure>
 
 To enact a transfer of the underlying asset, its corresponding aTokens must be "redeemed". Effectively, this means that liquidity is being removed from the system. This would therefore impact interest rates, and they have to be updated.&#x20;
 
