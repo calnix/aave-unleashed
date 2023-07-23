@@ -24,6 +24,7 @@
 ## Functions
 
 * [General Execution flow](functions/general-execution-flow.md)
+* [Architecture Design](functions/architecture-design.md)
 * [Common Functions](functions/common-functions/README.md)
   * [.cache](functions/common-functions/.cache.md)
   * [.updateState](functions/common-functions/.updatestate.md)
