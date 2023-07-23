@@ -38,6 +38,7 @@
   * [transfer & mint](functions/supply/transfer-and-mint.md)
   * [isFirstSupply](functions/supply/isfirstsupply/README.md)
     * [isUsingAsCollateralOne, isUsingAsCollateralAny](functions/supply/isfirstsupply/isusingascollateralone-isusingascollateralany.md)
+  * [On check-effects-interactions pattern](functions/supply/on-check-effects-interactions-pattern.md)
 * [withdraw](functions/withdraw/README.md)
   * [get user balance & withdraw amount](functions/withdraw/get-user-balance-and-withdraw-amount.md)
   * [validateWithdraw](functions/withdraw/validatewithdraw.md)
