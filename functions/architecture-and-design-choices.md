@@ -54,5 +54,5 @@ But if you use public functions, then those will be in fact in a separate librar
 {% endhint %}
 
 {% hint style="success" %}
-While these libraries are independently deployed and can be accessed by anyone, they have to be called by the Pool contract to enact a change with Aave protocol.
+While these libraries are independently deployed and their external functions can be accessed by anyone, they have to be called by the Pool contract to enact a change with Aave protocol.
 {% endhint %}
