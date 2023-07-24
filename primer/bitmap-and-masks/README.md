@@ -32,18 +32,28 @@ Aave uses two types of bitmaps:
 * ReserveConfiguration: to track information related to each asset within Aave
 * UserConfiguration: to track which assets a user is supplying as collateral and borrowing
 
+{% hint style="info" %}
 **From** [**Aave-v2-whitepaper**](https://github.com/aave/protocol-v2/blob/master/aave-v2-whitepaper.pdf)**:**
 
 In the initial V1 release, the protocol loops through all the active assets to identify the user deposits and loans. This resulted in high gas consumption and reduced scalability - as the cost of withdrawing/borrowing/repaying/liquidating assets would increase as more assets are listed on the protocol.
+{% endhint %}
 
 **UserConfiguration**
 
 <figure><img src="../../.gitbook/assets/image (19).png" alt="" width="554"><figcaption><p>Figure 4: UserConfiguration Bitmask</p></figcaption></figure>
 
-* The bitmask has a 256 bit size, it is divided in pairs of bits, one for each asset. The first bit of the pair indicates if an asset is used as collateral by the user, the second whether an asset is borrowed by the user.&#x20;
-* This implementation imposes the constraints:&#x20;
-  * Only 128 assets can be supported, to add more, another uint256 needs to be used.&#x20;
-  * For the calculation of the account data, the protocol would still need to query all listed assets.
+The bitmask has a 256 bit size, it is divided in pairs of bits, one for each asset. The first bit of the pair indicates if an asset is used as collateral by the user, the second whether an asset is borrowed by the user.&#x20;
+
+**Advantages**
+
+* If you need to traverse the list of assets for a user, to check what is being borrowed, just need to sload the bitmap to memory once; then read from memory.
+* Able to do complex queries cheaply and efficiently.
+* Especially useful for checking isolation and e-mode -> if certain assets are being used by the user.
+
+&#x20;**Disadvantages**:&#x20;
+
+* Only 128 assets can be supported, to add more, another uint256 needs to be used.&#x20;
+* For the calculation of the account data, the protocol would still need to query all listed assets.
 
 {% hint style="info" %}
 An 128 asset limit is acceptable. Considering the case where a user is supplying a huge range of assets; it would be gas intensive to traverse the entire list to calculate his position health.
