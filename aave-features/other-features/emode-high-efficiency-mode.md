@@ -4,6 +4,14 @@ description: https://docs.aave.com/developers/whats-new/efficiency-mode-emode
 
 # eMode: High efficiency Mode
 
+## TLDR
+
+* If both collateral and borrowing assets are in the same eMode category, the borrower is allowed a higher collateralization factor.
+* This is applicable only in cases where the collateral and borrowing assets have low price volatility against each other.
+* This makes it safer to allow users to borrow more.
+
+## High efficiency mode
+
 The High Efficiency Mode or _**eMode**_ allows borrowers to extract the highest borrowing power out of their collateral when collateral and borrowed assets are correlated in price, particularly when both are derivatives of the same underlying asset (eg. stablecoins pegged to USD).
 
 * The E-mode feature maximizes capital efficiency when collateral and borrowed assets have correlated prices.&#x20;
@@ -17,15 +25,14 @@ The High Efficiency Mode or _**eMode**_ allows borrowers to extract the highest 
 [https://docs.aave.com/developers/whats-new/efficiency-mode-emode](https://docs.aave.com/developers/whats-new/efficiency-mode-emode)&#x20;
 
 * If the user has supplied liquidity to the protocol, the user eMode category is set to 0 by default.
-*
+* If user is not borrowing anything, can activate eMode
+* If user is already borrowing an asset that is NOT in his eMode category, cannot activate eMode.
 
 ### How do I enter E-mode?
 
 * To enter E-mode from the dashboard, toggle to the dropdown menu under the “"Your Borrows”" where you will find an “Enable E-mode” button.&#x20;
 * Initially, the button to enable E-mode will indicate that E-mode is “disabled.” Click “Enable E-mode" ” and follow the instructions in the pop-up.&#x20;
 * Once you have followed the instructions, you will have enhanced borrowing power (i.e., up to 97% LTV) within E-mode and can only borrow assets within the same category of assets (for example, stablecoins).
-
-
 
 
 
