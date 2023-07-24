@@ -1,5 +1,14 @@
 # Isolation Mode
 
+## TLDR
+
+* Assets listed as isolated assets can only be used collateral to borrow stablecoins.
+* There is a global debt ceiling for each isolated asset -> max borrow system-wide.
+* By only allowing borrow against stablecoins, Aave is able to set a debt ceiling in USD.
+* If other assets like Ether is allowed, their price volatility would make it difficult it set a consistent debt ceiling.
+
+## &#x20;Isolation Mode explained
+
 At times, assets are introduced into Aave in isolation mode. This can be because they are new, have a short track record or may even carry unknown risks.&#x20;
 
 Listing a new asset in isolation mode serves as a restrictive cautious introduction. If the market conditions around the asset progresses positively, restrictions can then be lifted.&#x20;
