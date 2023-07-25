@@ -77,15 +77,19 @@ For a walkthrough on their values, please see the section on [DefaultReserveInte
 
 ## Caveat: Rebalancing
 
-If the protocol is in dire need of liquidity (e.g. prolonged liquidity shortage) and the supply APY is not high enough to satisfy the liquidity providers, some stable rate loans might undergo a procedure called **rebalancing**.&#x20;
+If the protocol is in dire need of liquidity (e.g. prolonged liquidity shortage) and the supply APY is not sufficient to attract liquidity providers, to plug the liquidity shortage, some stable rate loans might undergo a procedure called **rebalancing**.&#x20;
 
-If a user’s loan was taken at a stable rate that is too low for the current market conditions, the protocol might decide to move the stable rate to the current (higher) one to provide a more competitive supply rate for depositors.&#x20;
+If a user’s loan was taken at a stable rate that is deemed too low for the current market conditions, the protocol might decide to move the stable rate to the current (higher) one. This is known as rebalancing.&#x20;
 
-Eventually, as the market situation normalizes, the user will be rebalanced back down to a more appropriate stable rate.&#x20;
+{% hint style="info" %}
+Rebalancing addresses the issue of stable borrowers enjoying an extremely discounted rate, in times of high utilization or low liquidity.&#x20;
+{% endhint %}
+
+Rebalancing allows the protocol to provide a more competitive supply rate for depositors. Eventually, as the market situation normalizes, the user will be rebalanced back down to a more appropriate stable rate.&#x20;
 
 ### Rebalancing condition
 
-Rebalancing can occur when depositors are earning $$\leq$$ 90% of their earnings in a pure supply/demand market.
+Rebalancing can occur when **depositors are earning** $$\leq$$ **90% of their earnings in a pure supply/demand market**.
 
 * Treat existing stable debt as variable
 * Given `totalVariableDebt` = (variable debt + stable debt), what would be the liquidity rate?
