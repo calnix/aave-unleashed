@@ -97,7 +97,43 @@ Rebalancing can occur when **depositors are earning** $$\leq$$ **90% of their ea
 
 <figure><img src=".gitbook/assets/image (185).png" alt=""><figcaption><p><a href="https://github.com/aave/aave-v3-core/blob/29ff9b9f89af7cd8255231bc5faf26c3ce0fb7ce/contracts/protocol/libraries/logic/ValidationLogic.sol#L394">validateRebalanceStableBorrowRate</a></p></figcaption></figure>
 
+### Maximum size per stable borrow
 
+Users will be able to borrow only a portion of the total available liquidity.
+
+Aave enacts a max stable borrow limit for each stable borrow transaction. In each borrow transaction, if the borrow is a stable one, a check is conducted like so:
+
+{% code title="validateBorrow()" overflow="wrap" %}
+```solidity
+vars.availableLiquidity = IERC20(params.asset).balanceOf(params.reserveCache.aTokenAddress);
+
+//calculate the max available loan size in stable rate mode as a percentage of the
+//available liquidity
+uint256 maxLoanSizeStable = vars.availableLiquidity.percentMul(params.maxStableLoanPercent);
+
+require(params.amount <= maxLoanSizeStable, Errors.AMOUNT_BIGGER_THAN_MAX_LOAN_SIZE_STABLE);
+}
+```
+{% endcode %}
+
+This ensures that the borrow amount set by the user is less than equal to `maxLoanSizeStable`, where maxLoanSizeStable is 25% of the deposited borrowable asset.
+
+```solidity
+maxStableLoanPercent = maxStableRateBorrowSizePercent (0.25e4)
+// deposits are held on their respective aToken contract
+availableLiquidity = total amt of borrowable asset deposited
+
+maxLoanSizeStable = availableLiquidity * maxStableLoanPercent
+		  = availableLiquidity * 0.25e4
+```
+
+{% hint style="info" %}
+**If user wished to borrow DAI**
+
+* DAI deposited into aDAI contract = 1000 DAI
+* availableLiquidity = 1000 DAI
+* maxLoanSizeStable = 250 DAI
+{% endhint %}
 
 ## WIP
 
