@@ -32,7 +32,7 @@ Example:
 
 ## Stable rate model
 
-For new stables borrows the rate evolves based on utilization at the time. The stable interest rate$$R^s_t$$ follows the model:
+For new stable borrows the rate evolves based on utilization at the time. The stable interest rate$$R^s_t$$ follows the model:
 
 $$if \hspace{1mm} U \leq U_{optimal}: \hspace{1cm} R^s_t = baseStableBorrowRate + R^s_{slope1}\frac{U_t}{U_{optimal}}$$
 
