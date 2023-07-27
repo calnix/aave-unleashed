@@ -196,21 +196,40 @@ Here it is in words:
 * nextSupply
 * currentAvgStableRate
 
-
-
 ### Visual Aid
 
 <img src="../.gitbook/assets/file.excalidraw.svg" alt="" class="gitbook-drawing">
 
 
 
+## Global currentStableBorrowRate and users' local borrow rate
 
+There is a global stable rate determined by a model; each user accrues interest based on the stable rate they locked-in. How does this work?
 
+**Held in storage, the ReserveData struct contains variable: `currentStableBorrowRate`**
 
+* updated each time in `updateInterestRates`, via `calculateInterestRates`
+* `calculateInterestRates` uses a model based on Utilization to evolve this rate.
 
+**`currentStableBorrowRate`**
 
+* global value
+* rate for incoming stable borrows, irrespective of user
 
+**User's stable borrow rate**
 
+* stored in `_userState[].additionalData`
+* this is his total weighted average rate, based on all his previous borrows.
+  * (amount \* rate) + (amount \* rate) / totalAmount
+* each time a new stable borrow is taken, this is incremented accordingly
+* this is the rate at which user's interest compounds over time
+
+**`_avgStableRate`**
+
+* storage variable defined on `stableDebtToken` contract
+* similar to how the user's rate is incremented in a weighted average fashion, this is done globally.
+* incremented on ANY incoming borrows
+* avg rate across ALL borrows: used to calculate total compound interest in `_accruedToTreasury`
 
 
 
