@@ -134,7 +134,7 @@ This is achieved via `getParams`, which utilizes bitmasks to extract the relevan
 * Define the decimal precision of 1 unit if the asset (`1 Ether = 10**18` | `1 USDC = 10**6`)
 * Define the oracle interface
 
-<figure><img src="../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (9) (1).png" alt=""><figcaption></figcaption></figure>
 
 If both the user and the asset are in the same e-mode category, and `vars.eModeAssetPrice !=0`, use `vars.eModeAssetPrice`
 
