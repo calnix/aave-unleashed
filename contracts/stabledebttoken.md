@@ -6,11 +6,34 @@ description: https://docs.aave.com/developers/v/2.0/the-core-protocol/debt-token
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 We will examine stableDebtToken contract in this section.
 
 ## getSupplyData
 
 <figure><img src="../.gitbook/assets/image (161).png" alt=""><figcaption><p><strong>getSupplyData</strong></p></figcaption></figure>
+
+{% code title=".cache(...)" %}
+```solidity
+(
+  reserveCache.currPrincipalStableDebt,
+  reserveCache.currTotalStableDebt,
+  reserveCache.currAvgStableBorrowRate,
+  reserveCache.stableDebtLastUpdateTimestamp
+) = IStableDebtToken(reserveCache.stableDebtTokenAddress).getSupplyData();
+```
+{% endcode %}
 
 ### super.totalSupply()
 
@@ -77,16 +100,22 @@ weighted average rate = (100 \* 1%) + (200 \* 2%) + (300 \* 3%) / (100 + 200 + 3
 * currTotalStableDebt => `_calcTotalSupply(avgRate)`
 * currAvgStableBorrowRate => `_avgStableRate`
 * stableDebtLastUpdateTimestamp => `_totalSupplyTimestamp`
-{% endhint %}
 
-
-
-
-
-**Then**
+**`Also`**
 
 * nextAvgStableBorrowRate = currTotalStableDebt&#x20;
 * nexTotalStableDebt = currAvgStableBorrowRate&#x20;
+{% endhint %}
+
+## mint
+
+Let's examine mint, from the pretext that is has been called via `executeBorrow`.
+
+`mint` is called via the interface `IStableDebtToken`, `reserve.currentStableBorrowRate` is passed as a param.
+
+* variable is cached to avoid unnecessary calls to storage: `currentStableRate`
+
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -96,11 +125,56 @@ weighted average rate = (100 \* 1%) + (200 \* 2%) + (300 \* 3%) / (100 + 200 + 3
 
 
 
-## \_accrueToTreasury
+### Visual Aid
+
+<img src="../.gitbook/assets/file.excalidraw.svg" alt="" class="gitbook-drawing">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## \_accruedToTreasury
 
 ```solidity
-cumulatedStableInterest = currAvgStableBorrowRate CompoundInterest(stableLastUpdateTimestamp -> LastUpdateTimestamp)
-prevTotalStableDebt = currPrincipalStableDebt * cumulatedStableInterest
+
+//calculate the stable debt until the last timestamp update
+vars.cumulatedStableInterest = MathUtils.calculateCompoundedInterest(
+  reserveCache.currAvgStableBorrowRate,
+  reserveCache.stableDebtLastUpdateTimestamp,
+  reserveCache.reserveLastUpdateTimestamp
+);
+
+//prevTotalStableDebt = currPrincipalStableDebt * cumulatedStableInterest
+vars.prevTotalStableDebt = 
+reserveCache.currPrincipalStableDebt.rayMul(vars.cumulatedStableInterest);
+
+//current is stored in reserveCache
+//calculated in .cache:
+reserveCache.currTotalStableDebt = _calcTotalSupply(avgRate)
 ```
 
 Problem
