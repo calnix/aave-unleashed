@@ -42,7 +42,7 @@ validateUseAsCollateral ensures that liquidator is not in isolation mode and the
 
 If these conditions are met, the reserve transferred to the liquidator is set to be used as collateral.&#x20;
 
-<figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (6) (3).png" alt=""><figcaption></figcaption></figure>
 
 `transferOnLiquidiation` calls `_transfer`, which executes the transfer of aTokens.
 
@@ -74,7 +74,7 @@ To enact a transfer of the underlying asset, its corresponding aTokens must be "
 
 Lastly, **`burn`** is executed.&#x20;
 
-<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 * **`_burnScaled`**: burn scaledAmount and update user balances
 * safeTransfer underlying asset from target user to liquidator

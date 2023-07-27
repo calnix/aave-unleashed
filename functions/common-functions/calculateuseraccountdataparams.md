@@ -159,7 +159,7 @@ Setting of oracles is crucial because we will be normalizing all of the user's c
 
 If the asset's liquidation threshold is defined and it is being used by the user as collateral, execute the following.
 
-<figure><img src="../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (8) (1).png" alt=""><figcaption></figcaption></figure>
 
 * get user's balance in base CCY and increment **`totalCollateralInBaseCurrency`**
 * `totalCollateralInBaseCurrency` will be the sum of collateral across all asset classes, normalized into the base currency.&#x20;
@@ -237,7 +237,7 @@ Remember, we previously only obtained their respective numerators for the weight
 
 Then the calculation for health factor:
 
-<figure><img src="../../.gitbook/assets/image (4) (1).png" alt="" width="451"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (1) (1).png" alt="" width="451"><figcaption></figcaption></figure>
 
 **`avgLiquidationThreshold`** was obtained by dividing the weighted sum by totalCollateral, therefore this can be expressed as:
 

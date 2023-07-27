@@ -4,20 +4,6 @@ description: https://docs.aave.com/developers/v/2.0/the-core-protocol/debt-token
 
 # StableDebtToken
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 We will examine stableDebtToken contract in this section.
 
 ## getSupplyData
@@ -58,7 +44,7 @@ Reflects total stable debt, where avgRate is `_avgStableRate`.
 * `totalSupply = principalSupply * cumulatedInterest`
 * `principalSupply is _totalSupply`
 
-<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (9) (2).png" alt=""><figcaption></figcaption></figure>
 
 * calculates interest compounded from `_totalSupplyTimestamp` till now (`block.timestamp`)
 * `_totalSupplyTimestamp`: Timestamp of the last update of the total supply
@@ -81,7 +67,7 @@ Since this occurs on each function call that would modify `_totalSupply`, the de
 * internal storage variable
 * weighted average rate, calculated across all stable borrows
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
 
 Simply put, assume there are 3 stable borrows at differing times:
 
@@ -107,6 +93,26 @@ weighted average rate = (100 \* 1%) + (200 \* 2%) + (300 \* 3%) / (100 + 200 + 3
 * nexTotalStableDebt = currAvgStableBorrowRate&#x20;
 {% endhint %}
 
+## balanceOf
+
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
+The balance for any address is calculated to account for interest accrued since the last interaction.
+
+{% hint style="info" %}
+* each user's stable rate is stored at `_user[account].additionalData`&#x20;
+* `_timestamps[account]` stores the timestamp of their last interaction
+{% endhint %}
+
+## totalSupply
+
+returns `_calcTotalSupply(_avgStableRate)`
+
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+
+* `super.TotalSupply()` accounts for interest in all periods prior to `_totalSupplyTimestamp`
+* \_calcTotalSupply will compound this with the recently accrued interest, since `_totalSupplyTimestamp` till now
+
 ## mint
 
 Let's examine mint, from the pretext that is has been called via `executeBorrow`.
@@ -115,13 +121,80 @@ Let's examine mint, from the pretext that is has been called via `executeBorrow`
 
 * variable is cached to avoid unnecessary calls to storage: `currentStableRate`
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (2).png" alt=""><figcaption></figcaption></figure>
+
+#### **\_calculateBalanceIncrease**&#x20;
+
+calculates the increase in balance due to compounding interest, for a specific user, since the previous &#x20;
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+#### **Update \_totalSupply**&#x20;
+
+```solidity
+vars.previousSupply = totalSupply();
+vars.currentAvgStableRate = _avgStableRate;
+vars.nextSupply = _totalSupply = vars.previousSupply + amount;
+```
+
+* `_totalSupply` is updated to be `previousSupply + amount`
+* `previousSupply` reflects total stable debt and recently accrued interest as explained in [totalSupply](stabledebttoken.md#totalsupply)
+* hence, `_totalSupply` is incremented to account for both unbooked interest and incoming borrow.
+
+#### **Calculate nextStableRate**
+
+`reserve.currentStableBorrowRate` is passed as `rate`.
+
+{% code overflow="wrap" %}
+```solidity
+vars.currentStableRate = _userState[onBehalfOf].additionalData;
+vars.nextStableRate = (vars.currentStableRate.rayMul(currentBalance.wadToRay()) + vars.amountInRay.rayMul(rate)).rayDiv((currentBalance + amount).wadToRay());
+
+_userState[onBehalfOf].additionalData = vars.nextStableRate.toUint128();
+```
+{% endcode %}
+
+<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+
+* From now till the next future interaction, interest will compound at the nextStableRate.
+* This is reflected in [balanceOf](stabledebttoken.md#balanceof), in **\_calculateBalanceIncrease** section.
+
+#### **Calculate updated average stable rate**
+
+```solidity
+// Calculates the updated average stable rate
+vars.currentAvgStableRate = 
+_avgStableRate = (
+  (vars.currentAvgStableRate.rayMul(vars.previousSupply.wadToRay()) +  rate.rayMul(vars.amountInRay)).rayDiv(vars.nextSupply.wadToRay())
+).toUint128();
+
+```
+
+<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+
+#### \_mint&#x20;
+
+<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+
+* increments user's balance by amount
+* makes a call to \_incentivesController, should it be defined
 
 
 
+{% hint style="info" %}
+The maximum 128-bit integer, $$2^{128}− 1$$is a number that is not usefully written out in words or in all of its 39 digits: 340282366920938463463374607431768211455
 
+Here it is in words:
 
+> three hundred forty undecillion, two hundred eighty-two decillion, three hundred sixty-six nonillion, nine hundred twenty octillion, nine hundred thirty-eight septillion, four hundred sixty-three sextillion, four hundred sixty-three quintillion, three hundred seventy-four quadrillion, six hundred seven trillion, four hundred thirty-one billion, seven hundred sixty-eight million, two hundred eleven thousand, four hundred fifty-five
+{% endhint %}
 
+#### Return variables
+
+* nextSupply
+* currentAvgStableRate
 
 
 
@@ -251,4 +324,6 @@ averageStableBorrowRate == reserveCache.nextAvgStableBorrowRate
 {% endtabs %}
 
 
+
+###
 
