@@ -135,6 +135,14 @@ maxLoanSizeStable = availableLiquidity * maxStableLoanPercent
 * maxLoanSizeStable = 250 DAI
 {% endhint %}
 
+{% hint style="success" %}
+If you want to better understand how stable debt has been practically realized, see [StableDebtToken](contracts/stabledebttoken.md)&#x20;
+{% endhint %}
+
+##
+
+##
+
 ## WIP
 
 
