@@ -219,44 +219,7 @@ Held in storage, each `ReserveData`, contains a uint128 variable `currentStableB
 **Held in storage, the ReserveData struct contains variable: `currentStableBorrowRate`**
 {% endhint %}
 
-**`currentStableBorrowRate`**
-
-* global value
-* rate for incoming stable borrows, irrespective of user
-
-**User's stable borrow rate**
-
-* stored in `_userState[].additionalData`
-* this is his total weighted average rate, based on all his previous borrows.
-  * (amount \* rate) + (amount \* rate) / totalAmount
-* each time a new stable borrow is taken, this is incremented accordingly
-* this is the rate at which user's interest compounds over time
-
-**`_avgStableRate`**
-
-* storage variable defined on `stableDebtToken` contract
-* similar to how the user's rate is incremented in a weighted average fashion, this is done globally.
-* incremented on ANY incoming borrows
-* avg rate across ALL borrows: used to calculate total compound interest in `_accruedToTreasury`
-
-
-
-## Implementation
-
-We've talked about how the stable rate is determined on the whole, as the a reflection of the system state. We've also mentioned that user's lock-in the stable rate upon borrowing, less rebalancing conditions.&#x20;
-
-Question you might have, is how does interest accrue for users, along with other implementation questions. We will offer a constrained explanation here, following which you can see the [StableDebtToken](stabledebttoken.md) section for specific code details.
-
-**Global stable rate**
-
-Each asset in Aave has its configuration data contained within a struct `ReserveData`. This can be accessed via an internal mapping `_reserves`.
-
-Held in storage, each `ReserveData`, contains a uint128 variable `currentStableBorrowRate`.&#x20;
-
-* This is the stable rate enjoyed by incoming stable borrows, regardless of user.
-* This global value is determined by the Utilization model we described above.
-
-**User's stable rate**
+### **User's stable rate**
 
 Upon taking up a stable loan, the rate enjoyed by the user is stored in `_userState[address].additionalData`, as defined on the stableDebtToken contract.
 
@@ -268,20 +231,16 @@ Upon taking up a stable loan, the rate enjoyed by the user is stored in `_userSt
   * `(oldAmount * oldRate) + (newAmount * newRate) / totalAmount`
 
 {% hint style="info" %}
-`_userState[address].additionalData is updated within the`` `**`mint`**` ``function of stableDebtToken.`
+**`_userState[address].additionalData`**` ``is updated within the`` `**`mint`**` ``function of stableDebtToken.`
 {% endhint %}
 
-**\_avgStableRate**
+### **\_avgStableRate**
 
-This is an internal storage variable on the stable debt token contract. It is the weighted average rate across all the stable borrows taken to date, regardless of user.
+An internal storage variable on the stable debt token contract, it is the weighted average rate across all the stable borrows taken to date, system-wide.&#x20;
 
 Incremented like so:
 
 **`_avgStableRate`**` ``= (currrentAvgStableRate * previousSupply) + (newRate * newAmount) / (_totalSupply() + newAmount)`
-
-{% hint style="info" %}
-weighted average rate of stable borrows taken across the system
-{% endhint %}
 
 {% hint style="info" %}
 Difference between **`_avgStableRate`**` ``and`` `**`currentStableBorrowRate`**
@@ -290,17 +249,18 @@ Difference between **`_avgStableRate`**` ``and`` `**`currentStableBorrowRate`**
 * **`currentStableBorrowRate`**` ``is the rate for the next incoming stable borrow as determined by the Utilization model.`
 {% endhint %}
 
-**`borrow & mint`**
+### **`borrow & mint`**
 
 <figure><img src="../.gitbook/assets/image (236).png" alt=""><figcaption></figcaption></figure>
 
 `mint` returns the following two values which are stored in `reserveCache`:&#x20;
 
-`reserveCache.nextAvgStableBorrowRate` = `vars.currentAvgStableRate reserveCache.nextTotalStableDebt` = `vars.nextSupply`
+* `reserveCache.nextAvgStableBorrowRate` = `vars.currentAvgStableRate`&#x20;
+* `reserveCache.nextTotalStableDebt` = `vars.nextSupply`
 
 They are used later in **`calculateInterestRates`** to update system-wide rates.
 
-**updateInterestRates::calculateInterestRates**
+### **updateInterestRates::calculateInterestRates**
 
 After a loan is taken, **`calculateInterestRates`** is ran to update the system-wide rates:
 
@@ -312,7 +272,7 @@ After a loan is taken, **`calculateInterestRates`** is ran to update the system-
 
 Stable borrow rate is updated, accounting for increase in stable loans taken; as are the other rates.&#x20;
 
-{% hint style="info" %}
+{% hint style="success" %}
 The updated stable rate is stored in **`reserve.currentStableBorrowRate - in storage.`**
 {% endhint %}
 
