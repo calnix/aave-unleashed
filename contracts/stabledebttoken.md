@@ -312,7 +312,9 @@ After a loan is taken, **`calculateInterestRates`** is ran to update the system-
 
 Stable borrow rate is updated, accounting for increase in stable loans taken; as are the other rates.&#x20;
 
-The update stable rate is stored in **`reserve.currentStableBorrowRate`**.
+{% hint style="info" %}
+The updated stable rate is stored in **`reserve.currentStableBorrowRate - in storage.`**
+{% endhint %}
 
 
 

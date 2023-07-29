@@ -145,7 +145,7 @@ Question you might have, is how does interest accrue for users, along with other
 
 Each asset in Aave has its configuration data contained within a struct `ReserveData`. This can be accessed via an internal mapping `_reserves`.
 
-Held in storage, each `ReserveData`, contains a uint128 variable `currentStableBorrowRate`.&#x20;
+Held in storage, each `ReserveData`, contains a variable `currentStableBorrowRate`.&#x20;
 
 * This is the stable rate enjoyed by incoming stable borrows, regardless of user.
 * This global value is determined by the Utilization model we described above.

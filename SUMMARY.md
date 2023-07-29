@@ -71,9 +71,9 @@
 
 ## Contracts
 
+* [StableDebtToken](contracts/stabledebttoken.md)
 * [AToken](contracts/atoken.md)
 * [DefaultReserveInterestRateStrategy](contracts/defaultreserveinterestratestrategy.md)
-* [StableDebtToken](contracts/stabledebttoken.md)
 * [L2](contracts/l2.md)
 
 ## Appendix
