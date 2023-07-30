@@ -90,7 +90,7 @@ Since this occurs on each function call that would modify `_totalSupply`, the de
 * internal storage variable
 * weighted average rate, calculated across all stable borrows
 
-<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1) (3).png" alt=""><figcaption></figcaption></figure>
 
 Simply put, assume there are 3 stable borrows at differing times:
 
@@ -118,7 +118,7 @@ weighted average rate = (100 \* 1%) + (200 \* 2%) + (300 \* 3%) / (100 + 200 + 3
 
 ## balanceOf
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 The balance for any address is calculated to account for interest accrued since the last interaction.
 
@@ -131,7 +131,7 @@ The balance for any address is calculated to account for interest accrued since 
 
 Declared on StableDebtToken.sol.
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (3).png" alt=""><figcaption></figcaption></figure>
 
 **`_calcTotalSupply(_avgStableRate)`**
 
@@ -154,7 +154,7 @@ Let's examine mint, from the pretext that is has been called via `executeBorrow`
 
 calculates the increase in balance due to compounding interest, for a specific user, since the previous &#x20;
 
-<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 #### **Update \_totalSupply**&#x20;
 
@@ -181,7 +181,7 @@ _userState[onBehalfOf].additionalData = vars.nextStableRate.toUint128();
 ```
 {% endcode %}
 
-<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
 
 * From now till the next future interaction, interest will compound at the nextStableRate.
 * This is reflected in [balanceOf](stabledebttoken.md#balanceof), in **\_calculateBalanceIncrease** section.
@@ -197,13 +197,13 @@ _avgStableRate = (
 
 ```
 
-<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6) (4).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (7) (2).png" alt=""><figcaption></figcaption></figure>
 
 #### \_mint&#x20;
 
-<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (8) (2).png" alt=""><figcaption></figcaption></figure>
 
 * increments user's balance by amount
 * makes a call to \_incentivesController, should it be defined
@@ -223,7 +223,7 @@ Here it is in words:
 
 ### Visual Aid
 
-<img src="../.gitbook/assets/file.excalidraw.svg" alt="" class="gitbook-drawing">
+<img src="../.gitbook/assets/file.excalidraw (1).svg" alt="" class="gitbook-drawing">
 
 ## Global currentStableBorrowRate and users' local borrow rate
 
@@ -301,4 +301,4 @@ The updated stable rate is stored in **`reserve.currentStableBorrowRate - in sto
 
 ### Visual Aid
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
