@@ -108,7 +108,7 @@ Both revision values and `getRevision` are defined on contracts inheriting Versi
 
 ### IncentivizedERC20
 
-ScaledBalanceTokenBase inherits MintableIncentivizedERC20, which in turn inherits IncentivizedERC20. So let's first look at the implementation of IncentivizedERC20.
+ScaledBalanceTokenBase inherits MintableIncentivizedERC20, which in turn inherits IncentivizedERC20.&#x20;
 
 IncentivizedERC20 is similar to the standard ERC-20, with two differences.&#x20;
 
@@ -153,7 +153,7 @@ Abstract contract MintableIncentivizedERC20 inherits IncentivizedERC20, and impl
 * \_mint&#x20;
 * \_burn &#x20;
 
-These two methods will update the balance in `_totalSupply` and `UserState`, and then call IAaveIncentivesController.
+These two functions will update the balance in `_totalSupply` and `UserState`, and then call IAaveIncentivesController.
 
 ### ScaledBalanceTokenBase <a href="#2.2.3-scaledbalancetokenbase" id="2.2.3-scaledbalancetokenbase"></a>
 
@@ -162,6 +162,10 @@ Abstract contract ScaledBalanceTokenBase inherits MintableIncentivizedERC20 and 
 * \_mintScaled
 * \_burnScaled
 * \_transfer
+
+### Visual Aid
+
+<img src="../.gitbook/assets/file.excalidraw.svg" alt="" class="gitbook-drawing">
 
 ### EIP712Base <a href="#2.3-eip712base" id="2.3-eip712base"></a>
 
@@ -249,4 +253,4 @@ This calls balanceOf as declared in IncentivizedERC20.sol.
 
 ### Visual Aid
 
-<img src="../.gitbook/assets/file.excalidraw.svg" alt="" class="gitbook-drawing">
+<img src="../.gitbook/assets/file.excalidraw (1).svg" alt="" class="gitbook-drawing">

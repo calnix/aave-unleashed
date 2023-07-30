@@ -17,7 +17,7 @@
 Interest rates are updated to account for the withdrawal of deposits, and therefore the reduction of supply. See [.updateInterestRates](../common-functions/.updateinterestrates.md)
 {% endhint %}
 
-<img src="../../.gitbook/assets/file.excalidraw (1) (1) (1).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (1) (1) (1) (1).svg" alt="" class="gitbook-drawing">
 
 ## isUsingCollateral
 

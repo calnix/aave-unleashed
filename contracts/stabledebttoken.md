@@ -223,7 +223,7 @@ Here it is in words:
 
 ### Visual Aid
 
-<img src="../.gitbook/assets/file.excalidraw (1).svg" alt="" class="gitbook-drawing">
+<img src="../.gitbook/assets/file.excalidraw (1) (1).svg" alt="" class="gitbook-drawing">
 
 ## Global currentStableBorrowRate and users' local borrow rate
 

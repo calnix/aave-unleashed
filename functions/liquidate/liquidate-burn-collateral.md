@@ -22,7 +22,7 @@
 
 ## liquidate/burn collateral
 
-<img src="../../.gitbook/assets/file.excalidraw (1) (1).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (1) (1) (1).svg" alt="" class="gitbook-drawing">
 
 If liquidator has opted to receive aTokens in payment (**`params.receiveAToken == true`**)
 
