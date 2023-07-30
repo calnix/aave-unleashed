@@ -7,10 +7,10 @@
   * [Why use indexes?](on-indexes/why-use-indexes.md)
 * [Scaling and ATokens](scaling-and-atokens.md)
 * [Deposit & Borrow Interest](deposit-and-borrow-interest.md)
-* [Stable borrowing](stable-borrowing/README.md)
+* [Stable borrowing](stable-borrowing.md)
   * [🚧 Under construction](stable-borrowing/under-construction.md)
 * [Liquidation](liquidation/README.md)
-  * [oracles](liquidation/oracles.md)
+  * [🚧 Under construction: oracles](liquidation/under-construction-oracles.md)
 
 ## Primer
 
