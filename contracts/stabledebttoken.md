@@ -10,6 +10,8 @@ We will examine stableDebtToken contract in this section.
 
 <figure><img src="../.gitbook/assets/image (161).png" alt=""><figcaption><p><strong>getSupplyData</strong></p></figcaption></figure>
 
+This function is called in .cache, and we will explain each component.&#x20;
+
 {% code title=".cache(...)" %}
 ```solidity
 (
@@ -24,17 +26,34 @@ We will examine stableDebtToken contract in this section.
 ### super.totalSupply()
 
 * Inherited from IncentivizedERC20.sol
+* Essentially a getter function for the internal storage variable `_totalSupply`
 
 <figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption><p>IncentivizedERC20.sol</p></figcaption></figure>
 
-* returns internal storage variable `_totalSupply`
-* `_totalSupply` is incremented on `mint`, decremented on `burn`
-* on borrow: `_totalSupply = _totalSupply + amount`
+{% hint style="info" %}
+On \_totalSupply:
+
+* Reflects total stable debt, accounting for interest accrued from inception till **`_totalSupplyTimestamp`.**
+* Does not account for interest accrued from **`_totalSupplyTimestamp`**` ``to now.`
+{% endhint %}
+
+### `_totalSupply`
+
+Total stable debt, accounting for interest accrued since inception till  `_totalSupplyTimestamp`**.** `_totalSupply` is incremented on `mint`, decremented on `burn`.
+
+**Example:** a stable borrow is taken some time after `_totalSupplyTimestamp`&#x20;
+
+* `_totalSupply += stableBorrowAmount + unbooked interest`&#x20;
+
+`_totalSupply` is incremented to account for the incoming borrow as well as the interest accrued in the period since `_totalSupplyTimestamp`**.**
 
 {% hint style="info" %}
-* Accounts for interest accrued in past periods up till**`_totalSupplyTimestamp`**
-* Does not account for interest accrued from **`_totalSupplyTimestamp`**` ``to now.`
-* assigned to `currPrincipalStableDebt`
+Assigned to `currPrincipalStableDebt, in .cache`
+{% endhint %}
+
+{% hint style="info" %}
+* `_totalSupply` is declared in `IncentivizedERC20`
+* `_totalSupplyTimestamp` is declared in `StableDebtToken`
 {% endhint %}
 
 ### \_calcTotalSupply(avgRate)
@@ -104,14 +123,16 @@ The balance for any address is calculated to account for interest accrued since 
 * `_timestamps[account]` stores the timestamp of their last interaction
 {% endhint %}
 
-## totalSupply
-
-returns `_calcTotalSupply(_avgStableRate)`
+## totalSupply()
 
 <figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
-* `super.TotalSupply()` accounts for interest in all periods prior to `_totalSupplyTimestamp`
-* \_calcTotalSupply will compound this with the recently accrued interest, since `_totalSupplyTimestamp` till now
+**`_calcTotalSupply(_avgStableRate)`**
+
+* [`super.TotalSupply()`](stabledebttoken.md#super.totalsupply)  returns `_totalSupply`; accounts for interest from inception till `_totalSupplyTimestamp`.
+* [`_calcTotalSupply`](stabledebttoken.md#\_calctotalsupply-avgrate) will compound this with the recently accrued interest, from `_totalSupplyTimestamp` till now.
+
+Therefore, `totalSupply` returns the total stable debt, accounting for all interest to date.&#x20;
 
 ## mint
 
