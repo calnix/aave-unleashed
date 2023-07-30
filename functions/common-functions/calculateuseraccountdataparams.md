@@ -85,7 +85,7 @@ If the asset is not being used as either, increment the counter and `continue`; 
 
 #### isUsingAsCollateralOrBorrowing
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 * require statement performs a boundary check to ensure that `reserveIndex` value is within the valid range of `[0 - 127]`.
 * If you are unclear on the bitmap manipulations, please see that section.
