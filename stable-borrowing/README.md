@@ -56,7 +56,7 @@ To better understand the model and how it is implemented, we dissect `calculateI
 
 <div data-full-width="false">
 
-<figure><img src=".gitbook/assets/image (6) (1).png" alt=""><figcaption><p>stable rate calculation</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6) (1).png" alt=""><figcaption><p>stable rate calculation</p></figcaption></figure>
 
 </div>
 
@@ -71,9 +71,9 @@ In the picture above, the portions of `calculateInterestRates` that are pertinen
 * OPTIMAL\_STABLE\_TO\_TOTAL\_DEBT\_RATIO
 * MAX\_EXCESS\_STABLE\_TO\_TOTAL\_DEBT\_RATIO
 
-For a walkthrough on their values, please see the section on [DefaultReserveInterestRateStrategy](contracts/defaultreserveinterestratestrategy.md).
+For a walkthrough on their values, please see the section on [DefaultReserveInterestRateStrategy](../contracts/defaultreserveinterestratestrategy.md).
 
-<figure><img src=".gitbook/assets/image (17).png" alt=""><figcaption><p> <code>calculateInterestRates</code> </p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (17).png" alt=""><figcaption><p> <code>calculateInterestRates</code> </p></figcaption></figure>
 
 ## Caveat: Rebalancing
 
@@ -95,7 +95,7 @@ Rebalancing can occur when **depositors are earning** $$\leq$$ **90% of their ea
 * Given `totalVariableDebt` = (variable debt + stable debt), what would be the liquidity rate?
 * If the current liquidity rate is $$\leq$$ 90% of the above calculated rate, rebalancing is valid
 
-<figure><img src=".gitbook/assets/image (185).png" alt=""><figcaption><p><a href="https://github.com/aave/aave-v3-core/blob/29ff9b9f89af7cd8255231bc5faf26c3ce0fb7ce/contracts/protocol/libraries/logic/ValidationLogic.sol#L394">validateRebalanceStableBorrowRate</a></p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (185).png" alt=""><figcaption><p><a href="https://github.com/aave/aave-v3-core/blob/29ff9b9f89af7cd8255231bc5faf26c3ce0fb7ce/contracts/protocol/libraries/logic/ValidationLogic.sol#L394">validateRebalanceStableBorrowRate</a></p></figcaption></figure>
 
 ### Maximum size per stable borrow
 
@@ -155,26 +155,14 @@ Held in storage, each `ReserveData`, contains a variable `currentStableBorrowRat
 Upon taking up a stable loan, the rate enjoyed by the user is stored in `_userState[address].additionalData`, as defined on the stableDebtToken contract.
 
 {% hint style="success" %}
-We offered a constrained explanation here, following which you can see the [StableDebtToken](contracts/stabledebttoken.md) section for specific code details.
+We offered a constrained explanation here, following which you can see the [StableDebtToken](../contracts/stabledebttoken.md) section for specific code details.
 {% endhint %}
-
-
 
 ##
 
-##
-
-## WIP
 
 
 
-## Incentive to rebalance
-
-if your position is not so big you may never get rebalanced even if the rebalancing conditions are reached.&#x20;
-
-{% hint style="info" %}
-Rebalancing needs to be manually triggered by anyone, and there is more incentive to rebalance bigger positions rather than smaller, as that would affect rate more
-{% endhint %}
 
 {% hint style="warning" %}
 Can I borrow using stable and variable rate at the same time for one asset?
