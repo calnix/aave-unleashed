@@ -32,9 +32,9 @@ We will examine stableDebtToken contract in this section.
 * on borrow: `_totalSupply = _totalSupply + amount`
 
 {% hint style="info" %}
-* Accounts for interest accrued in past periods.&#x20;
-* Does not account for interest accrued since **`_totalSupplyTimestamp`**
-* treated as `currPrincipalStableDebt`
+* Accounts for interest accrued in past periods up till**`_totalSupplyTimestamp`**
+* Does not account for interest accrued from **`_totalSupplyTimestamp`**` ``to now.`
+* assigned to `currPrincipalStableDebt`
 {% endhint %}
 
 ### \_calcTotalSupply(avgRate)
