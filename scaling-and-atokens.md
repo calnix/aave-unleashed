@@ -116,15 +116,3 @@ The abovementioned scaling can be seen from the first line in `_mintScaled`. Sub
 Here is a more complete execution flow chart spanning the relevant portions across different contracts.
 
 <img src=".gitbook/assets/file.excalidraw (20).svg" alt="" class="gitbook-drawing">
-
-#### Inheritance&#x20;
-
-{% hint style="info" %}
-&#x20;it is important to note the inheritance chain of the AToken contract:
-
-{% code overflow="wrap" %}
-```solidity
-contract AToken is VersionedInitializable, ScaledBalanceTokenBase, EIP712Base, IAToken
-```
-{% endcode %}
-{% endhint %}

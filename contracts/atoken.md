@@ -169,16 +169,7 @@ Abstract contract ScaledBalanceTokenBase inherits MintableIncentivizedERC20 and 
 
 ### EIP712Base <a href="#2.3-eip712base" id="2.3-eip712base"></a>
 
-If you don’t understand EIP712, you can read this article: [https://learnblockchain.cn/2019/04/24/token-EIP712](https://learnblockchain.cn/2019/04/24/token-EIP712)
-
-\
-
-
-
-
-
-
-
+* WIP
 
 ## balanceOf
 
@@ -254,3 +245,23 @@ This calls balanceOf as declared in IncentivizedERC20.sol.
 ### Visual Aid
 
 <img src="../.gitbook/assets/file.excalidraw (1).svg" alt="" class="gitbook-drawing">
+
+## mint
+
+**Execution flow**
+
+AToken::`mint` -> ScaledBalanceTokenBase::`_mintScaled` ->  MintableIncentivizedERC20::`_mint`
+
+<figure><img src="../.gitbook/assets/image (13).png" alt=""><figcaption><p>AToken inherits ScaledBalanceTokenBase</p></figcaption></figure>
+
+* `amountScaled`, the amount to mint is scaled against the liquidity index in `_mintScaled`.&#x20;
+* `_mint` increments the user's balance by `amountScaled`.
+* user's balance held in `_userState[account].balance`.
+
+<figure><img src="../.gitbook/assets/image (99).png" alt=""><figcaption></figcaption></figure>
+
+### Execution flow: Visual Aid
+
+Here is a more complete execution flow chart spanning the relevant portions across different contracts.
+
+<img src="../.gitbook/assets/file.excalidraw (20).svg" alt="" class="gitbook-drawing">
