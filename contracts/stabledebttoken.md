@@ -37,7 +37,7 @@ On \_totalSupply:
 * Does not account for interest accrued from **`_totalSupplyTimestamp`**` ``to now.`
 {% endhint %}
 
-### `_totalSupply`
+### \_totalSupply
 
 Total stable debt, accounting for interest accrued since inception till  `_totalSupplyTimestamp`**.** `_totalSupply` is incremented on `mint`, decremented on `burn`.
 
@@ -58,18 +58,22 @@ Assigned to `currPrincipalStableDebt, in .cache`
 
 ### \_calcTotalSupply(avgRate)
 
-Reflects total stable debt, where avgRate is `_avgStableRate`.
+Calculates total stable debt, accounting for interest accrued to date.&#x20;
 
-* `totalSupply = principalSupply * cumulatedInterest`
+* `avgRate` is `_avgStableRate`
 * `principalSupply is _totalSupply`
 
 <figure><img src="../.gitbook/assets/image (9) (2).png" alt=""><figcaption></figcaption></figure>
 
 * calculates interest compounded from `_totalSupplyTimestamp` till now (`block.timestamp`)
-* `_totalSupplyTimestamp`: Timestamp of the last update of the total supply
+* `_totalSupplyTimestamp`: Timestamp of the last update of \_totalSupply
   * updated in `mint` & `burn`
 
-**Why do we only calculate compound interest from `_totalSupplyTimestamp`?**
+{% hint style="info" %}
+Assigned to `currTotalStableDebt`, in .cache
+{% endhint %}
+
+**Why do we calculate interest from `_totalSupplyTimestamp`?**
 
 Every time `mint` or `burn` is called, `_totalSupply` is updated such that it accounts for the interest accrued since previous update till now, as well as the `mint`/`burn` amount.&#x20;
 
@@ -124,6 +128,8 @@ The balance for any address is calculated to account for interest accrued since 
 {% endhint %}
 
 ## totalSupply()
+
+Declared on StableDebtToken.sol.
 
 <figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
@@ -202,8 +208,6 @@ _avgStableRate = (
 * increments user's balance by amount
 * makes a call to \_incentivesController, should it be defined
 
-
-
 {% hint style="info" %}
 The maximum 128-bit integer, $$2^{128}− 1$$is a number that is not usefully written out in words or in all of its 39 digits: 340282366920938463463374607431768211455
 
@@ -220,8 +224,6 @@ Here it is in words:
 ### Visual Aid
 
 <img src="../.gitbook/assets/file.excalidraw.svg" alt="" class="gitbook-drawing">
-
-
 
 ## Global currentStableBorrowRate and users' local borrow rate
 
@@ -300,109 +302,3 @@ The updated stable rate is stored in **`reserve.currentStableBorrowRate - in sto
 ### Visual Aid
 
 <figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
-
-
-
-## \_accrueToTreasury
-
-The purpose of `_accrueToTreasury` is to account for unbooked interest from the last update til now - and increment what is owed to the treasury accordingly.
-
-* **Unbooked interest**: interest accrued from `reserve.`**`lastUpdateTimestamp`** till **now**&#x20;
-* `reserveCache.reserveLastUpdateTimestamp` == `reserve.lastUpdateTimestamp` , as assigned in `.cache`
-
-Calculating the unbooked interest for variable borrows is easy enough. It is the difference between nextVariableBorrowIndex and currVariableBorrowIndex.
-
-{% hint style="info" %}
-Objective: obtain accrued interest from **reserveCache.`reserveLastUpdateTimestamp` to now**
-{% endhint %}
-
-**For stable borrows, this will be different as there is no stable borrow index.**
-
-Let's extract the parts relevant for stable borrows:
-
-```solidity
-//calculated in .cache:
-reserveCache.currTotalStableDebt = _calcTotalSupply(avgRate)
-
-//...
-//within _accrueToTreasury:
-
-//calculate the stable debt until the last timestamp update
-vars.cumulatedStableInterest = MathUtils.calculateCompoundedInterest(
-  reserveCache.currAvgStableBorrowRate,
-  reserveCache.stableDebtLastUpdateTimestamp,
-  reserveCache.reserveLastUpdateTimestamp
-);
-
-//prevTotalStableDebt = currPrincipalStableDebt * cumulatedStableInterest
-vars.prevTotalStableDebt = 
-reserveCache.currPrincipalStableDebt.rayMul(vars.cumulatedStableInterest);
-```
-
-**Therefore:**
-
-**`currTotalStableDebt`** - **`prevTotalStableDebt`** = interest accrued from `reserveLastUpdateTimestamp` till now.
-
-{% hint style="info" %}
-variable interest is similarly calculated from reserveCache.`reserveLastUpdateTimestamp`to now
-{% endhint %}
-
-* **`currTotalStableDebt:`** accounts for interest from `_totalSupplyTimestamp` till now
-* **`prevTotalStableDebt:`** accounts for interest from `stableDebtLastUpdateTimestamp` to `reserveLastUpdateTimestamp`
-
-{% hint style="info" %}
-`stableDebtLastUpdateTimestamp == _totalSupplyTimestamp`
-
-* assigned via `getSupplyData` in `.cache`
-{% endhint %}
-
-<figure><img src="../.gitbook/assets/image (237).png" alt=""><figcaption></figcaption></figure>
-
-**Why can't we simply calculate interest from `reserveLastUpdateTimestamp` like variable?**
-
-* **`reserveLastUpdateTimestamp` >= `_totalSupplyTimestamp`**
-
-**`_totalSupplyTimestamp`** is only updated when mint/burn of the stableDebtToken are called. However, **`reserveLastUpdateTimestamp`** is updated in `.updateState`, which is called on every state-changing function.
-
-Therefore, **`_totalSupplyTimestamp`** is likely to be an older value.&#x20;
-
-
-
-
-
-**On time**
-
-`_totalSupplyTimestamp`&#x20;
-
-* updated during mint/burn
-
-`stableDebtLastUpdateTimestamp`&#x20;
-
-* loaded into reserveCache via getSupplyData
-* getSupplyData passes `_totalSupplyTimestamp` into `stableDebtLastUpdateTimestamp`&#x20;
-
-{% hint style="info" %}
-**`stableDebtLastUpdateTimestamp`** **`==`** **`_totalSupplyTimestamp`**&#x20;
-{% endhint %}
-
-
-
-Order
-
-* .cache&#x20;
-  * loads **`_totalSupplyTimestamp`  as** reserveCache.**stableDebtLastUpdateTimestamp**
-  * ```solidity
-    // accounts interest from _totalSupplyTimestamp till now
-    reserveCache.currTotalStableDebt = _calcTotalSupply(avgRate)
-    ```
-* .updateState
-  * \_accrueToTreasury
-  * ```solidity
-    //accounts interest
-    //from stableDebtLastUpdateTimestamp to reserveLastUpdateTimestamp
-    vars.prevTotalStableDebt = 
-    reserveCache.currPrincipalStableDebt.rayMul(vars.cumulatedStableInterest);
-    ```
-
-###
-
