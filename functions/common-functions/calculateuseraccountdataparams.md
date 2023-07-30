@@ -85,7 +85,7 @@ If the asset is not being used as either, increment the counter and `continue`; 
 
 #### isUsingAsCollateralOrBorrowing
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 * require statement performs a boundary check to ensure that `reserveIndex` value is within the valid range of `[0 - 127]`.
 * If you are unclear on the bitmap manipulations, please see that section.
@@ -237,7 +237,7 @@ Remember, we previously only obtained their respective numerators for the weight
 
 Then the calculation for health factor:
 
-<figure><img src="../../.gitbook/assets/image (4) (1) (1).png" alt="" width="451"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (1) (1) (2).png" alt="" width="451"><figcaption></figcaption></figure>
 
 **`avgLiquidationThreshold`** was obtained by dividing the weighted sum by totalCollateral, therefore this can be expressed as:
 
