@@ -75,7 +75,8 @@
 * [StableDebtToken](contracts/stabledebttoken.md)
 * [AToken](contracts/atoken.md)
 * [DefaultReserveInterestRateStrategy](contracts/defaultreserveinterestratestrategy.md)
-* [L2](contracts/l2.md)
+* [L2](contracts/l2/README.md)
+  * [PriceOracleSentinel](contracts/l2/priceoraclesentinel.md)
 
 ## Audit findings
 

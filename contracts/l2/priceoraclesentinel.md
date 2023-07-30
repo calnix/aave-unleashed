@@ -1,37 +1,4 @@
-# L2
-
-### Background
-
-Moving execution off of the main chain allows for significantly decreased costs for execution and state storage. However, rollups still must post their data to the layer-1 chain to ensure data availability.
-
-Essentially, rollups pay cheap, layer-2 costs for execution and storage, but must still pay layer-1 fees to post their data.
-
-This can be seen on the "Advanced TxInfo" tab on any transaction in the ArbiScan block explorer. The transaction fee is broken down into the calldata costs to post to L1, the computation used on L2, and the L2 storage. And in almost all transactions, the L1 calldata will be the primary driver of fees.
-
-For example, breakup of $4.19 Uniswap Trade on Arbitrum ([explorer](https://arbiscan.io/tx/0xeab92f1bfa00f2cfacf50056cdd74df1fd7f3266ee0f7cc076121cc9a45e2341#txninfo)):
-
-* L1 Fixed Cost: $1.77
-* L1 Calldata Cost: $2.30
-* L2 Computation: $0.12
-
-You can see that, the calldata cost is over 50%.
-
-Simply put: posting data to Layer-1 is the primary bottleneck for fees on rollups.
-
-{% hint style="info" %}
-rollups have cheap execution but expensive data-availability costs
-{% endhint %}
-
-
-
-**Links**
-
-* [https://www.scopelift.co/blog/calldata-optimizooooors](https://www.scopelift.co/blog/calldata-optimizooooors)
-* [https://ethglobal.com/showcase/l2-optimizoooors-7sio4](https://ethglobal.com/showcase/l2-optimizoooors-7sio4)
-* [https://www.cryptoeq.io/articles/layer-2-fees](https://www.cryptoeq.io/articles/layer-2-fees)
-* [https://l2fees.info/blog/rollup-calldata-compression](https://l2fees.info/blog/rollup-calldata-compression)
-
-
+# PriceOracleSentinel
 
 ## PriceOracleSentinel
 
@@ -53,24 +20,4 @@ Supporting more L2 network is also a goal of V3. To solve the problem of untimel
 
 It means that when the L2 price update/transaction record is delayed, the user's liquidated position will have a grace period before the next block is produced. That is to say, the user's position will not be liquidated before the oracle price is updated, but the user will not be able to borrow any more during this period.
 
-* [https://tokeninsight.com/en/research/analysts-pick/aave-v3-is-live.-do-you-still-believe-in-defi  ](https://tokeninsight.com/en/research/analysts-pick/aave-v3-is-live.-do-you-still-believe-in-defi)
-
-## L2 encoder
-
-* Contract of view functions
-* Helper contract to encode calldata, used to optimize calldata size in L2Pool for transaction cost reduction
-* Only indented to help generate calldata for uses/frontends.
-
-Generates compact calldata via view functions -> gas-free. Compacted calldata is the used in L2Pool as params.&#x20;
-
-
-
-
-
-## supply&#x20;
-
-### encodeSupplyParams
-
-<figure><img src="../.gitbook/assets/image (173).png" alt="" width="563"><figcaption></figcaption></figure>
-
-##
+* [https://tokeninsight.com/en/research/analysts-pick/aave-v3-is-live.-do-you-still-believe-in-defi](https://tokeninsight.com/en/research/analysts-pick/aave-v3-is-live.-do-you-still-believe-in-defi)
