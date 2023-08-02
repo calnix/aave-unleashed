@@ -81,7 +81,7 @@
 
 ## Audit findings
 
-* [stable interest \_accrueToTreasury](audit-findings/stable-interest-\_accruetotreasury.md)
+* [🚧 Under construction](audit-findings/under-construction.md)
 
 ## Appendix
 
