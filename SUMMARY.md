@@ -21,6 +21,7 @@
   * [Scaling different decimal representations](primer/wadraylibrary/scaling-different-decimal-representations.md)
   * [2's complement](primer/wadraylibrary/2s-complement.md)
 * [PercentageMath](primer/percentagemath.md)
+* [Embedded vs Linked Libraries](primer/embedded-vs-linked-libraries.md)
 
 ## Functions
 
