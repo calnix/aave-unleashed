@@ -35,7 +35,7 @@
   * [.updateInterestRates](functions/common-functions/.updateinterestrates.md)
   * [SupplyCap, BorrowCap](functions/common-functions/supplycap-borrowcap.md)
   * [getFlags](functions/common-functions/getflags.md)
-  * [getDecimals](functions/common-functions/getdecimals.md)
+  * [🚧 getDecimals](functions/common-functions/getdecimals.md)
   * [calculateUserAccountDataParams](functions/common-functions/calculateuseraccountdataparams.md)
 * [supply](functions/supply/README.md)
   * [validateSupply](functions/supply/validatesupply.md)
@@ -79,7 +79,7 @@
 * [AToken](contracts/atoken.md)
 * [DefaultReserveInterestRateStrategy](contracts/defaultreserveinterestratestrategy.md)
 * [L2](contracts/l2/README.md)
-  * [PriceOracleSentinel](contracts/l2/priceoraclesentinel.md)
+  * [🚧 PriceOracleSentinel](contracts/l2/priceoraclesentinel.md)
 
 ## Audit findings
 

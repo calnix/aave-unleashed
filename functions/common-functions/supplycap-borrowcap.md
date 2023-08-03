@@ -18,7 +18,7 @@ In case \*Borrow Cap\* of the reserve is set lower than the current \*totalDebt\
 In case _Supply Cap_ of the reserve is set lower than the current liquidity of the reserve, the existing suppliers are not effected but no more liquidity can be supplied to that reserve.
 {% endhint %}
 
-### how are caps stored
+### How are caps stored
 
 Each asset has a corresponding `ReserveData` struct which outlines its key information and configuration.&#x20;
 
@@ -56,8 +56,6 @@ Numbers in Solidity are left-padded. Therefore to convert our resulting hexadeci
 See more at [getReserveFactor](../../primer/bitmap-and-masks/#getreservefactor).
 
 ### getBorrowCap
-
-
 
 ```solidity
 uint256 internal constant BORROW_CAP_START_BIT_POSITION = 80
