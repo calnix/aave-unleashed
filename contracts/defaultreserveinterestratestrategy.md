@@ -18,7 +18,7 @@ The DefaultReserveInterestRateStrategy contract is essentially the on-chain inte
 
 Each asset has its interest rate parameters stored on-chain via a `DefaultReserveInterestRateStrategy` contract.&#x20;
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 These parameters are set in the constructor on deployment. We can explore their values by interacting with the deployed contract. For example, DAI contract on mainnet:&#x20;
 

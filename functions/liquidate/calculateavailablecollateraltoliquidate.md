@@ -43,7 +43,7 @@ Liquidator repays debt and take equivalent value in collateral from user. Howeve
 
 ### 1. Get prices of both collateral and debt assets&#x20;
 
-<figure><img src="../../.gitbook/assets/image (3) (1) (1) (1).png" alt="" width="529"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3) (1) (1) (1) (1).png" alt="" width="529"><figcaption></figcaption></figure>
 
 ### 2. Define 1 unit of each asset
 
