@@ -64,7 +64,7 @@
   * [validateLiquidationCall](functions/liquidate/validateliquidationcall.md)
   * [getConfigurationData](functions/liquidate/getconfigurationdata.md)
   * [calculateAvailableCollateralToLiquidate](functions/liquidate/calculateavailablecollateraltoliquidate.md)
-  * [\_burnDebtTokens](functions/liquidate/\_burndebttokens.md)
+  * [🚧 \_burnDebtTokens](functions/liquidate/\_burndebttokens.md)
   * [liquidate/burn collateral](functions/liquidate/liquidate-burn-collateral.md)
   * [liquidation Fee](functions/liquidate/liquidation-fee.md)
   * [Wrap-up](functions/liquidate/wrap-up.md)
