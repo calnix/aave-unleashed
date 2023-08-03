@@ -1,6 +1,5 @@
 # Math Operations
 
-* Math Operations: \[rayMul, rayDiv, percentMul]
 * casting: to uint128
 
 ## WadRayMath library: scaling
