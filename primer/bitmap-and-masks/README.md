@@ -150,7 +150,7 @@ For positive numbers, a single logical right shift **divides** a number by 2, th
 0010 is 2
 ```
 
-#### solidity example
+#### Solidity example
 
 ```solidity
 // 1 << 0 = 0001 --> 0001 = 1

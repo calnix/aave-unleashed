@@ -15,18 +15,20 @@
 ## Primer
 
 * [Bitmap & Masks](primer/bitmap-and-masks/README.md)
-  * [padding and bytes](primer/bitmap-and-masks/padding-and-bytes.md)
+  * [🚧 padding and bytes](primer/bitmap-and-masks/padding-and-bytes.md)
 * [WadRayLibrary](primer/wadraylibrary/README.md)
   * [Math Operations](primer/wadraylibrary/math-operations.md)
   * [🚧 WIP: Scaling different decimal representations](primer/wadraylibrary/scaling-different-decimal-representations.md)
   * [🚧 WIP: 2's complement](primer/wadraylibrary/2s-complement.md)
+  * [🚧 casting: to uint128](primer/wadraylibrary/casting-to-uint128.md)
 * [PercentageMath](primer/percentagemath.md)
 * [Embedded vs Linked Libraries](primer/embedded-vs-linked-libraries.md)
 
 ## Functions
 
 * [General Execution flow](functions/general-execution-flow.md)
-* [Architecture & Design choices](functions/architecture-and-design-choices.md)
+* [Architecture & Design choices](functions/architecture-and-design-choices/README.md)
+  * [🚧 Upgradability and Proxies](functions/architecture-and-design-choices/upgradability-and-proxies.md)
 * [Common Functions](functions/common-functions/README.md)
   * [.cache](functions/common-functions/.cache.md)
   * [.updateState](functions/common-functions/.updatestate.md)

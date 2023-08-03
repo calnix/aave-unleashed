@@ -2,7 +2,7 @@
 
 ## Fixed-point Math
 
-There are only two numerical data types in Ethereum:
+There are only two numerical data types w.r.t the EVM:
 
 * signed integers, int256
 * unsigned integers, uint256
@@ -57,7 +57,7 @@ wadDiv = wadA * WAD / wadB
 <figure><img src="../../.gitbook/assets/image (110).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="warning" %}
-Division should always be done last to preserve precision
+Division should always be done **last** to preserve precision
 {% endhint %}
 
 Note that in solidity natively rounds down; therefore in our examples of mul and div, our results were rounded down. We will see how to WadRayLibrary employs mul and div functions that allow for **rounding to the nearest integer**.
@@ -235,4 +235,3 @@ Use of `iszero` + `lt` to represent $$\geq$$
 * After an in depth analysis, SafeMath incurred intensive high costs in critical areas of the protocol, with a 30 gas fee for each call.&#x20;
 * This supported the refactoring of WadRayMath to remove SafeMath, which saves 10-15k gas on some operations.
 {% endhint %}
-

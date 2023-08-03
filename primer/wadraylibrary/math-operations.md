@@ -1,11 +1,5 @@
 # Math Operations
 
-* casting: to uint128
-
-## WadRayMath library: scaling
-
-
-
 ## Rounding in solidity
 
 All integer division **rounds down** to the nearest integer.

@@ -158,10 +158,6 @@ Upon taking up a stable loan, the rate enjoyed by the user is stored in `_userSt
 We offered a constrained explanation here, following which you can see the [StableDebtToken](contracts/stabledebttoken.md) section for specific code details.
 {% endhint %}
 
-##
-
-
-
 
 
 {% hint style="warning" %}

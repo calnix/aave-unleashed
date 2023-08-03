@@ -30,7 +30,7 @@ We know this to be true as 1% of `10000` is indeed `100`. Feel free to experimen
 
 <figure><img src="../.gitbook/assets/image (113).png" alt=""><figcaption><p>percentMul</p></figcaption></figure>
 
-### multiplication operation
+### Multiplication operation
 
 Let's start by examining the multiplication operation:
 
@@ -107,7 +107,7 @@ give example on when inputs lead to overflow?
 
 <figure><img src="../.gitbook/assets/image (145).png" alt=""><figcaption></figcaption></figure>
 
-### division operation
+### Division operation
 
 **Example**
 
