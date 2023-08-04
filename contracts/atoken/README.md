@@ -180,7 +180,7 @@ Let's examine the implementation for `balanceOf`:
 
 <summary>On multiple inheritance</summary>
 
-![](<../../.gitbook/assets/image (2) (1) (1).png>)
+![](<../../.gitbook/assets/image (2) (1) (1) (1).png>)
 
 In short, we need to specify the contracts if we are overriding from more than one contract. Otherwise, you just need to use the override keyword.
 

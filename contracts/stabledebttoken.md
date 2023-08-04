@@ -118,7 +118,7 @@ weighted average rate = (100 \* 1%) + (200 \* 2%) + (300 \* 3%) / (100 + 200 + 3
 
 ## balanceOf
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 The balance for any address is calculated to account for interest accrued since the last interaction.
 
@@ -154,7 +154,7 @@ Let's examine mint, from the pretext that is has been called via `executeBorrow`
 
 calculates the increase in balance due to compounding interest, for a specific user, since the previous &#x20;
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 #### **Update \_totalSupply**&#x20;
 
@@ -301,4 +301,4 @@ The updated stable rate is stored in **`reserve.currentStableBorrowRate - in sto
 
 ### Visual Aid
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
