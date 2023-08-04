@@ -96,7 +96,9 @@ If the active flag bit achieves a **non-zero** value after the bitwise operation
 
 If the active flag bit has a **zero** value, `!= 0`, will evaluate to **false**,  indicating that the asset is **NOT ACTIVE.**
 
+{% hint style="info" %}
 This process applies similarly to the other status flags. If you are confused as to how bitwise operations work, please see the previous section: [bitmap & masks](../../../primer/bitmap-and-masks/).
+{% endhint %}
 
 ## Overview of required checks
 
