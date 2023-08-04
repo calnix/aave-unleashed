@@ -32,7 +32,19 @@ This transfers the asset to be supplied from user to the corresponding AToken co
 User' supplied assets are held on their respective AToken contracts; DAI held on aDAI.&#x20;
 {% endhint %}
 
-* talk about use of safeTransferFrom
+{% hint style="info" %}
+**Use of safeTransferFrom**
+
+`SafeERC20` is a helper to make safe the _interaction_ with _someone else’s_ ERC20 token, in your contracts. What the helper does for you is:
+
+1. check the boolean return values of ERC20 operations and revert the transaction if they fail,
+2. at the same time allowing you to support some non-standard ERC20 tokens that don’t have boolean return values.
+
+It additionally provides helpers to increase or decrease an allowance, to mitigate [an attack 118](https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729) possible with vanilla `approve`.\
+
+
+For more: [https://forum.openzeppelin.com/t/making-sure-i-understand-how-safeerc20-works/2940](https://forum.openzeppelin.com/t/making-sure-i-understand-how-safeerc20-works/2940)
+{% endhint %}
 
 ### mint
 
