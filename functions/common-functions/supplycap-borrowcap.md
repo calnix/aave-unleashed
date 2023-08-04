@@ -11,24 +11,22 @@ If borrow/supply cap is set to 0; this sigifies that there is no cap.
 {% endhint %}
 
 {% hint style="success" %}
-In case \*Borrow Cap\* of the reserve is set lower than the current \*totalDebt\* the existing borrowers are not effected but no more borrows (stable or variable) can be initiated for that reserve.
+In case Borrow Cap of the reserve is set lower than the current totalDebt, the existing borrowers are not effected but no more borrows (stable or variable) can be initiated for that reserve.
 {% endhint %}
 
 {% hint style="success" %}
 In case _Supply Cap_ of the reserve is set lower than the current liquidity of the reserve, the existing suppliers are not effected but no more liquidity can be supplied to that reserve.
 {% endhint %}
 
-### How are caps stored
+### How are the caps stored
 
 Each asset has a corresponding `ReserveData` struct which outlines its key information and configuration.&#x20;
 
-* `PoolStorage` holds mapping `_reserves` which maps asset address to `ReserveData`&#x20;
+* `PoolStorage` holds mapping `_reserves` which maps asset address to `ReserveData`.
 
-Within each`ReserveData` struct, there is a nested struct of type `ReserveConfigurationMap`&#x20;
+Within each`ReserveData` struct, there is a nested struct of type `ReserveConfigurationMap`. The nested struct contain a bitmap, storing the asset's configuration:
 
-* The nest struct is a bitmap, storing the asset's configuration
-
-<figure><img src="../../.gitbook/assets/image (34).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (34).png" alt=""><figcaption><p><code>ReserveConfigurationMap</code></p></figcaption></figure>
 
 An asset's borrow and supply caps are defined within the bitmap, along with other relevant information.&#x20;
 
@@ -53,7 +51,9 @@ Numbers in Solidity are left-padded. Therefore to convert our resulting hexadeci
 * this will remove all the 0s on the right, from the least significant bit to the value
 * left-padding will be done accordingly, to ensure 32 byte representation
 
-See more at [getReserveFactor](../../primer/bitmap-and-masks/#getreservefactor).
+{% hint style="info" %}
+See more at [getReserveFactor](../../primer/bitmap-and-masks/#getreservefactor)
+{% endhint %}
 
 ### getBorrowCap
 
@@ -61,3 +61,5 @@ See more at [getReserveFactor](../../primer/bitmap-and-masks/#getreservefactor).
 uint256 internal constant BORROW_CAP_START_BIT_POSITION = 80
 uint256 internal constant BORROW_CAP_MASK = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000000FFFFFFFFFFFFFFFFFFFF;
 ```
+
+* Process is similar to getSupplyCap
