@@ -1,10 +1,5 @@
 # AToken
 
-* [https://medium.com/coinmonks/how-aave-hacked-the-erc-20-token-in-the-most-beautiful-way-3e04fb4410fb](https://medium.com/coinmonks/how-aave-hacked-the-erc-20-token-in-the-most-beautiful-way-3e04fb4410fb)
-* [https://mirror.xyz/freesuton.eth/EagGvVQZtLhsnnsTTwhHA6VwekMbImMmvniSWAm6SNg](https://mirror.xyz/freesuton.eth/EagGvVQZtLhsnnsTTwhHA6VwekMbImMmvniSWAm6SNg)
-
-
-
 ## Inheritance
 
 Firstly, it is important to note the inheritance chain of the AToken contract:
@@ -96,9 +91,9 @@ abstract contract VersionedInitializable {
 
 This contract is used to assist with initialization. It is modified from the Initializable contract of OpenZeppelin, and the revision version number is introduced. When the version number becomes larger, it can be initialized again.
 
-<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption><p><strong>VersionedInitializable.sol</strong></p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (1).png" alt=""><figcaption><p><strong>VersionedInitializable.sol</strong></p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption><p>AToken.sol</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption><p>AToken.sol</p></figcaption></figure>
 
 The revision number is defined on AToken.sol, which is obtained via `getRevision`. However, when the modifier `initializer` executes, it calls `getRevision` as defined in AToken.sol, due to override.
 
@@ -140,11 +135,11 @@ balance saved in UserState is the actual balance, and additionalData is the liqu
 
 2. **\_transfer will apply incentives via IAaveIncentivesController**
 
-<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
 It is also interesting to note that transferFrom incorporates both approve and transfer.
 
-<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
 ### Mintable Incentivized ERC20 <a href="#2.2.2-mintableincentivizederc20" id="2.2.2-mintableincentivizederc20"></a>
 
@@ -165,7 +160,7 @@ Abstract contract ScaledBalanceTokenBase inherits MintableIncentivizedERC20 and 
 
 ### Visual Aid
 
-<img src="../.gitbook/assets/file.excalidraw.svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw.svg" alt="" class="gitbook-drawing">
 
 ### EIP712Base <a href="#2.3-eip712base" id="2.3-eip712base"></a>
 
@@ -177,7 +172,7 @@ Aave implements a modified version of the ERC-20 standard for its aTokens, such 
 
 Let's examine the implementation for `balanceOf`:
 
-<figure><img src="../.gitbook/assets/image (125).png" alt=""><figcaption><p><a href="https://github.com/aave/aave-v3-core/blob/29ff9b9f89af7cd8255231bc5faf26c3ce0fb7ce/contracts/protocol/tokenization/AToken.sol#L128">AToken::balanceOf</a></p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (125).png" alt=""><figcaption><p><a href="https://github.com/aave/aave-v3-core/blob/29ff9b9f89af7cd8255231bc5faf26c3ce0fb7ce/contracts/protocol/tokenization/AToken.sol#L128">AToken::balanceOf</a></p></figcaption></figure>
 
 `override(IncentivizedERC20, IERC20)` serves to override `balanceOf` functions declared within its inheritance tree, so that the parent functions do not get called.&#x20;
 
@@ -185,7 +180,7 @@ Let's examine the implementation for `balanceOf`:
 
 <summary>On multiple inheritance</summary>
 
-![](<../.gitbook/assets/image (2) (1) (1).png>)
+![](<../../.gitbook/assets/image (2) (1) (1).png>)
 
 In short, we need to specify the contracts if we are overriding from more than one contract. Otherwise, you just need to use the override keyword.
 
@@ -207,7 +202,7 @@ super.balanceOf(user) * POOL.getReserveNormalizedIncome(_underlyingAsset)
 
 **Execution flow:**&#x20;
 
-<figure><img src="../.gitbook/assets/image (151).png" alt=""><figcaption><p>super.balanceOf(user)</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (151).png" alt=""><figcaption><p>super.balanceOf(user)</p></figcaption></figure>
 
 ### `super.BalanceOf`&#x20;
 
@@ -223,7 +218,7 @@ This calls balanceOf as declared in IncentivizedERC20.sol.
 
 ### `getReserveNormalizedIncome`
 
-<figure><img src="../.gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure>
 
 `getReserveNormalizedIncome` returns the latest liquidity index, as `currentLiquidityIndex`.&#x20;
 
@@ -244,7 +239,7 @@ This calls balanceOf as declared in IncentivizedERC20.sol.
 
 ### Visual Aid
 
-<img src="../.gitbook/assets/file.excalidraw (1).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (1).svg" alt="" class="gitbook-drawing">
 
 ## mint
 
@@ -252,16 +247,16 @@ This calls balanceOf as declared in IncentivizedERC20.sol.
 
 AToken::`mint` -> ScaledBalanceTokenBase::`_mintScaled` ->  MintableIncentivizedERC20::`_mint`
 
-<figure><img src="../.gitbook/assets/image (13).png" alt=""><figcaption><p>AToken inherits ScaledBalanceTokenBase</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption><p>AToken inherits ScaledBalanceTokenBase</p></figcaption></figure>
 
 * `amountScaled`, the amount to mint is scaled against the liquidity index in `_mintScaled`.&#x20;
 * `_mint` increments the user's balance by `amountScaled`.
 * user's balance held in `_userState[account].balance`.
 
-<figure><img src="../.gitbook/assets/image (99).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (99).png" alt=""><figcaption></figcaption></figure>
 
 ### Execution flow: Visual Aid
 
 Here is a more complete execution flow chart spanning the relevant portions across different contracts.
 
-<img src="../.gitbook/assets/file.excalidraw (20).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (20).svg" alt="" class="gitbook-drawing">

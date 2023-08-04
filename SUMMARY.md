@@ -78,7 +78,8 @@
 ## Contracts
 
 * [StableDebtToken](contracts/stabledebttoken.md)
-* [AToken](contracts/atoken.md)
+* [AToken](contracts/atoken/README.md)
+  * [Simple example: mint & balanceOf](contracts/atoken/simple-example-mint-and-balanceof.md)
 * [DefaultReserveInterestRateStrategy](contracts/defaultreserveinterestratestrategy.md)
 * [L2](contracts/l2/README.md)
   * [🚧 PriceOracleSentinel](contracts/l2/priceoraclesentinel.md)
