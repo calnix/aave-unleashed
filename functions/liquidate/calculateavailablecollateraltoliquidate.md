@@ -20,7 +20,7 @@
 * [ ] liquidation fee
 * [ ] Wrap-up
 
-<img src="../../.gitbook/assets/file.excalidraw (26).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (2).svg" alt="" class="gitbook-drawing">
 
 ## \_calculateAvailableCollateralToLiquidate
 
@@ -79,7 +79,7 @@ Liquidator repays debt to protocol, and takes the equivalent value in the form o
 
 **Let's reorder the operations so it is clearer:**
 
-```
+```solidity
 // value debt in USD
 (debtToCover/debtAssetUnit * debtPrice) = debt[USD]
 
@@ -96,7 +96,7 @@ Please note the "in wei" is simply meant to indicate that the collateral is now 
 
 `baseCollateral` is the equivalent amount of collateral for the specified debt to be repaid. Now we need to apply the liquidation bonus on it.
 
-```
+```solidity
 // liqudiationBonus expressed as 1.XX
 maxCollateralToLiquidate = baseCollateral * liquidationBonus
 ```

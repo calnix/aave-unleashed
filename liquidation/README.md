@@ -4,6 +4,37 @@ description: https://docs.aave.com/risk/asset-risk/risk-parameters#liquidation-t
 
 # Liquidation
 
+## TLDR
+
+If a user's health factor falls bellow 1.0, he is subject to liquidation.
+
+* user’s health factor: $$0.95 < hf < 1$$, the loan is eligible for a liquidation of 50%.
+* user’s health factor: $$hf <= 0.95$$, the loan is eligible for a liquidation of 100%.
+
+The user's max repayable bad debt is determined by close factor (50%/100%), which is a function of his health factor.
+
+Liquidators are incentivised to hunt bad loans by being awarded a liquidation bonus. This bonus is financed by the liquidation penalty suffered by users who fail to keep their loans healthy.
+
+The protocol levies a small liquidation fee on successful liquidations - a cut from the liquidation bonus liquidators enjoy.
+
+{% hint style="success" %}
+**User - on liquidation**
+
+* suffers liquidation penalty
+* loses collateral equivalent to the value of repaid debt + liq. bonus&#x20;
+* **collateral lost = (repay + liq. bonus)**
+
+**Liquidator**
+
+* gains liquidation bonus from user
+* pays liquidation protocol fee
+* **profit = (liquidation bonus - protocol fee - gas)**
+{% endhint %}
+
+{% hint style="warning" %}
+Liquidators must already have sufficient balance of the debt asset, which will be used by the `liquidationCall` to pay back the debt. They can use `flashLoan` for liquidations.
+{% endhint %}
+
 ## Overview
 
 #### **There are two ways that a loan can become unhealthy:**&#x20;
@@ -171,61 +202,43 @@ If user's health factor $$\leq$$**0.95** \[`CLOSE_FACTOR_HF_THRESHOLD`]
 * Liquidators can set `debtToCover` to `uint(-1)` and the protocol will proceed with the highest possible liquidation allowed by the close factor.
 * Partial Liquidation: In the event that the `debtToCover` is less than maxLiquidatableDebt, the loan position will be liquidated partially, based on `debtToCover`&#x20;
 
-### Liquidation Incentive
+### Liquidation Bonus/Penalty
 
+Liquidators are incentivised to hunt bad loans as a means of keeping the protocol healthy. They prevent Aave from being saddled with bad debt.
 
+To that end, successful liquidations award the liquidator with a bonus. For example, if a liquidator liquidiates 100% of a user's debt, the user does not just lose the equivalent amount of collateral in base value. The target user suffers an additional haircut of liquidation penalty, which goes to the liquidator.
 
-### Liquidation penalty
+If the liquidation bonus 5%, the user loses collateral worth 105% of his debt.
 
-The liquidation penalty is a fee rendered on the price of assets of the collateral when liquidators purchase it as part of the liquidation of a loan that has passed the liquidation threshold.
+Example:
 
-
-
-### Liquidation Factor&#x20;
-
-The liquidation factor directs a share of the liquidation penalty to a collector contract from the ecosystem treasury.
-
-##
-
-##
-
-##
-
-## TODO:
-
-
-
-## Example
-
-<figure><img src="../.gitbook/assets/image (71).png" alt=""><figcaption></figcaption></figure>
-
-* [https://docs.google.com/spreadsheets/d/1DRLIDCo-tUKF13NJoo9od1FmvUnrjeHibKzhZJ48Ar0/edit#gid=550821971](https://docs.google.com/spreadsheets/d/1DRLIDCo-tUKF13NJoo9od1FmvUnrjeHibKzhZJ48Ar0/edit#gid=550821971)
-* modify the example with the correct close factor, liquidation incentive, penalties, etc.&#x20;
-
-### Here's an overview of how liquidation works on Aave:
-
-1. Collateralization Ratio: Each borrower on Aave must maintain a minimum collateralization ratio for the safety of lenders. The collateralization ratio is the value of the borrower's collateral compared to the value of their outstanding loan. If the ratio falls below a certain threshold, the borrower's position becomes vulnerable to liquidation.
-2. Health Factor: Aave calculates a health factor for each borrower, which is the ratio of the borrower's collateral value to their outstanding loan amount, adjusted for risk parameters. If the health factor falls below a predefined threshold, typically 1, the position is considered unhealthy and subject to liquidation.
-3. Liquidation Incentives: To encourage other users to liquidate unhealthy positions, Aave offers liquidators an incentive in the form of a discount on the outstanding loan. Liquidators can purchase the borrower's debt at a discounted price, allowing them to make a profit when repaying the loan using the borrower's collateral.
-4. Flash Loan Mechanism: Aave's liquidation process utilizes the flash loan mechanism, which allows users to temporarily borrow funds without providing collateral. Liquidators can borrow the required amount to repay the outstanding loan and initiate the liquidation process.
-5. Collateral Seizure: During the liquidation, the borrower's collateral is seized and sold in the open market to repay the outstanding loan. The liquidation process ensures lenders are repaid and incentivizes borrowers to maintain a healthy collateralization ratio.
-6. Liquidation Penalty: In addition to the discount received by the liquidator, a liquidation penalty is applied to the borrower. The penalty is a fee charged to the borrower to discourage them from allowing their position to become unhealthy. The penalty amount is typically a percentage of the outstanding loan.
+* User has $100 of bad debt in some asset A; eligible for 100% liquidation
+* Liquidator repays user's loan in full.
+* Asset A has a liquidation bonus of 5%.
+* Liquidator takes from user:
+  * $100 of collateral -> to cover the debt repaid to protocol, on behalf of
+  * $5 of collateral -> liquidation bonus; liquidator's profit
 
 {% hint style="info" %}
-Liquidators must already have sufficient balance of the debt asset, which will be used by the `liquidationCall` to pay back the debt. They can use `flashLoan` for liquidations.
+Essentially, liquidation bonus is the profit enjoyed by the liquidator for services rendered.
 {% endhint %}
 
+### Liquidation Fee&#x20;
 
+The liquidation fee directs a share of the liquidation penalty to a collector contract from the ecosystem treasury.
 
-**Links**
+Essentially, this is a tax levied on the profit enjoyed by liquidators. To continue the earlier example:
 
-* [https://docs.aave.com/faq/borrowing#when-could-my-stable-rate-be-rebalanced](https://docs.aave.com/faq/borrowing#when-could-my-stable-rate-be-rebalanced)
-* [https://mymerlin.io/website/liquidation-on-aave/](https://mymerlin.io/website/liquidation-on-aave/)
-* [https://docs.aave.com/risk/asset-risk/risk-parameters](https://docs.aave.com/risk/asset-risk/risk-parameters)
-* [https://docs.aave.com/faq/liquidations](https://docs.aave.com/faq/liquidations)
-* [https://docs.aave.com/developers/guides/liquidations](https://docs.aave.com/developers/guides/liquidations)
+* Liquidator enjoys bonus of $5
+* Liquidation fee for the collateral asset that was taken as bonus is 1%
+* Liquidator pays $0.05 to the treasury
 
-#### Competitive liquidation
+{% hint style="info" %}
+The liquidation fee is determined by the collateral asset that the liquidator decides to liquidate, to cover the bad debt.
 
-* how/why competitive
-* compare to other mechanisms
+* User has asset A,B,C as collateral supporting debt in asset D.
+* Liquidator has to pair one of the collaterals off against the debt asset he is looking to liquidate.
+* If he chooses to repay asset D and liquidating asset A in the process, the liquidation fee he is subject to is determined by the liquidation fee parameter as set on asset A in its reserveConfiguration.&#x20;
+{% endhint %}
+
+##

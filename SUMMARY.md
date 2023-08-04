@@ -10,6 +10,7 @@
 * [Stable borrowing](stable-borrowing.md)
   * [🚧 Under construction](stable-borrowing/under-construction.md)
 * [Liquidation](liquidation/README.md)
+  * [🚧 TODO: Full example](liquidation/todo-full-example.md)
   * [🚧 Under construction: oracles](liquidation/under-construction-oracles.md)
 
 ## Primer
