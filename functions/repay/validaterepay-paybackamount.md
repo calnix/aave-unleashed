@@ -35,7 +35,7 @@
    * cos' what if the debt was unexpectedly large
 {% endhint %}
 
-**Then we check if the asset status via** [**getFlags**](../common-functions/getflags.md)**:**
+**Then we check if the asset status via** [**getFlags**](../common-functions/getflags/)**:**
 
 * Active
 * not Paused

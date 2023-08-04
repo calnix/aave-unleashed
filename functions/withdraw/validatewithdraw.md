@@ -26,6 +26,6 @@ This function confirms user has sufficient balance meeting withdrawal requiremen
 * checks status flags of asset
 
 {% hint style="info" %}
-To better understand getFlags, see: [getFlags](../common-functions/getflags.md)
+To better understand getFlags, see: [getFlags](../common-functions/getflags/)
 {% endhint %}
 
