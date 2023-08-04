@@ -100,5 +100,5 @@
 * [Other features](aave-features/other-features/README.md)
   * [Repay with ATokens](aave-features/other-features/repay-with-atokens.md)
   * [eMode: High efficiency Mode](aave-features/other-features/emode-high-efficiency-mode.md)
-  * [Aave Vault](aave-features/other-features/aave-vault.md)
-  * [Portal](aave-features/other-features/portal.md)
+  * [🚧 Aave Vault](aave-features/other-features/aave-vault.md)
+  * [🚧 Portal](aave-features/other-features/portal.md)
