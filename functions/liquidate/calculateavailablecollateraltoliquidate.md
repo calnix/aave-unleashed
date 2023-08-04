@@ -56,7 +56,7 @@ Define what 1 unit of each asset is
 
 Obtain decimals; see [getDecimals](../common-functions/getdecimals.md).
 
-### 3. Get liquidation protocol fee
+### 3. Get liquidation fee
 
 When liquidating, the protocol may apply a liquidation fee that goes to the protocol's treasury.
 

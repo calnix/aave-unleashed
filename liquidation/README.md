@@ -221,6 +221,9 @@ Example:
 
 {% hint style="info" %}
 Essentially, liquidation bonus is the profit enjoyed by the liquidator for services rendered.
+
+* Liquidation bonus varies from asset to asset: [https://docs.aave.com/risk/v/aave-v2/asset-risk/risk-parameters](https://docs.aave.com/risk/v/aave-v2/asset-risk/risk-parameters)
+* Liquidation bonus is based on the collateral asset selected to be liquidated; not the debt asset.
 {% endhint %}
 
 ### Liquidation Fee&#x20;
