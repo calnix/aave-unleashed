@@ -43,7 +43,7 @@ Liquidator repays debt and take equivalent value in collateral from user. Howeve
 
 ### 1. Get prices of both collateral and debt assets&#x20;
 
-<figure><img src="../../.gitbook/assets/image (3) (1) (1) (1) (1) (1).png" alt="" width="529"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3) (1) (1) (1) (1) (1) (1).png" alt="" width="529"><figcaption></figcaption></figure>
 
 ### 2. Define 1 unit of each asset
 
@@ -120,7 +120,7 @@ Liquidation penalty is the liquidation bonus given as incentive to liquidators.&
 
 With finding `maxCollateralToLiquidate` we have established how much collateral the user must give up in this process. Does he have enough?
 
-<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 If `maxCollateralToLiquidate > userCollateralBalance` :&#x20;
 

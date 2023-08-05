@@ -26,9 +26,7 @@ Depending on which kind of debt the user has, stable or variable, the burn funct
 
 <img src="../../.gitbook/assets/file.excalidraw.svg" alt="" class="gitbook-drawing">
 
-
-
-
+* See StableDebtToken: [burn](../../contracts/stabledebttoken.md#burn)
 
 ## Burn variableDebtToken
 

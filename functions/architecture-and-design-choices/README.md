@@ -1,6 +1,6 @@
 # Architecture & Design choices
 
-<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 While this screenshot is of v2, (lendingPool was renamed Pool in v3), it is useful to illustrate the architecture of Aave on the whole.
 

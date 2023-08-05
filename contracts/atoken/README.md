@@ -91,7 +91,7 @@ abstract contract VersionedInitializable {
 
 This contract is used to assist with initialization. It is modified from the Initializable contract of OpenZeppelin, and the revision version number is introduced. When the version number becomes larger, it can be initialized again.
 
-<figure><img src="../../.gitbook/assets/image (4) (1).png" alt=""><figcaption><p><strong>VersionedInitializable.sol</strong></p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption><p><strong>VersionedInitializable.sol</strong></p></figcaption></figure>
 
 <figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption><p>AToken.sol</p></figcaption></figure>
 
@@ -180,7 +180,7 @@ Let's examine the implementation for `balanceOf`:
 
 <summary>On multiple inheritance</summary>
 
-![](<../../.gitbook/assets/image (2) (1) (1) (1).png>)
+![](<../../.gitbook/assets/image (2) (1) (1) (1) (1).png>)
 
 In short, we need to specify the contracts if we are overriding from more than one contract. Otherwise, you just need to use the override keyword.
 

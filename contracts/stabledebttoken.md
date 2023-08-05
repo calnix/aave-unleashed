@@ -8,7 +8,7 @@ We will examine stableDebtToken contract in this section.
 
 ## getSupplyData
 
-<figure><img src="../../.gitbook/assets/image (161).png" alt=""><figcaption><p><strong>getSupplyData</strong></p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (161).png" alt=""><figcaption><p><strong>getSupplyData</strong></p></figcaption></figure>
 
 This function is called in .cache, and we will explain each component.&#x20;
 
@@ -28,7 +28,7 @@ This function is called in .cache, and we will explain each component.&#x20;
 * Inherited from IncentivizedERC20.sol
 * Essentially a getter function for the internal storage variable `_totalSupply`
 
-<figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption><p>IncentivizedERC20.sol</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption><p>IncentivizedERC20.sol</p></figcaption></figure>
 
 {% hint style="info" %}
 On \_totalSupply:
@@ -65,7 +65,7 @@ Calculates total stable debt, accounting for interest accrued to date.&#x20;
 * `avgRate` is `_avgStableRate`
 * `principalSupply is _totalSupply`
 
-<figure><img src="../../.gitbook/assets/image (9) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (9) (2).png" alt=""><figcaption></figcaption></figure>
 
 * calculates interest compounded from `_totalSupplyTimestamp` till now (`block.timestamp`)
 * `_totalSupplyTimestamp`: Timestamp of the last update of \_totalSupply
@@ -81,7 +81,7 @@ Every time `mint` or `burn` is called, `_totalSupply` is updated such that it ac
 
 For example, at the start of `mint`
 
-<figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
 
 From this, we can see that `_totalSupply` is updated with the interest accrual from previous timestamp till now.
 
@@ -92,7 +92,7 @@ Since this occurs on each function call that would modify `_totalSupply`, the de
 * internal storage variable
 * weighted average rate, calculated across all stable borrows
 
-<figure><img src="../../.gitbook/assets/image (4) (1) (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1) (3).png" alt=""><figcaption></figcaption></figure>
 
 Simply put, assume there are 3 stable borrows at differing times:
 
@@ -120,7 +120,7 @@ weighted average rate = (100 \* 1%) + (200 \* 2%) + (300 \* 3%) / (100 + 200 + 3
 
 ## balanceOf
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 The balance for any address is calculated to account for interest accrued since the last interaction.
 
@@ -133,12 +133,12 @@ The balance for any address is calculated to account for interest accrued since 
 
 Declared on StableDebtToken.sol.
 
-<figure><img src="../../.gitbook/assets/image (3) (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (3).png" alt=""><figcaption></figcaption></figure>
 
 **`_calcTotalSupply(_avgStableRate)`**
 
-* [`super.TotalSupply()`](./#super.totalsupply)  returns `_totalSupply`; accounts for interest from inception till `_totalSupplyTimestamp`.
-* [`_calcTotalSupply`](./#\_calctotalsupply-avgrate) will compound this with the recently accrued interest, from `_totalSupplyTimestamp` till now.
+* [`super.TotalSupply()`](stabledebttoken.md#super.totalsupply)  returns `_totalSupply`; accounts for interest from inception till `_totalSupplyTimestamp`.
+* [`_calcTotalSupply`](stabledebttoken.md#\_calctotalsupply-avgrate) will compound this with the recently accrued interest, from `_totalSupplyTimestamp` till now.
 
 Therefore, `totalSupply` returns the total stable debt, accounting for all interest to date.&#x20;
 
@@ -150,13 +150,13 @@ Let's examine mint, from the pretext that is has been called via `executeBorrow`
 
 * variable is cached to avoid unnecessary calls to storage: `currentStableRate`
 
-<figure><img src="../../.gitbook/assets/image (1) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (2).png" alt=""><figcaption></figcaption></figure>
 
 #### **\_calculateBalanceIncrease**&#x20;
 
 calculates the increase in balance due to compounding interest, for a specific user, since the previous &#x20;
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 #### **Update \_totalSupply**&#x20;
 
@@ -167,7 +167,7 @@ vars.nextSupply = _totalSupply = vars.previousSupply + amount;
 ```
 
 * `_totalSupply` is updated to be `previousSupply + amount`
-* `previousSupply` reflects total stable debt and recently accrued interest as explained in [totalSupply](./#totalsupply)
+* `previousSupply` reflects total stable debt and recently accrued interest as explained in [totalSupply](stabledebttoken.md#totalsupply)
 * hence, `_totalSupply` is incremented to account for both unbooked interest and incoming borrow.
 
 #### **Calculate nextStableRate**
@@ -183,10 +183,10 @@ _userState[onBehalfOf].additionalData = vars.nextStableRate.toUint128();
 ```
 {% endcode %}
 
-<figure><img src="../../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
 
 * From now till the next future interaction, interest will compound at the nextStableRate.
-* This is reflected in [balanceOf](./#balanceof), in **\_calculateBalanceIncrease** section.
+* This is reflected in [balanceOf](stabledebttoken.md#balanceof), in **\_calculateBalanceIncrease** section.
 
 #### **Calculate updated average stable rate**
 
@@ -199,13 +199,13 @@ _avgStableRate = (
 
 ```
 
-<figure><img src="../../.gitbook/assets/image (6) (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6) (4).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (7) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (7) (2).png" alt=""><figcaption></figcaption></figure>
 
 #### \_mint&#x20;
 
-<figure><img src="../../.gitbook/assets/image (8) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (8) (2).png" alt=""><figcaption></figcaption></figure>
 
 * increments user's balance by amount
 * makes a call to \_incentivesController, should it be defined
@@ -225,17 +225,17 @@ Here it is in words:
 
 ### Visual Aid
 
-<img src="../../.gitbook/assets/file.excalidraw (1) (1) (1).svg" alt="" class="gitbook-drawing">
+<img src="../.gitbook/assets/file.excalidraw (1) (1) (1).svg" alt="" class="gitbook-drawing">
 
 ## burn
 
-This function is typically called through [repay](../../functions/repay/), when the user wishes to repay all or some of his stable debt.
+This function is typically called through [repay](../functions/repay/), when the user wishes to repay all or some of his stable debt.
 
-<img src="../../.gitbook/assets/file.excalidraw (1).svg" alt="" class="gitbook-drawing">
+<img src="../.gitbook/assets/file.excalidraw (1).svg" alt="" class="gitbook-drawing">
 
 ### **Get variables**
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 **\_calculateBalanceIncrease**
 
@@ -250,6 +250,8 @@ This function is typically called through [repay](../../functions/repay/), when 
 **get user's stable rate:** `_userState[from].additionalData`
 
 ### **Decrement avgStable rate accordingly**
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 **if `(totalSupply <= amount)`:**
 
@@ -279,6 +281,8 @@ A discrepancy arises, such that there is no debt to repay; this is possible beca
 
 ### Update user info
 
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
 **if amount == user's updated balance:**
 
 * reset user's stabel rate
@@ -290,6 +294,8 @@ Global `_totalSupplyTimestamp` is updated as well
 {% endhint %}
 
 ### \_mint or \_burn&#x20;
+
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 Depends if accrued interest > user input
 

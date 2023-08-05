@@ -28,7 +28,7 @@ Liquidation fee is taken from the user and transferred to treasury.
 
 <figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption><p>AToken.sol</p></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption><p>AToken.sol</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption><p>AToken.sol</p></figcaption></figure>
 
 * ATokens are transferred to the treasury as liquidation fee.&#x20;
 * validate is set to false, so no HF check is done.

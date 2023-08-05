@@ -155,7 +155,7 @@ Held in storage, each `ReserveData`, contains a variable `currentStableBorrowRat
 Upon taking up a stable loan, the rate enjoyed by the user is stored in `_userState[address].additionalData`, as defined on the stableDebtToken contract.
 
 {% hint style="success" %}
-We offered a constrained explanation here, following which you can see the [StableDebtToken](contracts/stabledebttoken/) section for specific code details.
+We offered a constrained explanation here, following which you can see the [StableDebtToken](contracts/stabledebttoken.md) section for specific code details.
 {% endhint %}
 
 
