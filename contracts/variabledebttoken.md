@@ -1,5 +1,7 @@
 # VariableDebtToken
 
+Note that debt tokens cannot be transferred and therefore do not have their related functions.
+
 ## User State
 
 <figure><img src="../.gitbook/assets/image (248).png" alt=""><figcaption><p>IncentivizedERC20<br></p></figcaption></figure>

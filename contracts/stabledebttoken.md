@@ -4,7 +4,7 @@ description: https://docs.aave.com/developers/v/2.0/the-core-protocol/debt-token
 
 # StableDebtToken
 
-We will examine stableDebtToken contract in this section.
+We will examine stableDebtToken contract in this section. Note that debt tokens cannot be transferred and therefore do not have their related functions.
 
 ## getSupplyData
 

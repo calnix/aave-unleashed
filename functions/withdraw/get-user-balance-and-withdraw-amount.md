@@ -25,7 +25,7 @@ IAToken(reserveCache.aTokenAddress).scaledBalanceOf(msg.sender).rayMul(reserveCa
 {% endcode %}
 
 * `scaledBalanceOf` returns the user's aToken balance scaled against the liquidity index at the time of supply.
-  * $$scaledBalanceOf = Deposit/liquidtyIndex$$
+* $$scaledBalanceOf = Deposit/liquidtyIndex$$
 
 This scaled balance is multiplied against the current liquidity index, which was updated in `updateState`.
 
