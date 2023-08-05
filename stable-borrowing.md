@@ -12,6 +12,13 @@ The stable rate provides predictability for the borrower; however, it comes at a
 Not all assets offer stable rates: assets that are most exposed to liquidity risk do not offer stable rates.
 {% endhint %}
 
+{% hint style="warning" %}
+Can I borrow using stable and variable rate at the same time for one asset?
+
+* **NO**
+* [https://docs.aave.com/faq/depositing-and-earning ](https://docs.aave.com/faq/depositing-and-earning)
+{% endhint %}
+
 ## Stable rate
 
 Users who engage in stable borrowing will enjoy a fixed interest rate for the duration of their loan, with one caveat - see rebalancing condition below.
@@ -158,11 +165,16 @@ Upon taking up a stable loan, the rate enjoyed by the user is stored in `_userSt
 We offered a constrained explanation here, following which you can see the [StableDebtToken](contracts/stabledebttoken.md) section for specific code details.
 {% endhint %}
 
+## Incentive to rebalance
 
+The rebalanceStableBorrowRate function is a public function that can be called by anyone, targeting some specified wallet address.
 
-{% hint style="warning" %}
-Can I borrow using stable and variable rate at the same time for one asset?
+<figure><img src=".gitbook/assets/image (239).png" alt=""><figcaption></figcaption></figure>
 
-* **NO**
-* [https://docs.aave.com/faq/depositing-and-earning ](https://docs.aave.com/faq/depositing-and-earning)
-{% endhint %}
+But unlike liquidations, there is no incentive to do so. Aave will provide an agent that will periodically monitor all the stable rates positions and rebalance the ones that will be deemed necessary.
+
+<figure><img src=".gitbook/assets/image (240).png" alt=""><figcaption></figcaption></figure>
+
+#### From Aave v1 whitepaper:
+
+<figure><img src=".gitbook/assets/image (250).png" alt=""><figcaption></figcaption></figure>
