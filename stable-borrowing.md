@@ -73,7 +73,7 @@ In the picture above, the portions of `calculateInterestRates` that are pertinen
 
 For a walkthrough on their values, please see the section on [DefaultReserveInterestRateStrategy](contracts/defaultreserveinterestratestrategy.md).
 
-<figure><img src=".gitbook/assets/image (17).png" alt=""><figcaption><p> <code>calculateInterestRates</code> </p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (17) (1).png" alt=""><figcaption><p> <code>calculateInterestRates</code> </p></figcaption></figure>
 
 ## Caveat: Rebalancing
 

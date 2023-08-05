@@ -67,7 +67,7 @@ uint256 internal constant COLLATERAL_MASK =
 * `COLLATERAL_MASK` is passed as `mask`
 * `bitmapData` is the binary string comprising of isolated collateral bits as explained in: [isUsingAsCollateralAny](../supply/isfirstsupply/isusingascollateralone-isusingascollateralany.md#isusingascollateralany)&#x20;
 
-<img src="../../.gitbook/assets/file.excalidraw (8).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (8) (1).svg" alt="" class="gitbook-drawing">
 
 As we can see, we can end with id of value 1 -> index of the first asset which has its collateral bit set to `1` is 1.&#x20;
 

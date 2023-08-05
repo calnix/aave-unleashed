@@ -20,11 +20,11 @@ Previously, we established how much debt user was inclined repay and assigned it
 
 Depending on which kind of debt the user has, stable or variable, the burn function will be called on the corresponding debt token contract.
 
-<img src="../../.gitbook/assets/file.excalidraw (33).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (8).svg" alt="" class="gitbook-drawing">
 
 ## Burn stableDebtToken
 
-<img src="../../.gitbook/assets/file.excalidraw.svg" alt="" class="gitbook-drawing">
+<figure><img src="../../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
 
 * See StableDebtToken: [burn](../../contracts/stabledebttoken.md#burn)
 
