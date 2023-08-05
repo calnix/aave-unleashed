@@ -45,7 +45,7 @@ Periodically, parameters are modified to better suit market conditions. Proposal
 
 ## \_getOverallBorrowRate
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Calculates the overall borrow rate as the weighted average between the total variable debt and total stable debt.
 

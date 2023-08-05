@@ -64,7 +64,7 @@ The purpose of the mask is to wipe out all other irrelevant data, while extracti
 
 To illustrate this portion, let us assume the result so far is as follows:
 
-```
+```solidity
 0x00000000000000000000000000000000000000000000 F0FF 0000000000000000 
 ```
 
