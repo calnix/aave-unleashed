@@ -160,7 +160,7 @@ Abstract contract ScaledBalanceTokenBase inherits MintableIncentivizedERC20 and 
 
 ### Visual Aid
 
-<img src="../../.gitbook/assets/file.excalidraw.svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (2).svg" alt="" class="gitbook-drawing">
 
 ### EIP712Base <a href="#2.3-eip712base" id="2.3-eip712base"></a>
 
@@ -239,7 +239,7 @@ This calls balanceOf as declared in IncentivizedERC20.sol.
 
 ### Visual Aid
 
-<img src="../../.gitbook/assets/file.excalidraw (1).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (1) (1).svg" alt="" class="gitbook-drawing">
 
 ## mint
 

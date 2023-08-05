@@ -77,7 +77,8 @@
 
 ## Contracts
 
-* [StableDebtToken](contracts/stabledebttoken.md)
+* [StableDebtToken](contracts/stabledebttoken/README.md)
+  * [Implementation explained](contracts/stabledebttoken/implementation-explained.md)
 * [AToken](contracts/atoken/README.md)
   * [Simple example: mint & balanceOf](contracts/atoken/simple-example-mint-and-balanceof.md)
 * [DefaultReserveInterestRateStrategy](contracts/defaultreserveinterestratestrategy.md)

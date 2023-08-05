@@ -14,9 +14,7 @@
 * [ ] updateIsolatedDebtIfIsolated
 * [ ] handle repayment
 
-Previously, we established how much debt user was inclined repay and assigned its value to **`paybackAmount`**.
-
-Now we are going to burn accordingly debt tokens to reflect a repayment in debt.
+Previously, we established how much debt user was inclined repay and assigned its value to **`paybackAmount`**. Now we are going to burn the corresponding debt tokens to reflect a repayment in debt.
 
 ## Burn
 
@@ -26,7 +24,7 @@ Depending on which kind of debt the user has, stable or variable, the burn funct
 
 ## Burn stableDebtToken
 
-
+<img src="../../.gitbook/assets/file.excalidraw.svg" alt="" class="gitbook-drawing">
 
 
 

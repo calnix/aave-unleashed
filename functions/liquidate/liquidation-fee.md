@@ -26,7 +26,7 @@ Liquidation fee is taken from the user and transferred to treasury.
 
 <figure><img src="../../.gitbook/assets/image (1) (5).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption><p>AToken.sol</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption><p>AToken.sol</p></figcaption></figure>
 
 <figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption><p>AToken.sol</p></figcaption></figure>
 

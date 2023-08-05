@@ -20,7 +20,7 @@
 * [ ] liquidation fee
 * [ ] Wrap-up
 
-<img src="../../.gitbook/assets/file.excalidraw (2).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (2) (1).svg" alt="" class="gitbook-drawing">
 
 ## \_calculateAvailableCollateralToLiquidate
 
@@ -60,7 +60,7 @@ Obtain decimals; see [getDecimals](../common-functions/getreservefactor-getdecim
 
 When liquidating, the protocol may apply a liquidation fee that goes to the protocol's treasury.
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 * `getLiquidationProtocolFee` applies a bitmask and bitwise operations similar to getFlags or getDecimals.
 * See Common functions section or the Bitmap function to understand.

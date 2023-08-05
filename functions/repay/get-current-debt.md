@@ -23,5 +23,5 @@
 * Therefore, one of the values returned will be `0`
 
 {% hint style="info" %}
-balanceOf returns w/ interest
+`balanceOf` returns the debt balance accounting for interest up till the current block.timestamp
 {% endhint %}

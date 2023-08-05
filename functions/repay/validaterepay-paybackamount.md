@@ -31,17 +31,17 @@
 1. If `amountSent` is `type().max` -> indicates an explicit amount was not set by user
 2. `msg.sender` **is not** `onBehalfOf`: paying for someone else&#x20;
 3. when repaying for another party, user must be **explicit** in amount&#x20;
-   * cannot just whack uint256.max as a coverall&#x20;
+   * cannot just whack uint256.max as a cover all&#x20;
    * cos' what if the debt was unexpectedly large
 {% endhint %}
 
-**Then we check if the asset status via** [**getFlags**](../common-functions/getflags/)**:**
+**Then we check if the asset status via `getFlags`:**
 
 * Active
-* not Paused
+* Not Paused
 
 {% hint style="info" %}
-see link for in-depth explanation on getFlags
+See link for in-depth explanation on [**getFlags**](../common-functions/getflags/)
 {% endhint %}
 
 **Lastly, we check that user has a non-zero debt in either one of the interest rate mode: stable or variable.**
