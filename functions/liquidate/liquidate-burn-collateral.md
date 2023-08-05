@@ -74,7 +74,7 @@ To enact a transfer of the underlying asset, its corresponding aTokens must be "
 
 Lastly, **`burn`** is executed.&#x20;
 
-<figure><img src="../../.gitbook/assets/image (3) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 * **`_burnScaled`**: burn scaledAmount and update user balances
 * safeTransfer underlying asset from target user to liquidator

@@ -106,4 +106,4 @@ This function calculates and returns the following user data across all the asse
 
 <figure><img src="../../.gitbook/assets/image (53).png" alt=""><figcaption></figcaption></figure>
 
-See [calculateUserAccountDataParams](../common-functions/calculateuseraccountdataparams.md) for the full breakdown explanation.&#x20;
+See [calculateUserAccountDataParams](../common-functions/calculateuseraccountdata.md) for the full breakdown explanation.&#x20;

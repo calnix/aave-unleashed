@@ -7,7 +7,7 @@
 * `getReserveFactor`, returns the value of `reserveFactor` as a uint256 variable.
 * `reserveFactor`, amongst other data, is stored within the bitmap  `ReserveConfigurationMap`
 
-<figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 The reserve factor is a percentage of protocol interest which goes to the Aave Ecosystem Reserve. The rest of the borrow interest goes to the suppliers.

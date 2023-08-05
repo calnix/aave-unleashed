@@ -120,7 +120,7 @@ weighted average rate = (100 \* 1%) + (200 \* 2%) + (300 \* 3%) / (100 + 200 + 3
 
 ## balanceOf
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 The balance for any address is calculated to account for interest accrued since the last interaction.
 
@@ -156,7 +156,7 @@ Let's examine mint, from the pretext that is has been called via `executeBorrow`
 
 calculates the increase in balance due to compounding interest, for a specific user, since the previous &#x20;
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 #### **Update \_totalSupply**&#x20;
 
@@ -183,7 +183,7 @@ _userState[onBehalfOf].additionalData = vars.nextStableRate.toUint128();
 ```
 {% endcode %}
 
-<figure><img src="../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 * From now till the next future interaction, interest will compound at the nextStableRate.
 * This is reflected in [balanceOf](stabledebttoken.md#balanceof), in **\_calculateBalanceIncrease** section.
@@ -235,7 +235,7 @@ This function is typically called through [repay](../functions/repay/), when the
 
 ### **Get variables**
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 **\_calculateBalanceIncrease**
 
@@ -251,7 +251,7 @@ This function is typically called through [repay](../functions/repay/), when the
 
 ### **Decrement avgStable rate accordingly**
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
 **if `(totalSupply <= amount)`:**
 
@@ -281,7 +281,7 @@ A discrepancy arises, such that there is no debt to repay; this is possible beca
 
 ### Update user info
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 **if amount == user's updated balance:**
 
@@ -295,7 +295,7 @@ Global `_totalSupplyTimestamp` is updated as well
 
 ### \_mint or \_burn&#x20;
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 Depends if accrued interest > user input
 

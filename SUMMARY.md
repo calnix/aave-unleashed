@@ -38,7 +38,7 @@
   * [SupplyCap, BorrowCap](functions/common-functions/supplycap-borrowcap.md)
   * [getFlags](functions/common-functions/getflags/README.md)
     * [🚧 more on flags](functions/common-functions/getflags/more-on-flags.md)
-  * [calculateUserAccountDataParams](functions/common-functions/calculateuseraccountdataparams.md)
+  * [calculateUserAccountData](functions/common-functions/calculateuseraccountdata.md)
 * [supply](functions/supply/README.md)
   * [validateSupply](functions/supply/validatesupply.md)
   * [transfer & mint](functions/supply/transfer-and-mint.md)

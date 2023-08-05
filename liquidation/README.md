@@ -178,7 +178,7 @@ When $$H_f < 1$$ the position may be liquidated to maintain solvency.
 * This is reflected in the account health which falls to **< 1**\[$$\frac{666* 0.75}{500}$$].
 
 {% hint style="info" %}
-To see how health factor is calculated from a code perspective: [calculateUserAccountDataParams](../functions/common-functions/calculateuseraccountdataparams.md)
+To see how health factor is calculated from a code perspective: [calculateUserAccountDataParams](../functions/common-functions/calculateuseraccountdata.md)
 {% endhint %}
 
 ### **Close Factor**
