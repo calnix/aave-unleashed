@@ -38,7 +38,7 @@
   * [SupplyCap, BorrowCap](functions/common-functions/supplycap-borrowcap.md)
   * [getFlags](functions/common-functions/getflags/README.md)
     * [🚧 more on flags](functions/common-functions/getflags/more-on-flags.md)
-  * [calculateUserAccountData](functions/common-functions/calculateuseraccountdata.md)
+  * [calculateUserAccountData](functions/common-functions/calculateuseraccountdataparams.md)
 * [supply](functions/supply/README.md)
   * [validateSupply](functions/supply/validatesupply.md)
   * [transfer & mint](functions/supply/transfer-and-mint.md)
@@ -77,10 +77,11 @@
 
 ## Contracts
 
-* [StableDebtToken](contracts/stabledebttoken.md)
-  * [Implementation explained](contracts/stabledebttoken/implementation-explained.md)
 * [AToken](contracts/atoken/README.md)
   * [Simple example: mint & balanceOf](contracts/atoken/simple-example-mint-and-balanceof.md)
+* [StableDebtToken](contracts/stabledebttoken.md)
+  * [Implementation explained](contracts/stabledebttoken/implementation-explained.md)
+* [VariableDebtToken](contracts/variabledebttoken.md)
 * [DefaultReserveInterestRateStrategy](contracts/defaultreserveinterestratestrategy.md)
 * [L2](contracts/l2/README.md)
   * [🚧 PriceOracleSentinel](contracts/l2/priceoraclesentinel.md)

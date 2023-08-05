@@ -192,11 +192,9 @@ _userState[onBehalfOf].additionalData = vars.nextStableRate.toUint128();
 
 ```solidity
 // Calculates the updated average stable rate
-vars.currentAvgStableRate = 
-_avgStableRate = (
+vars.currentAvgStableRate = _avgStableRate = (
   (vars.currentAvgStableRate.rayMul(vars.previousSupply.wadToRay()) +  rate.rayMul(vars.amountInRay)).rayDiv(vars.nextSupply.wadToRay())
 ).toUint128();
-
 ```
 
 <figure><img src="../.gitbook/assets/image (6) (4).png" alt=""><figcaption></figcaption></figure>

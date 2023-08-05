@@ -23,7 +23,9 @@
 
 <figure><img src="../../.gitbook/assets/image (197).png" alt=""><figcaption></figcaption></figure>
 
+{% hint style="info" %}
 rate: reserve.currentStableBorrowRate
+{% endhint %}
 
 ### \_calculateBalanceIncrease
 
@@ -120,3 +122,6 @@ Notice that we do not just mint as per the incoming stable debt amount; but also
 ## mint variableDebtTokens
 
 <figure><img src="../../.gitbook/assets/image (203).png" alt=""><figcaption></figcaption></figure>
+
+* `amountScaled`: scale the borrow amount against variableBorrowIndex
+* See variableDebtToken [mint](../../contracts/variabledebttoken.md#mint)

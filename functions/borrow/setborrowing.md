@@ -16,7 +16,7 @@
 
 <img src="../../.gitbook/assets/file.excalidraw (32).svg" alt="" class="gitbook-drawing">
 
-`bool ifFirstBorrowing` captures the return value from either of the debt token's mint function. It is `true`, if the user had no debt previously, thereby making this incoming borrow action his very first one.
+**`bool ifFirstBorrowing`** captures the return value from either of the debt token's mint function. It is `true`, if the user had no debt previously, thereby making this incoming borrow action the user's very first one.
 
 ## setBorrowing
 
@@ -35,4 +35,3 @@ For in-depth illustration on how this function works, see: [setUsingAsCollateral
 
 The process for both are similar, one sets the borrow flag, the other sets the collateral flag.
 {% endhint %}
-
