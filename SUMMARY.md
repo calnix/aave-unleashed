@@ -13,6 +13,18 @@
   * [🚧 TODO: Full example](liquidation/todo-full-example.md)
   * [🚧 Under construction: oracles](liquidation/under-construction-oracles.md)
 
+## Primer
+
+* [Bitmap & Masks](primer/bitmap-and-masks/README.md)
+  * [🚧 padding and bytes](primer/bitmap-and-masks/padding-and-bytes.md)
+* [WadRayLibrary](primer/wadraylibrary/README.md)
+  * [Math Operations](primer/wadraylibrary/math-operations.md)
+  * [🚧 WIP: Scaling different decimal representations](primer/wadraylibrary/scaling-different-decimal-representations.md)
+  * [🚧 WIP: 2's complement](primer/wadraylibrary/2s-complement.md)
+  * [🚧 casting: to uint128](primer/wadraylibrary/casting-to-uint128.md)
+* [PercentageMath](primer/percentagemath.md)
+* [Embedded vs Linked Libraries](primer/embedded-vs-linked-libraries.md)
+
 ## Functions
 
 * [General Execution flow](functions/general-execution-flow.md)
@@ -62,18 +74,6 @@
   * [Wrap-up](functions/liquidate/wrap-up.md)
 * [🚧 swapBorrowRateMode](functions/swapborrowratemode.md)
 * [🚧 setUserUseReserveAsCollateral](functions/setuserusereserveascollateral.md)
-
-## Primer
-
-* [Bitmap & Masks](primer/bitmap-and-masks/README.md)
-  * [🚧 padding and bytes](primer/bitmap-and-masks/padding-and-bytes.md)
-* [WadRayLibrary](primer/wadraylibrary/README.md)
-  * [Math Operations](primer/wadraylibrary/math-operations.md)
-  * [🚧 WIP: Scaling different decimal representations](primer/wadraylibrary/scaling-different-decimal-representations.md)
-  * [🚧 WIP: 2's complement](primer/wadraylibrary/2s-complement.md)
-  * [🚧 casting: to uint128](primer/wadraylibrary/casting-to-uint128.md)
-* [PercentageMath](primer/percentagemath.md)
-* [Embedded vs Linked Libraries](primer/embedded-vs-linked-libraries.md)
 
 ## Contracts
 
