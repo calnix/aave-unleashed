@@ -20,7 +20,7 @@ The High Efficiency Mode or _**eMode**_ allows borrowers to extract the highest 
 * Only assets of the same category (for example stablecoins) can be borrowed in E-mode.
 * E-mode does not restrict the usage of other assets as collateral. Assets outside of the E-mode category can still be supplied as collateral with normal LTV and liquidation parameters.
 
-<figure><img src="../../.gitbook/assets/image (156).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (235).png" alt=""><figcaption></figcaption></figure>
 
 [https://docs.aave.com/developers/whats-new/efficiency-mode-emode](https://docs.aave.com/developers/whats-new/efficiency-mode-emode)&#x20;
 
@@ -46,7 +46,7 @@ This can enabling a wave of new use cases such as High leverage forex trading, H
 
 [https://governance.aave.com/t/introducing-aave-v3/6035](https://governance.aave.com/t/introducing-aave-v3/6035)
 
-<figure><img src="../../.gitbook/assets/image (46).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (157).png" alt=""><figcaption></figcaption></figure>
 
 An example:
 

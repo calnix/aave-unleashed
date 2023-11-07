@@ -21,7 +21,7 @@ Held in storage, each `ReserveData`, contains a uint128 variable `currentStableB
 
 Upon taking up a stable loan, the rate enjoyed by the user is stored in `_userState[address].additionalData`, as defined on the stableDebtToken contract.
 
-<figure><img src="../../.gitbook/assets/image (235).png" alt=""><figcaption><p>StableDebtToken is IncentivizedERC20</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (323).png" alt=""><figcaption><p>StableDebtToken is IncentivizedERC20</p></figcaption></figure>
 
 * `.additionalData` is his weighted average stable rate, based on all his previous borrows.
 * This is the rate at which interest compounds for the user.
@@ -49,7 +49,7 @@ Difference between **`_avgStableRate`**` ``and`` `**`currentStableBorrowRate`**
 
 ### **`borrow & mint`**
 
-<figure><img src="../../.gitbook/assets/image (236).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (324).png" alt=""><figcaption></figcaption></figure>
 
 `mint` returns the following two values which are stored in `reserveCache`:&#x20;
 
@@ -76,4 +76,4 @@ The updated stable rate is stored in **`reserve.currentStableBorrowRate - in sto
 
 ### Visual Aid
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (29).png" alt=""><figcaption></figcaption></figure>

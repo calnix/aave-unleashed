@@ -2,7 +2,7 @@
 
 ## Overview
 
-<figure><img src="../../.gitbook/assets/image (50).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (320).png" alt=""><figcaption></figcaption></figure>
 
 * [x] <mark style="color:orange;">cache</mark>
 * [x] <mark style="color:orange;">updateState</mark>
@@ -13,7 +13,7 @@
 * [x] burn ATokens
 * [ ] Ensure existing loans are collateralized
 
-<img src="../../.gitbook/assets/file.excalidraw (12).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (13).svg" alt="" class="gitbook-drawing">
 
 ### isBorrowingAny
 
@@ -21,7 +21,7 @@ This function checks if a user has been borrowing **any** asset.
 
 * Takes `UserConfigurationMap` as input, which contains a bitmap of the user's collaterals and borrows.
 
-<figure><img src="../../.gitbook/assets/image (31).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (308).png" alt=""><figcaption></figcaption></figure>
 
 Uses `BORROWING_MASK`, which is a bitmask that isolates the borrowing bits within `data`. `BORROWING_MASK` has a specific pattern of bits, with **alternating `1` and `0`**.
 
@@ -76,7 +76,7 @@ If the user is borrowing any asset, AND has been using the asset about to be wit
 
 * calls on `validateHealthFactor` to return the bool `hasZeroLTVCollateral`
 
-<figure><img src="../../.gitbook/assets/image (35).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (149).png" alt=""><figcaption></figcaption></figure>
 
 Etiher one of the following two conditions must be true for this function to not revert:
 
@@ -89,7 +89,7 @@ Condition 1 serves as a sanity check, given that `validateHFAndLtv` is executed 
 
 This function is primarily a wrapper around `.calculateUserAccountDataParams`.
 
-<figure><img src="../../.gitbook/assets/image (36).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (218).png" alt=""><figcaption></figcaption></figure>
 
 The require statement ensures that the calculated health factor (after withdrawal) is above the liquidation threshold. If its not, user will be unable to withdraw asset.
 
@@ -104,6 +104,6 @@ This function calculates and returns the following user data across all the asse
 * `healthFactor`
 * `hasZeroLtvCollateral`
 
-<figure><img src="../../.gitbook/assets/image (53).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (228).png" alt=""><figcaption></figcaption></figure>
 
-See [calculateUserAccountDataParams](../common-functions/calculateuseraccountdataparams.md) for the full breakdown explanation.&#x20;
+See [calculateUserAccountDataParams](../common-functions/calculateuseraccountdata.md) for the full breakdown explanation.&#x20;

@@ -6,7 +6,7 @@ A bitmap refers to a data structure that uses a sequence of bits to represent th
 
 In Solidity, a bitmap is typically represented using an unsigned integer (uint256), where each bit within the integer represents a specific element or flag. Each bit can be either set (1) or unset (0), indicating the presence or absence of a particular attribute or state.
 
-<figure><img src="../../.gitbook/assets/image (59).png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (242).png" alt="" width="375"><figcaption></figcaption></figure>
 
 By using bitwise operations, such as bitwise AND (&), bitwise OR (|), bitwise XOR (^), and bitwise negation (\~), it is possible to manipulate individual bits within the bitmap efficiently. These operations allow for checking and setting specific bits, querying the status of flags, and performing other bitwise operations.
 
@@ -40,7 +40,7 @@ In the initial V1 release, the protocol loops through all the active assets to i
 
 **UserConfiguration**
 
-<figure><img src="../../.gitbook/assets/image (19).png" alt="" width="554"><figcaption><p>Figure 4: UserConfiguration Bitmask</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (299).png" alt="" width="554"><figcaption><p>Figure 4: UserConfiguration Bitmask</p></figcaption></figure>
 
 The bitmask has a 256 bit size, it is divided in pairs of bits, one for each asset. The first bit of the pair indicates if an asset is used as collateral by the user, the second whether an asset is borrowed by the user.&#x20;
 
@@ -61,7 +61,7 @@ An 128 asset limit is acceptable. Considering the case where a user is supplying
 
 #### ReserveConfiguration
 
-<figure><img src="../../.gitbook/assets/image (1) (3).png" alt=""><figcaption><p>ReserveConfigrationMap</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (193).png" alt=""><figcaption><p>ReserveConfigrationMap</p></figcaption></figure>
 
 A bitmask has also been introduced to store the reserve configuration, defined in figure 5. A similar packing could have been achieved by using uint32 and booleans, the bitmask benefits from more gas efficiency, and more so when updating multiple configurations at once.
 
@@ -75,7 +75,7 @@ If there is a need to store more data, this bitmask can be extended by adding an
 
 ### `&`: AND
 
-<figure><img src="../../.gitbook/assets/image (166).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (241).png" alt="" width="563"><figcaption></figcaption></figure>
 
 The bitwise AND operator ( `&` ) compares each bit of the first operand to the corresponding bit of the second operand.&#x20;
 
@@ -179,13 +179,13 @@ Aave utilizes 2 bitmaps, **ReserveConfigurationMap** and **UserConfigurationMap*
 
 ### **ReserveConfigurationMap**&#x20;
 
-<figure><img src="../../.gitbook/assets/image (84).png" alt=""><figcaption><p>DataTypes.sol</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (280).png" alt=""><figcaption><p>DataTypes.sol</p></figcaption></figure>
 
 Let's examine how reserve factor (bit 64-79) can be retrieved from this bitmap.
 
 ### getReserveFactor
 
-<figure><img src="../../.gitbook/assets/image (136).png" alt=""><figcaption><p>ReserveConfiguration.sol</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (107).png" alt=""><figcaption><p>ReserveConfiguration.sol</p></figcaption></figure>
 
 {% code fullWidth="true" %}
 ```solidity
@@ -202,7 +202,7 @@ The mask is a 64 digit hexadecimal number, representing 256 bits.&#x20;
 
 <div data-full-width="true">
 
-<figure><img src="../../.gitbook/assets/image (98).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (59).png" alt=""><figcaption></figcaption></figure>
 
 </div>
 

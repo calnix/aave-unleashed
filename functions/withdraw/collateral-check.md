@@ -2,7 +2,7 @@
 
 ## Overview
 
-<figure><img src="../../.gitbook/assets/image (50).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (320).png" alt=""><figcaption></figcaption></figure>
 
 * [x] <mark style="color:orange;">cache</mark>
 * [x] <mark style="color:orange;">updateState</mark>
@@ -17,19 +17,19 @@
 Interest rates are updated to account for the withdrawal of deposits, and therefore the reduction of supply. See [.updateInterestRates](../common-functions/.updateinterestrates.md)
 {% endhint %}
 
-<img src="../../.gitbook/assets/file.excalidraw (1) (1) (1) (1) (1).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (22).svg" alt="" class="gitbook-drawing">
 
 ## isUsingCollateral
 
 * Transaction reverts on invalid `reserveIndex`
 
-<figure><img src="../../.gitbook/assets/image (40).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (315).png" alt=""><figcaption></figcaption></figure>
 
 Let's examine the bitwise manipulations with an example. In this example, we assume six bits for simplicity, w.r.t to `self.data`
 
 #### **Example: Check if the user has been using the reserve at index 2 as collateral:**
 
-<figure><img src="../../.gitbook/assets/image (26).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (307).png" alt=""><figcaption></figcaption></figure>
 
 It the result of the bitwise operations is not equal to 0, the function would return `true`. This indicates that the user has been using the reserve at `reserveIndex = 2` as collateral.
 
@@ -37,7 +37,7 @@ It the result of the bitwise operations is not equal to 0, the function would re
 
 Set the collateral bit for a specific asset to either `0` or `1`, depending on bool `usingAsCollateral`.
 
-<figure><img src="../../.gitbook/assets/image (72).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (44).png" alt=""><figcaption></figcaption></figure>
 
 #### `(reserveIndex << 1) + 1`
 
@@ -47,7 +47,7 @@ Set the collateral bit for a specific asset to either `0` or `1`, depending on b
 
 #### **`bit = 1 << offset`**
 
-<img src="../../.gitbook/assets/file.excalidraw (13).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (33).svg" alt="" class="gitbook-drawing">
 
 If `usingAsCollateral` is **true**, indicating that the reserve should be marked as used for collateral,&#x20;
 

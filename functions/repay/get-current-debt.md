@@ -2,7 +2,7 @@
 
 ## Overview
 
-<figure><img src="../../.gitbook/assets/image (233).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (229).png" alt=""><figcaption></figcaption></figure>
 
 * [x] <mark style="color:orange;">cache + updateState</mark>
 * [ ] get current debt&#x20;
@@ -16,7 +16,7 @@
 
 ## get current debt
 
-<figure><img src="../../.gitbook/assets/image (228).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (198).png" alt=""><figcaption></figcaption></figure>
 
 * queries both the stable debt and variable debt token balance for the target user
 * For a specific asset user can only borrow in either stable or variable mode; cannot have concurrent debt in both modes simultaneously

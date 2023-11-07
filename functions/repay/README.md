@@ -4,7 +4,7 @@
 
 This function is called when the user wishes to repay his existing debts. User can opt to repay in full or partially.
 
-<img src="../../.gitbook/assets/file.excalidraw (10).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (19).svg" alt="" class="gitbook-drawing">
 
 **Inputs**
 
@@ -20,7 +20,7 @@ This function is called when the user wishes to repay his existing debts. User c
 
 ## executeRepay
 
-<figure><img src="../../.gitbook/assets/image (233).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (229).png" alt=""><figcaption></figcaption></figure>
 
 ### Execution flow
 

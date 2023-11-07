@@ -2,12 +2,12 @@
 
 ## getReserveFactor
 
-<figure><img src="../../.gitbook/assets/image (182).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (254).png" alt=""><figcaption></figcaption></figure>
 
 * `getReserveFactor`, returns the value of `reserveFactor` as a uint256 variable.
 * `reserveFactor`, amongst other data, is stored within the bitmap  `ReserveConfigurationMap`
 
-<figure><img src="../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 The reserve factor is a percentage of protocol interest which goes to the Aave Ecosystem Reserve. The rest of the borrow interest goes to the suppliers.
@@ -42,7 +42,7 @@ In binary: first 176 bits are all `1` (represented by `F` in hexadecimal), follo
 
 The tilde is the bitwise NOT operator -> it flips the bits, changing 0s to 1s and 1s to 0s.
 
-<figure><img src="../../.gitbook/assets/image (176).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (35).png" alt=""><figcaption></figcaption></figure>
 
 * Notice that only the bits 64-79 are now `F`, which corresponds to the range of bits that contain the `reserveFactor` value as seen in `ReserveConfigurationMap`
 * #### **`~`**`RESERVE_FACTOR_MASK: 0x00..FFFF..00` &#x20;
@@ -71,7 +71,7 @@ To illustrate this portion, let us assume the result so far is as follows:
 * The result is right shifted by `RESERVE_FACTOR_START_BIT_POSITION`
 * `RESERVE_FACTOR_START_BIT_POSITION = 64`
 
-<figure><img src="../../.gitbook/assets/image (67).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (249).png" alt=""><figcaption></figcaption></figure>
 
 We see that the trailing zeros are dropped off, and replaced as leading zeros. Essentially, the section of bits corresponding to `reserveFactor` is moved all the way to the end.
 
@@ -95,6 +95,6 @@ uint256 (and other numbers) are left-padded.
 
 ## getDecimals
 
-<figure><img src="../../.gitbook/assets/image (246).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (334).png" alt=""><figcaption></figcaption></figure>
 
 * Process is similar to **getReserveFactor**

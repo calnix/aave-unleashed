@@ -54,7 +54,7 @@ This interest comes from borrowers who are paying interest on their loans.
 
 To calculate a new index value, the old index value is multiplied by the interest rate and the elapsed time.&#x20;
 
-<figure><img src="../.gitbook/assets/image (147).png" alt="" width="420"><figcaption><p>Index formula</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (314).png" alt="" width="420"><figcaption><p>Index formula</p></figcaption></figure>
 
 #### **Assume**&#x20;
 
@@ -124,7 +124,7 @@ In the same vein, existing balances are scaled up with liquidity index:
 
 Since the liquidity index serves to reflect the interest accumulated since inception, deposits are divided against the liquidity index at time of deposit to negate all prior interest.
 
-<figure><img src="../.gitbook/assets/image (8) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (174).png" alt=""><figcaption></figcaption></figure>
 
 * User opts to deposit at t1, when Index = 1.1
 * His deposit is scaled down by dividing against the index, to negate all interest prior to t1

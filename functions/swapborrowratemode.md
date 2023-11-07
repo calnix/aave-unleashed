@@ -11,7 +11,7 @@ This function is called when the user wishes to swap his current interest mode t
 Users can only have a debt position in **either** stable or variable. Cannot have both stable and variable debt for the same asset.
 {% endhint %}
 
-<figure><img src="../.gitbook/assets/image (204).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (289).png" alt=""><figcaption></figcaption></figure>
 
 ### Execution flow
 

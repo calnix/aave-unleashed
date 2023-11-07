@@ -29,7 +29,7 @@ All deposits are scaled against the liqudity index and stored as scaled values v
 
 **Example**
 
-<figure><img src="../../.gitbook/assets/image (247).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (335).png" alt=""><figcaption></figcaption></figure>
 
 ### mint
 

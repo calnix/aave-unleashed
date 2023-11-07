@@ -6,13 +6,13 @@ This function is called when the user wishes to withdraw their previously suppli
 
 * User gives aDAI, withdraws DAI
 
-<img src="../../.gitbook/assets/file.excalidraw (9).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (18).svg" alt="" class="gitbook-drawing">
 
 * `executeWithdraw` contains the core logics of the withdraw function
 
 ## executeWithdraw
 
-<figure><img src="../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (182).png" alt=""><figcaption></figcaption></figure>
 
 ### Execution flow
 

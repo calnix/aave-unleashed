@@ -2,7 +2,7 @@
 
 ## Overview
 
-<figure><img src="../../.gitbook/assets/image (233).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (229).png" alt=""><figcaption></figcaption></figure>
 
 * [x] <mark style="color:orange;">cache + updateState</mark>
 * [x] get current debt&#x20;
@@ -16,11 +16,11 @@
 
 ## validateRepay
 
-<figure><img src="../../.gitbook/assets/image (200).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (285).png" alt=""><figcaption></figcaption></figure>
 
 * `amountSent` is `params.amount`, which is `amount` passed into `repay`
 
-<figure><img src="../../.gitbook/assets/image (207).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (295).png" alt=""><figcaption></figcaption></figure>
 
 **The first two require statements serves as input validation for `amountSent`**
 
@@ -50,7 +50,7 @@ See link for in-depth explanation on [**getFlags**](../common-functions/getflags
 
 ## Setting paybackAmount
 
-<figure><img src="../../.gitbook/assets/image (217).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (302).png" alt=""><figcaption></figcaption></figure>
 
 * Select the non-zero debt value and assign it to **`paybackAmount`**
 

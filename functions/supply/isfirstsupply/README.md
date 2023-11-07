@@ -2,7 +2,7 @@
 
 ## Overview
 
-<figure><img src="../../../.gitbook/assets/image (122).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (91).png" alt=""><figcaption></figcaption></figure>
 
 * [x] <mark style="color:orange;">cache</mark>
 * [x] <mark style="color:orange;">updateState</mark>
@@ -21,7 +21,7 @@ If on minting ATokens, `isFirstSupply` is returned as `TRUE`, and the nested `va
   * OR,
   * `!isolationMode && getDebtCeiling == 0`: TRUE => there is no debt ceiling on incoming supplied asset AND the user is not in isolation mode.
 
-<img src="../../../.gitbook/assets/file.excalidraw (1) (1) (1) (1) (1) (1).svg" alt="" class="gitbook-drawing">
+<img src="../../../.gitbook/assets/file.excalidraw (24).svg" alt="" class="gitbook-drawing">
 
 ## isFirstSupply
 
@@ -38,7 +38,7 @@ This function checks if the incoming asset can be used as collateral. If the use
 Supplied assets are automatically treated as collateral, if possible.
 {% endhint %}
 
-<figure><img src="../../../.gitbook/assets/image (120).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (87).png" alt=""><figcaption></figcaption></figure>
 
 #### isUsingAsCollateralAny
 
@@ -68,11 +68,11 @@ However, if `isUsingAsCollateralAny` is true; user has executed supply action so
   * returns `TRUE`, along with value of debt ceiling
 * If the user is supplying multiple types of collateral, clearly he is not in isolation mode, returns `FALSE`.
 
-<figure><img src="../../../.gitbook/assets/image (52).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (159).png" alt=""><figcaption></figcaption></figure>
 
 #### Visual aid
 
-<img src="../../../.gitbook/assets/file.excalidraw (11).svg" alt="" class="gitbook-drawing">
+<img src="../../../.gitbook/assets/file.excalidraw (20).svg" alt="" class="gitbook-drawing">
 
 * isUsingCollateralOne: checks if the user has been supplying only 1 asset as collateral
 
@@ -84,7 +84,7 @@ However, if `isUsingAsCollateralAny` is true; user has executed supply action so
 
 ## setUsingAsCollateral
 
-<figure><img src="../../../.gitbook/assets/image (72).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (44).png" alt=""><figcaption></figcaption></figure>
 
 #### `(reserveIndex << 1) + 1`
 
@@ -94,7 +94,7 @@ However, if `isUsingAsCollateralAny` is true; user has executed supply action so
 
 #### **`bit = 1 << offset`**
 
-<img src="../../../.gitbook/assets/file.excalidraw (13).svg" alt="" class="gitbook-drawing">
+<img src="../../../.gitbook/assets/file.excalidraw (33).svg" alt="" class="gitbook-drawing">
 
 If `usingAsCollateral` is **true**, indicating that the reserve should be marked as used for collateral,&#x20;
 
