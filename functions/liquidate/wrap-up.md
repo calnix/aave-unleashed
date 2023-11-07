@@ -2,7 +2,7 @@
 
 ## Overview
 
-<figure><img src="../../.gitbook/assets/image (292).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (205).png" alt=""><figcaption></figcaption></figure>
 
 ### Execution flow
 
@@ -22,7 +22,7 @@
 
 ## Wrap-up
 
-<figure><img src="../../.gitbook/assets/image (294).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1) (2).png" alt=""><figcaption></figcaption></figure>
 
 * Transfer the debt asset from liquidator to protocol&#x20;
 * handleRepayment

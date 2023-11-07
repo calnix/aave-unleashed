@@ -4,14 +4,14 @@ Note that debt tokens cannot be transferred and therefore do not have their rela
 
 ## User State
 
-<figure><img src="../.gitbook/assets/image (336).png" alt=""><figcaption><p>IncentivizedERC20<br></p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (248).png" alt=""><figcaption><p>IncentivizedERC20<br></p></figcaption></figure>
 
 * `balance`: user's scaled balance&#x20;
 * `additionalData`: user's last index at which his state was updated
 
 ## mint
 
-<img src="../.gitbook/assets/file.excalidraw (41).svg" alt="" class="gitbook-drawing">
+<img src="../.gitbook/assets/file.excalidraw (17).svg" alt="" class="gitbook-drawing">
 
 * `amountScaled`: scale the borrow amount against variableBorrowIndex
 * `scaledBalance`: user's scaled balance
@@ -22,7 +22,7 @@ Update `additionalData` with the current variableBorrowIndex, to reflect current
 
 #### \_mint
 
-<figure><img src="../.gitbook/assets/image (337).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (249).png" alt=""><figcaption></figcaption></figure>
 
 * increment `totalSupply` by `amountScaled`
 * increment user's balance by `amountScaled`
@@ -37,7 +37,7 @@ This function is typically called when the user repays his debt, therefore fully
   * reduces total supply
   * reduces user's balance
 
-<img src="../.gitbook/assets/file.excalidraw (9).svg" alt="" class="gitbook-drawing">
+<img src="../.gitbook/assets/file.excalidraw (30).svg" alt="" class="gitbook-drawing">
 
 **`_burnScaled`**&#x20;
 

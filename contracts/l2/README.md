@@ -26,13 +26,13 @@ Due to calldata costs, Aave deploys a calldata optimized version of the Pool con
 
 **For example, supply:**
 
-<figure><img src="../../.gitbook/assets/image (329).png" alt=""><figcaption><p>L2Pool.sol</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (241).png" alt=""><figcaption><p>L2Pool.sol</p></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (330).png" alt=""><figcaption><p>CalldataLogic.sol</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (242).png" alt=""><figcaption><p>CalldataLogic.sol</p></figcaption></figure>
 
 The compact calldata is decoded into the usual parameters and passed into the usual supply function.
 
-<figure><img src="../../.gitbook/assets/image (332).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (244).png" alt=""><figcaption></figcaption></figure>
 
 ## L2 encoder
 
@@ -42,7 +42,7 @@ The compact calldata is decoded into the usual parameters and passed into the us
 
 **Example: encodeSupplyParams**
 
-<figure><img src="../../.gitbook/assets/image (331).png" alt=""><figcaption><p>L2Encoder.sol</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (243).png" alt=""><figcaption><p>L2Encoder.sol</p></figcaption></figure>
 
 `encodeSupplyParams` takes three inputs: `asset`, `amount`, and `referralCode`. It then converts these parameters into a compact representation using a single `bytes32` value.
 
@@ -51,7 +51,7 @@ The compact calldata is decoded into the usual parameters and passed into the us
 3. `res`: The function combines `assetId`, `shortenedAmount`, and `referralCode` into a single 256-bit unsigned integer (uint256) named `res`. It uses bitwise shifting (shl) to position the values correctly within the uint256 variable and then uses the add operation to combine them into one.
 4. Finally, the function returns `res`, which is the compact representation of the supply parameters.
 
-<figure><img src="../../.gitbook/assets/image (333).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (245).png" alt=""><figcaption></figcaption></figure>
 
 
 

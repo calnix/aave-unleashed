@@ -2,7 +2,7 @@
 
 ## Overview
 
-<figure><img src="../../.gitbook/assets/image (151).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (39).png" alt=""><figcaption></figcaption></figure>
 
 * [x] <mark style="color:orange;">cache</mark>
 * [x] <mark style="color:orange;">updateState</mark>
@@ -22,7 +22,7 @@
 
 User initiated a borrow for a specific asset, in this step we will transfer this asset to the user.
 
-<img src="../../.gitbook/assets/file.excalidraw (15).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (3).svg" alt="" class="gitbook-drawing">
 
 * Asset is transferred to the user via safeTransfer.
 

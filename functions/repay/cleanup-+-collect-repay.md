@@ -2,7 +2,7 @@
 
 ## Overview
 
-<figure><img src="../../.gitbook/assets/image (229).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (233).png" alt=""><figcaption></figcaption></figure>
 
 * [x] <mark style="color:orange;">cache + updateState</mark>
 * [x] get current debt&#x20;
@@ -16,7 +16,7 @@
 
 We will cover the last three components in this section.
 
-<figure><img src="../../.gitbook/assets/image (168).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (210).png" alt=""><figcaption></figcaption></figure>
 
 ### setBorrowing
 
@@ -31,7 +31,7 @@ In the event that the debt position was collateralized by an isolated asset, and
 * total debt of the isolated asset must be decremented (`isolationModeTotalDebt`)
 * [getisolationModeState](../borrow/getisolationmodestate.md#getisolationmodestate) was previously explained in the borrow section
 
-<img src="../../.gitbook/assets/file.excalidraw (31).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (18).svg" alt="" class="gitbook-drawing">
 
 **If user is in isolation mode:**
 
@@ -47,7 +47,7 @@ In the event that the debt position was collateralized by an isolated asset, and
 
 Finally, the repayment is collected from the function caller.&#x20;
 
-<figure><img src="../../.gitbook/assets/image (204).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (232).png" alt=""><figcaption></figcaption></figure>
 
 **If `useATokens` was set to `true`, like in `repayWithATokens`, Atokens would be burnt.**&#x20;
 

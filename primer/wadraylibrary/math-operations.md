@@ -12,7 +12,7 @@ uint result = 5 / 2;
 uint result = 15 / 4;
 ```
 
-<figure><img src="../../.gitbook/assets/image (147).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (33).png" alt=""><figcaption></figcaption></figure>
 
 So we cannot natively rely on Solidity for rounding to the nearest integer, or similar use cases. Hence, the use of WadRayLibrary in Aave.&#x20;
 
@@ -26,7 +26,7 @@ So we cannot natively rely on Solidity for rounding to the nearest integer, or s
 * Rounding deals with fractional values.&#x20;
 * Since solidity always rounds down, we can allow for rounding to the nearest integer by adding half
 
-<figure><img src="../../.gitbook/assets/image (152).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (41).png" alt=""><figcaption></figcaption></figure>
 
 * if remainder < 0.5 -> remainder +0.5 < 1  => **rounded down to 0**
 * if remainder $$\geq$$ 0.5 ->  remainder + 0.5 $$\geq$$ 1  => **rounded up to 1**
@@ -39,7 +39,7 @@ wadDiv = a / b + 0.5
 
 As the rounding would have already occurred as part of the division operation. We need to repackage this such that the division occurs last:
 
-<figure><img src="../../.gitbook/assets/image (74).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (111) (1).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 General Form: To allow for rounding to nearest integer, add half of the divisor to the dividend&#x20;
@@ -51,7 +51,7 @@ Let's connect this understanding with the implementation of wadDiv in the librar
 
 * divides two wads, _rounding half_ _wad and above_ _up to the nearest wad_.
 
-<figure><img src="../../.gitbook/assets/image (125).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (165).png" alt=""><figcaption></figcaption></figure>
 
 **The division occurs at:**
 
@@ -108,7 +108,7 @@ The bitwise negation operation, denoted as `not`, flips all the bits in the bina
 
 ### wadMul
 
-<figure><img src="../../.gitbook/assets/image (62).png" alt=""><figcaption><p>wadMul</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (101).png" alt=""><figcaption><p>wadMul</p></figcaption></figure>
 
 **The multiplication occurs at:**
 

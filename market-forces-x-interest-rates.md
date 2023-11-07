@@ -4,17 +4,21 @@ description: Borrow Demand -> Utilization -> Borrow rate -> Supply rate
 
 # Market forces x Interest Rate Models
 
-## Summary
+Interest rates in TradFi (traditional finance) are largely set by the central bank, and influenced by factors such as inflation, monetary supply and exchange rates. In contrast, DeFi interest rates are algorithmically determined by the demand for loans and the supply of lenders. This article describes that algorithm. Parts of this article will reference Aave, a leading lending protocol in the EVM space.
 
-In a nutshell, market demand for loans (borrow demand) determines the level of utilization (U), which in turn determines the borrow interest rate. The borrow interest rate discounted by a factor is the supply interest rate.&#x20;
+In a nutshell, the market demand for loans (borrow demand) determines the level of utilization (U) of the asset, which in turn determines the borrow interest rate. By discounting this borrow rate, we obtain the supply interest rate.&#x20;
 
 $$
 Borrow Demand => Utilization => InterestRate_{borrow} => InterestRate_{supply}
 $$
 
-The relationship between utilization and borrow rates is defined by the lending protocol via their interest rate model. The model dictates how borrow interest rate would increase with utilization levels, for a specific asset.&#x20;
+The relationship between utilization and borrow rates is defined by the lending protocol via their interest rate model. The model dictates how the borrow interest rate would increase with utilization levels, for a specific asset. An example can be seen below, where the higher the utilization (x-axis), the higher the interest rate of the loans. The gap between the light purple and dark purple line is the spread factor.
 
-Typically, the interest model is kinked, comprising of two different gradients; one for low levels of utilization and another for high levels of utilization. This allows for a more efficient pricing of the cost of borrowing against fluctuating market demand for loans.
+<figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+Typically, the interest rate model is kinked, comprising of two different gradients; one for lower levels of utilization and another for higher levels of utilization. What this means is that for each unit increase in utilization, the corresponding increase in borrow rates is different, depending on where we are on the curve.
+
+This allows the cost of borrowing to be more accurately valued against fluctuating market demand for loans; as opposed to simply charting a constant gradient linear relationship between demand and rates.
 
 #### **Borrowers and Suppliers**
 
@@ -62,10 +66,12 @@ The level of utilization is a reflection of market demand for borrowing. Utiliza
 This dynamic adjustment mechanism ensures that interest rates are reflective of the real-time supply and demand conditions, fostering efficient capital allocation.
 {% endhint %}
 
-Protocol solvency is another critical consideration in determining interest rates algorithmically. If interest rates were solely determined by market forces without considering the solvency aspect, there could be a risk of instability or insolvency of the protocol. Therefore, the interest rate mechanism aims to maintain a delicate balance between competitiveness in the market and the financial health of the protocol.
+Protocol solvency is another critical consideration in determining interest rates algorithmically. (In)solvency would be the ability for a lending protocol to meet its on-going withdrawal demands, given how much of deposits was loaned off. Essentially, we want to avoid a ‘bank run’ - if all the money is loaned out, none of the suppliers can withdraw.
+
+If interest rates were solely determined by market forces without considering the solvency aspect, there could be a risk of instability or insolvency of the protocol. Therefore, the interest rate mechanism aims to maintain a delicate balance between competitiveness in the market and the financial health of the protocol.
 
 {% hint style="info" %}
-Aave v3 complements the interest rate mechanism with borrow caps to manage insolvency risk.
+Aave v3 complements the interest rate mechanism with borrow caps to manage insolvency risk. These are global limits on the absolute amount an asset can be borrowed.
 {% endhint %}
 
 ### Borrow Interest Rates
@@ -89,7 +95,7 @@ R_{borrow} = \begin{cases}
 \end{cases}
 $$
 
-The total borrow rate is composed of the rate at zero utilization ( $$R_{intercept}$$) plus the one or both utilization slopes. If you think about it, the piecewise function is basically two lines following: $$y = mc + c$$.
+The total borrow rate is composed of the rate at zero utilization ( $$R_{intercept}$$) plus the one or both utilization slopes. If you think about it, the piecewise function is basically two lines following: $$y = mx + c$$.
 
 #### For   $$U \leq U_{optimal}$$ &#x20;
 
@@ -146,7 +152,9 @@ See Gauntlet's proposals on Aave: [example](https://governance.aave.com/t/arfc-a
 Supply interest rate is also referred to as the liquidity rate.
 {% endhint %}
 
-<figure><img src=".gitbook/assets/image (129).png" alt="" width="563"><figcaption><p>change picture with your notes</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (129).png" alt="" width="563"><figcaption></figcaption></figure>
+
+This ensures that the interest earned from borrowers matches the interest paid to depositors, maintaining a balance in the amounts exchanged between the two parties.
 
 **Example:** assume a lending protocol where the borrow rate is 10% and the utilization rate is 50%. In this case, the interest rate offered to depositors would be:
 
@@ -166,7 +174,7 @@ liquidityRate = overallBorrowRate * supplyUsageRatio * (1 - reserveFactor)
 
 In the later stages, we will get a higher resolution understanding of what `overallBorrowRate` and the other terms mean, but for now we can understand this as follows:
 
-```
+```solidity
 liquidityRate = borrowRate * UtilizationRate  * (1 - reserveFactor)
 ```
 
@@ -175,3 +183,5 @@ Notice the introduction of the reserve factor - it determines the split between 
 {% hint style="info" %}
 The reserve factor is a percentage of protocol interest which goes to the Aave Ecosystem Reserve.
 {% endhint %}
+
+<figure><img src=".gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>

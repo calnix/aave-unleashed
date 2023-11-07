@@ -6,7 +6,7 @@ This section will cover interest rate calculations for both deposits and loans. 
 Simple and compound interest: [Refresher ](appendix/simple-compound-apr-apy.md)
 {% endhint %}
 
-<figure><img src=".gitbook/assets/image (209).png" alt=""><figcaption><p>_updateIndexes</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (73) (2) (1).png" alt=""><figcaption><p>_updateIndexes</p></figcaption></figure>
 
 * **`calculateLinearInterest`** updates liquidity index => determines how deposit interest accumulates.
 * **`calculateCompoundInterest`** updates variableBorrowIndex => determines how borrow interest accumulates.
@@ -15,7 +15,7 @@ Simple and compound interest: [Refresher ](appendix/simple-compound-apr-apy.md)
 
 Supply interest in Aave accrues via linear interest (simple interest), as described in the function `calculateLinearInterest`.
 
-<figure><img src=".gitbook/assets/image (64).png" alt=""><figcaption><p><code>_calculateLinearInterest</code></p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (103).png" alt=""><figcaption><p><code>_calculateLinearInterest</code></p></figcaption></figure>
 
 {% hint style="info" %}
 This function is executed within [`updateState`](functions/common-functions/.updatestate.md), which is called at the start of any state-changing function.&#x20;
@@ -23,7 +23,7 @@ This function is executed within [`updateState`](functions/common-functions/.upd
 
 The order of operations might be misleading; with a little re-arranging, it should be obvious:
 
-<figure><img src=".gitbook/assets/image (217).png" alt=""><figcaption><p>simplified <code>_calculateLinearInterest</code></p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (144) (1).png" alt=""><figcaption><p>simplified <code>_calculateLinearInterest</code></p></figcaption></figure>
 
 This should not be surprising to the reader; this is how simple interest is calculated.&#x20;
 
@@ -36,7 +36,7 @@ However, the reader may wonder why `return 1e27 + result` - why add the ray at a
 
 This has to do with the calculation for `nextLiquidityIndex`:
 
-<figure><img src=".gitbook/assets/image (135).png" alt="" width="563"><figcaption><p>nextLiquidityIndex</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (172).png" alt="" width="563"><figcaption><p>nextLiquidityIndex</p></figcaption></figure>
 
 Given that `nextLiquidityIndex` is calculated as seen above, we can conclude that the liquidity index is a multiplicative series, where the index begins with the value of 1:
 
@@ -57,7 +57,7 @@ At t0:&#x20;
 * liquidity index = 1.0
 * supply interest rate, per second = 0.04
 
-<figure><img src=".gitbook/assets/image (256).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (70).png" alt=""><figcaption></figcaption></figure>
 
 The liquidity index at t1 would be 1.2 as a result of the accumulated interest over 5 seconds where the supply interest rate (per second) was 0.04.
 
@@ -65,7 +65,7 @@ The liquidity index at t1 would be 1.2 as a result of the accumulated interest o
 
 Let's connect the dots between interest and indexes by how they are calculated:
 
-<figure><img src=".gitbook/assets/image (156).png" alt=""><figcaption><p>Looks like simple interest!</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (45).png" alt=""><figcaption><p>Looks like simple interest!</p></figcaption></figure>
 
 Given the manner in which deposit interest is calculated, it would seem that depositors on Aave do not enjoy the compounding of their interest.&#x20;
 
@@ -87,7 +87,7 @@ Given the manner in which deposit interest is calculated, it would seem that dep
 * User deposits 100 DAI at t0, when the Index is 1.0
 * What is his balance at t2, when the Index has increased to 2.4
 
-<figure><img src=".gitbook/assets/image (255).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (183).png" alt=""><figcaption></figcaption></figure>
 
 From the breakdown on how Total is calculated it should be made apparent that due to the indexes being multiplied, interest is earned on both the principal and prior interest -> compound interest.
 
@@ -115,7 +115,7 @@ $$
 
 For obvious reasons, the level of approximation has to be chosen such that the trade-off between accuracy and gas-savings is optimized.&#x20;
 
-<figure><img src=".gitbook/assets/image (129).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (171).png" alt=""><figcaption></figcaption></figure>
 
 **From** [**Aave-v2-whitepaper**](https://github.com/aave/protocol-v2/blob/master/aave-v2-whitepaper.pdf)**:**
 

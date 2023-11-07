@@ -120,7 +120,7 @@ weighted average rate = (100 \* 1%) + (200 \* 2%) + (300 \* 3%) / (100 + 200 + 3
 
 ## balanceOf
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 The balance for any address is calculated to account for interest accrued since the last interaction.
 
@@ -156,7 +156,7 @@ Let's examine mint, from the pretext that is has been called via `executeBorrow`
 
 calculates the increase in balance due to compounding interest, for a specific user, since the previous &#x20;
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 #### **Update \_totalSupply**&#x20;
 
@@ -279,7 +279,7 @@ A discrepancy arises, such that there is no debt to repay; this is possible beca
 
 ### Update user info
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 **if amount == user's updated balance:**
 
@@ -293,7 +293,7 @@ Global `_totalSupplyTimestamp` is updated as well
 
 ### \_mint or \_burn&#x20;
 
-<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Depends if accrued interest > user input
 

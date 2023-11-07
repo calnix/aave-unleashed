@@ -2,7 +2,7 @@
 
 ## Overview
 
-<figure><img src="../../.gitbook/assets/image (320).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (50).png" alt=""><figcaption></figcaption></figure>
 
 * [x] <mark style="color:orange;">cache</mark>
 * [x] <mark style="color:orange;">updateState</mark>
@@ -20,7 +20,7 @@ This function confirms user has sufficient balance meeting withdrawal requiremen
 * isActive
 * notPaused
 
-<figure><img src="../../.gitbook/assets/image (146).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (32).png" alt=""><figcaption></figcaption></figure>
 
 * ensures that withdrawal amount is: $$0 < amount \leq userBalance$$, else revert
 * checks status flags of asset

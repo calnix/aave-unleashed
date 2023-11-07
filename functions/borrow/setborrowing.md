@@ -2,7 +2,7 @@
 
 ## Overview
 
-<figure><img src="../../.gitbook/assets/image (151).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (39).png" alt=""><figcaption></figcaption></figure>
 
 * [x] <mark style="color:orange;">cache</mark>
 * [x] <mark style="color:orange;">updateState</mark>
@@ -14,7 +14,7 @@
 * [ ] <mark style="color:orange;">updateInterestRates</mark>
 * [ ] transfer underlying to user
 
-<img src="../../.gitbook/assets/file.excalidraw (11).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (32).svg" alt="" class="gitbook-drawing">
 
 **`bool ifFirstBorrowing`** captures the return value from either of the debt token's mint function. It is `true`, if the user had no debt previously, thereby making this incoming borrow action the user's very first one.
 
@@ -22,7 +22,7 @@
 
 The function performs bitwise operations to set or unset the borrowing status for the specified reserve.
 
-<figure><img src="../../.gitbook/assets/image (293).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (206).png" alt=""><figcaption></figcaption></figure>
 
 It calculates the bit position based on the `reserveIndex` and creates a bit mask by left shifting `1` by twice the `reserveIndex` value. This mask is captured by the bit variable.
 

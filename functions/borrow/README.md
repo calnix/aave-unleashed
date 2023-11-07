@@ -8,13 +8,13 @@ This function is called when the user wishes to take out a loan. Since Aave is a
 Before being able to call `borrow`, users must have deposited collateral via `supply`.
 {% endhint %}
 
-<img src="../../.gitbook/assets/file.excalidraw (19).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (10).svg" alt="" class="gitbook-drawing">
 
 * `executeBorrow` contains the core logics of the borrow function
 
 ## executeBorrow
 
-<figure><img src="../../.gitbook/assets/image (300).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
 
 ### Execution flow
 

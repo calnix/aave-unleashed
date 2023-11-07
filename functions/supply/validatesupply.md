@@ -2,7 +2,7 @@
 
 ## Overview
 
-<figure><img src="../../.gitbook/assets/image (262).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (73) (1).png" alt=""><figcaption></figcaption></figure>
 
 * [x] <mark style="color:orange;">cache</mark>
 * [x] <mark style="color:orange;">updateState</mark>
@@ -17,9 +17,9 @@
 
 ## validateSupply
 
-<figure><img src="../../.gitbook/assets/image (211).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (133).png" alt=""><figcaption></figcaption></figure>
 
-<img src="../../.gitbook/assets/file.excalidraw (14).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (16).svg" alt="" class="gitbook-drawing">
 
 In `validateSupply`, two key checks are being executed:
 
@@ -30,7 +30,7 @@ In `validateSupply`, two key checks are being executed:
 
 Function takes `ReserveConfigurationMap` struct as parameter. `ReserveConfigurationMap` contains `data`, which is a bitmap, and the various status flags range from bit 56 to 60.
 
-<figure><img src="../../.gitbook/assets/image (264).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (75).png" alt=""><figcaption></figcaption></figure>
 
 * For in-depth explanation: see [getFlags](validatesupply.md#getflags)&#x20;
 * Execution reverts if any of the following conditions are TRUE:
@@ -40,7 +40,7 @@ Function takes `ReserveConfigurationMap` struct as parameter. `ReserveConfigurat
 
 ### Check supply cap
 
-<figure><img src="../../.gitbook/assets/image (104).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (134).png" alt=""><figcaption></figcaption></figure>
 
 The long require statement simply means:
 
@@ -55,7 +55,7 @@ The easier (less-gas intensive) check is placed first, to allow early reversion 
 
 #### getSupplyCap
 
-<figure><img src="../../.gitbook/assets/image (232).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (153).png" alt=""><figcaption></figcaption></figure>
 
 ```solidity
 uint256 internal constant SUPPLY_CAP_START_BIT_POSITION = 116

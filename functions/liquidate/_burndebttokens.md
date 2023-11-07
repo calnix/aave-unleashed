@@ -2,7 +2,7 @@
 
 ## Overview
 
-<figure><img src="../../.gitbook/assets/image (292).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (205).png" alt=""><figcaption></figcaption></figure>
 
 ### Execution flow
 
@@ -22,7 +22,7 @@
 
 ## \_burnDebtTokens
 
-<img src="../../.gitbook/assets/file.excalidraw (32).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (1) (2).svg" alt="" class="gitbook-drawing">
 
 Burn either stable or variable debt tokens, based on the amount of **`actualDebtToLiquidate`,** which was previously established.
 

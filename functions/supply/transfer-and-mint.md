@@ -2,7 +2,7 @@
 
 ## Overview
 
-<figure><img src="../../.gitbook/assets/image (91).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (122).png" alt=""><figcaption></figcaption></figure>
 
 * [x] <mark style="color:orange;">cache</mark>
 * [x] <mark style="color:orange;">updateState</mark>
@@ -56,7 +56,7 @@ bool isFirstSupply = IAToken(reserveCache.aTokenAddress).mint(msg.sender, params
 ```
 {% endcode %}
 
-<figure><img src="../../.gitbook/assets/image (106).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (135).png" alt=""><figcaption></figcaption></figure>
 
 * `mint` calls `_mintScaled`
 * `_mintScaled` mints tokens in-line with the current liquidity index, as seen by `amountScaled`
@@ -66,14 +66,14 @@ bool isFirstSupply = IAToken(reserveCache.aTokenAddress).mint(msg.sender, params
 
 `balanceIncrease` is calculated as part of the mint event emission.
 
-<figure><img src="../../.gitbook/assets/image (131).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (170).png" alt=""><figcaption></figcaption></figure>
 
 #### On `super.BalanceOf` and `_userState[onBehalfOf].additionalData`
 
 * `super.BalanceOf` calls `balanceOf` declared in IncentivizedERC20.sol
 * Inheritance: ScaledBalanceTokenBase > MintableIncentivizedERC20 > IncentivizedERC20
 
-<figure><img src="../../.gitbook/assets/image (115).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (140).png" alt=""><figcaption></figcaption></figure>
 
 * notice the irregular definition of `balanceOf`, it calls out a mapping `_userState`
 * `_userState` is mapping of user addresses to `UserState` structs
@@ -95,4 +95,4 @@ bool isFirstSupply = IAToken(reserveCache.aTokenAddress).mint(msg.sender, params
 
 ### Visual Aid
 
-<img src="../../.gitbook/assets/file.excalidraw (12).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (15).svg" alt="" class="gitbook-drawing">

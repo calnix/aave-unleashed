@@ -6,11 +6,11 @@ This function is defined in ReserveConfiguration.sol.
 
 Function takes `ReserveConfigurationMap` struct as parameter. As we can see below, `ReserveConfigurationMap` contains `data`, which is a bitmap, and the various status flags range from bit 56 to 60.
 
-<figure><img src="../../../.gitbook/assets/image (253).png" alt=""><figcaption><p>getFlags</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (180).png" alt=""><figcaption><p>getFlags</p></figcaption></figure>
 
 `getFlags` makes use of the following bitmap masks to extract the relevant bits pertaining to each status flag:
 
-<figure><img src="../../../.gitbook/assets/image (214).png" alt=""><figcaption><p>masks</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (28).png" alt=""><figcaption><p>masks</p></figcaption></figure>
 
 The masks are applied upon the bitmap contained within the ReserveConfigurationMap struct. The bits that are relevant to us are from bit 56 - 60.
 
@@ -20,13 +20,13 @@ Notice how only the 15th hex character from the least significant bit varies in 
 The exception to this is the PAUSED\_MASK.
 {% endhint %}
 
-<figure><img src="../../../.gitbook/assets/image (71).png" alt=""><figcaption><p>DataTypes.sol</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (109).png" alt=""><figcaption><p>DataTypes.sol</p></figcaption></figure>
 
 * All the bits that are irrelevant within the bitmap have their corresponding bit in the bitmap mask to be set to `F` (`1111` in binary).
 * The bitwise NOT (`~`), will led to an inversion of bit values, and together with the bitwise AND (`&`), this means that irrelevant bits will be paired up against `0` values in the mask for the `&` operation.&#x20;
 * As such, they will be set to `0`. The only bits that have a chance to be **non-zero**, will fall within bit 56 - 60, surfacing the values we require.
 
-<figure><img src="../../../.gitbook/assets/image (212).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (27).png" alt=""><figcaption></figcaption></figure>
 
 ### Example: ACTIVE\_MASK illustration
 
@@ -37,7 +37,7 @@ As an example, lets overlay the ACTIVE\_MASK upon the bitmap.
 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFFFFFFFFFF
 ```
 
-<figure><img src="../../../.gitbook/assets/image (53).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (92).png" alt=""><figcaption></figcaption></figure>
 
 * First 14 hex characters from the least significant bit are set to `F` - covers the values of bits from 0 - 55.
 * The 15th hex character in `ACTIVE_MASK` is set to `E`; `1110` in binary.

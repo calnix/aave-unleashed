@@ -2,7 +2,7 @@
 
 ## Overview
 
-<figure><img src="../../.gitbook/assets/image (292).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (205).png" alt=""><figcaption></figcaption></figure>
 
 ### Execution flow
 
@@ -22,7 +22,7 @@
 
 ## liquidate/burn collateral
 
-<img src="../../.gitbook/assets/file.excalidraw (21).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (1) (1) (1) (1).svg" alt="" class="gitbook-drawing">
 
 If liquidator has opted to receive aTokens in payment (**`params.receiveAToken == true`**)
 
@@ -42,11 +42,11 @@ validateUseAsCollateral ensures that liquidator is not in isolation mode and the
 
 If these conditions are met, the reserve transferred to the liquidator is set to be used as collateral.&#x20;
 
-<figure><img src="../../.gitbook/assets/image (203).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (6) (3).png" alt=""><figcaption></figcaption></figure>
 
 `transferOnLiquidiation` calls `_transfer`, which executes the transfer of aTokens.
 
-<figure><img src="../../.gitbook/assets/image (191).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (2).png" alt=""><figcaption></figcaption></figure>
 
 * `validate` is set to **`false`**, therefore `finalizeTransfer` is not executed
 
@@ -63,7 +63,7 @@ Where possible, Aave opts to set supplied assets as collateral automatically. Th
 
 If the liquidator does not wish to receive ATokens, the alternative would be to transfer the underlying asset to them (instead of aDAI, transfer DAI).
 
-<figure><img src="../../.gitbook/assets/image (286).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (4).png" alt=""><figcaption></figcaption></figure>
 
 To enact a transfer of the underlying asset, its corresponding aTokens must be "redeemed". Effectively, this means that liquidity is being removed from the system. This would therefore impact interest rates, and they have to be updated.&#x20;
 
@@ -74,7 +74,7 @@ To enact a transfer of the underlying asset, its corresponding aTokens must be "
 
 Lastly, **`burn`** is executed.&#x20;
 
-<figure><img src="../../.gitbook/assets/image (108).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 * **`_burnScaled`**: burn scaledAmount and update user balances
 * safeTransfer underlying asset from target user to liquidator

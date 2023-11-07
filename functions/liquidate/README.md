@@ -20,15 +20,15 @@ Liquidators are awarded with liquidation bonus, which can be paid in ATokens or 
 * user’s health factor: $$hf <= 0.95$$, the loan is eligible for a liquidation of 100%.
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/image (296).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (208).png" alt=""><figcaption></figcaption></figure>
 
-<img src="../../.gitbook/assets/file.excalidraw (35).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (23).svg" alt="" class="gitbook-drawing">
 
 * `executeLiquidationCall` contains the core logics&#x20;
 
 ## executeLiquidationCall
 
-<figure><img src="../../.gitbook/assets/image (292).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (205).png" alt=""><figcaption></figcaption></figure>
 
 ### Execution flow
 

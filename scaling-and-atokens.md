@@ -42,7 +42,7 @@ Aave implements a modified version of the ERC-20 standard for its aTokens, such 
 
 Let's examine the implementation for `balanceOf`:
 
-<figure><img src=".gitbook/assets/image (180).png" alt=""><figcaption><p><a href="https://github.com/aave/aave-v3-core/blob/29ff9b9f89af7cd8255231bc5faf26c3ce0fb7ce/contracts/protocol/tokenization/AToken.sol#L128">AToken::balanceOf</a></p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (125).png" alt=""><figcaption><p><a href="https://github.com/aave/aave-v3-core/blob/29ff9b9f89af7cd8255231bc5faf26c3ce0fb7ce/contracts/protocol/tokenization/AToken.sol#L128">AToken::balanceOf</a></p></figcaption></figure>
 
 Notice the use of override - it serves to override `balanceOf` functions declared within its inheritance tree, so that the parent functions do not get called.&#x20;
 
@@ -60,7 +60,7 @@ super.balanceOf(user) * POOL.getReserveNormalizedIncome(_underlyingAsset)
 
 **Execution flow:**&#x20;
 
-<figure><img src=".gitbook/assets/image (318).png" alt=""><figcaption><p>super.balanceOf(user)</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (151).png" alt=""><figcaption><p>super.balanceOf(user)</p></figcaption></figure>
 
 #### `super.BalanceOf`&#x20;
 
@@ -72,7 +72,7 @@ super.balanceOf(user) * POOL.getReserveNormalizedIncome(_underlyingAsset)
 
 #### `POOL.getReserveNormalizedIncome()`
 
-<figure><img src=".gitbook/assets/image (183).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure>
 
 You might wonder what `calculateLinearInterest` does, we will explain this in a later section. For now you can operate on the understanding that `getReserveNormalizedIncome` returns the latest liquidity index, referred to as `currentLiquidityIndex`.&#x20;
 
@@ -105,14 +105,14 @@ Earlier, we stated that instead of the deposit amount, the scaled amount is pass
 
 AToken::`mint` -> ScaledBalanceTokenBase::`_mintScaled` ->  MintableIncentivizedERC20::`_mint`
 
-<figure><img src=".gitbook/assets/image (177).png" alt=""><figcaption><p>AToken inherits ScaledBalanceTokenBase</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (13).png" alt=""><figcaption><p>AToken inherits ScaledBalanceTokenBase</p></figcaption></figure>
 
 The abovementioned scaling can be seen from the first line in `_mintScaled`. Subsequently, `amountScaled` is passed into `_mint`, which increments the user's balance which is captured in `_userState[account].balance`.
 
-<figure><img src=".gitbook/assets/image (60).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (99).png" alt=""><figcaption></figcaption></figure>
 
 ### Execution flow: Visual Aid
 
 Here is a more complete execution flow chart spanning the relevant portions across different contracts.
 
-<img src=".gitbook/assets/file.excalidraw (16).svg" alt="" class="gitbook-drawing">
+<img src=".gitbook/assets/file.excalidraw (20).svg" alt="" class="gitbook-drawing">

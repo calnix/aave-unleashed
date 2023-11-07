@@ -2,7 +2,7 @@
 
 ## Overview
 
-<figure><img src="../../.gitbook/assets/image (292).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (205).png" alt=""><figcaption></figcaption></figure>
 
 ### Execution flow
 
@@ -20,13 +20,13 @@
 * [ ] liquidation fee
 * [ ] Wrap-up
 
-<img src="../../.gitbook/assets/file.excalidraw (37).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (2) (1).svg" alt="" class="gitbook-drawing">
 
 ## \_calculateAvailableCollateralToLiquidate
 
 Calculates how much of a specific collateral can be liquidated, given a certain amount of debt asset.
 
-<figure><img src="../../.gitbook/assets/image (88).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (121).png" alt=""><figcaption></figcaption></figure>
 
 * `actualDebtToLiquidate` is passed as the value for parameter`debtToCover`
 * `actualDebtToLiquidate` => user's debt \* close factor
@@ -43,11 +43,11 @@ Liquidator repays debt and take equivalent value in collateral from user. Howeve
 
 ### 1. Get prices of both collateral and debt assets&#x20;
 
-<figure><img src="../../.gitbook/assets/image (153).png" alt="" width="529"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3) (1) (1) (1) (1) (1) (1) (1).png" alt="" width="529"><figcaption></figcaption></figure>
 
 ### 2. Define 1 unit of each asset
 
-<figure><img src="../../.gitbook/assets/image (122).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (2).png" alt=""><figcaption></figcaption></figure>
 
 Define what 1 unit of each asset is
 
@@ -60,7 +60,7 @@ Obtain decimals; see [getDecimals](../common-functions/getreservefactor-getdecim
 
 When liquidating, the protocol may apply a liquidation fee that goes to the protocol's treasury.
 
-<figure><img src="../../.gitbook/assets/image (133).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 * `getLiquidationProtocolFee` applies a bitmask and bitwise operations similar to getFlags or getDecimals.
 * See Common functions section or the Bitmap function to understand.
@@ -75,7 +75,7 @@ We then need to value the debt in collateral terms. This is expressed as `baseCo
 Liquidator repays debt to protocol, and takes the equivalent value in the form of collateral asset, from the user. (ignoring liq. bonus)
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/image (154).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 **Let's reorder the operations so it is clearer:**
 
@@ -120,7 +120,7 @@ Liquidation penalty is the liquidation bonus given as incentive to liquidators.&
 
 With finding `maxCollateralToLiquidate` we have established how much collateral the user must give up in this process. Does he have enough?
 
-<figure><img src="../../.gitbook/assets/image (142).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 If `maxCollateralToLiquidate > userCollateralBalance` :&#x20;
 
@@ -132,7 +132,7 @@ If `maxCollateralToLiquidate > userCollateralBalance` :&#x20;
 
 Earlier in step 3 we obtained the liquidation protocol fee. Now we apply it.
 
-<figure><img src="../../.gitbook/assets/image (317).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5) (3).png" alt=""><figcaption></figcaption></figure>
 
 ```solidity
 // get baseCollateral

@@ -33,7 +33,7 @@ Borrowers using an isolated collateral can only borrow stablecoins that have bee
 
 Token 2, is a new asset that has been listed as **isolated.** It has a **debt ceiling of 10M.**
 
-<figure><img src="../../.gitbook/assets/image (238).png" alt=""><figcaption><p><a href="https://docs.aave.com/developers/getting-started/readme#isolation-mode">https://docs.aave.com/developers/getting-started/readme#isolation-mode</a></p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (159).png" alt=""><figcaption><p><a href="https://docs.aave.com/developers/getting-started/readme#isolation-mode">https://docs.aave.com/developers/getting-started/readme#isolation-mode</a></p></figcaption></figure>
 
 1. Chad supplies Token 2 as collateral.&#x20;
 2. He is only able to borrow USDT, DAI and USDC against this collateral.

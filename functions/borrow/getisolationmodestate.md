@@ -2,7 +2,7 @@
 
 ## Overview
 
-<figure><img src="../../.gitbook/assets/image (151).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (39).png" alt=""><figcaption></figcaption></figure>
 
 * [x] <mark style="color:orange;">cache</mark>
 * [x] <mark style="color:orange;">updateState</mark>
@@ -14,7 +14,7 @@
 * [ ] <mark style="color:orange;">updateInterestRates</mark>
 * [ ] transfer underlying to user
 
-<img src="../../.gitbook/assets/file.excalidraw (29).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (6).svg" alt="" class="gitbook-drawing">
 
 ## getIsolationModeState
 
@@ -47,7 +47,7 @@ Essentially,&#x20;
 
 Check if user has ONLY ONE asset as collateral (any one).
 
-<figure><img src="../../.gitbook/assets/image (243).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (60).png" alt=""><figcaption></figcaption></figure>
 
 This function was explained previously when covering the `supply` function: [isUsingCollateralOne](../supply/isfirstsupply/isusingascollateralone-isusingascollateralany.md#isusingcollateralone)
 
@@ -57,7 +57,7 @@ Returns the address of the first asset flagged in the bitmap given the correspon
 
 * if collateral\_mask, find the first asset which has its collateral bit set to `1`
 
-<figure><img src="../../.gitbook/assets/image (319).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (47).png" alt=""><figcaption></figcaption></figure>
 
 ```solidity
 uint256 internal constant COLLATERAL_MASK = 
@@ -67,7 +67,7 @@ uint256 internal constant COLLATERAL_MASK =
 * `COLLATERAL_MASK` is passed as `mask`
 * `bitmapData` is the binary string comprising of isolated collateral bits as explained in: [isUsingAsCollateralAny](../supply/isfirstsupply/isusingascollateralone-isusingascollateralany.md#isusingascollateralany)&#x20;
 
-<img src="../../.gitbook/assets/file.excalidraw (40).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (8) (1).svg" alt="" class="gitbook-drawing">
 
 As we can see, we can end with id of value 1 -> index of the first asset which has its collateral bit set to `1` is 1.&#x20;
 
@@ -80,7 +80,7 @@ address assetAddress = reserveList[assetId];  //declared on PoolStorage.sol
 uint256 ceiling = reservesData[assetAddress].configuration.getDebtCeiling();
 ```
 
-<figure><img src="../../.gitbook/assets/image (92).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (215).png" alt=""><figcaption></figcaption></figure>
 
 `getDebtCeiling` will extract the debt ceiling value held within bits 212-251 in the `ReserveConfigurationMap`.
 
@@ -88,7 +88,7 @@ uint256 ceiling = reservesData[assetAddress].configuration.getDebtCeiling();
 
 <summary>Reference: ReserveConfigurationMap</summary>
 
-![](<../../.gitbook/assets/image (120).png>)
+![](<../../.gitbook/assets/image (229) (1).png>)
 
 </details>
 

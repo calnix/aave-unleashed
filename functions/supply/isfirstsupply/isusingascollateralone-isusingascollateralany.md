@@ -7,14 +7,14 @@ The function isUsingAsCollateralAny in Aave is used to determine if a user has s
 * takes  `UserConfigurationMap` as input, which contains `data`; bitmap of the user's collaterals and borrows.
 * returns `FALSE` if user has NOT supplied ANY asset so far
 
-<figure><img src="../../../.gitbook/assets/image (305).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (19) (1).png" alt=""><figcaption></figcaption></figure>
 
 * `COLLATERAL_MASK`, is used to isolate the collateral bits within data.&#x20;
 * In binary representation, it consists of alternating `1`s and `0`s: `1010...1010`.
 * It creates a bit pattern that selectively zeroes out the non-collateral bits in the data field.
 * When performing a bitwise AND operation with `data`, any bit in `data` that corresponds to a `0` bit in `COLLATERAL_MASK` will be zeroed out, while the bits corresponding to `1`s in the `COLLATERAL_MASK` will be preserved.
 
-<img src="../../../.gitbook/assets/file.excalidraw (27).svg" alt="" class="gitbook-drawing">
+<img src="../../../.gitbook/assets/file.excalidraw (7).svg" alt="" class="gitbook-drawing">
 
 To check if the user is using any reserve as collateral, the function performs a bitwise AND operation between `data` and `COLLATERAL_MASK`.&#x20;
 
@@ -24,7 +24,7 @@ If the result of this operation is not zero, it means that at least one bit in t
 
 * usage of `COLLATERAL_MASK` was explained above
 
-<figure><img src="../../../.gitbook/assets/image (54).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (93).png" alt=""><figcaption></figcaption></figure>
 
 * `collateralData`: isolated collateral bits: `1010...1010`
 * `collateralData != 0 && (collateralData & (collateral - 1) == 0)`
@@ -76,4 +76,4 @@ Any non-power-of-two input value (other than zero) **will **_**not**_** give you
 
 You can see that only `0` and the powers of two (`1`, `2`, `4` and `8`) result in a `0000/false` bit pattern, all others are non-zero or `true`.
 
-<figure><img src="../../../.gitbook/assets/image (279).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (85).png" alt=""><figcaption></figcaption></figure>

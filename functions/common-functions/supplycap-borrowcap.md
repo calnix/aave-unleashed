@@ -26,7 +26,7 @@ Each asset has a corresponding `ReserveData` struct which outlines its key infor
 
 Within each`ReserveData` struct, there is a nested struct of type `ReserveConfigurationMap`. The nested struct contain a bitmap, storing the asset's configuration:
 
-<figure><img src="../../.gitbook/assets/image (148).png" alt=""><figcaption><p><code>ReserveConfigurationMap</code></p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (34).png" alt=""><figcaption><p><code>ReserveConfigurationMap</code></p></figcaption></figure>
 
 An asset's borrow and supply caps are defined within the bitmap, along with other relevant information.&#x20;
 
@@ -34,7 +34,7 @@ An asset's borrow and supply caps are defined within the bitmap, along with othe
 
 To retrieve a specific asset's supply cap, we call `getSupplyCap` and pass said asset's `ReserveConfigurationMap`.
 
-<figure><img src="../../.gitbook/assets/image (48).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (88).png" alt=""><figcaption></figcaption></figure>
 
 ```solidity
 uint256 internal constant SUPPLY_CAP_START_BIT_POSITION = 116

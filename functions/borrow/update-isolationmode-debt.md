@@ -2,7 +2,7 @@
 
 ## Overview
 
-<figure><img src="../../.gitbook/assets/image (151).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (39).png" alt=""><figcaption></figcaption></figure>
 
 * [x] <mark style="color:orange;">cache</mark>
 * [x] <mark style="color:orange;">updateState</mark>
@@ -14,7 +14,7 @@
 * [ ] <mark style="color:orange;">updateInterestRates</mark>
 * [ ] transfer underlying to user
 
-<img src="../../.gitbook/assets/file.excalidraw (4).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (19).svg" alt="" class="gitbook-drawing">
 
 The bool `isolationModeAction` was retrieved earlier, from `getIsolationModeState`.&#x20;
 
@@ -26,7 +26,7 @@ If `isolationModeAction` is **`true`**, this implies that the incoming borrow ac
   * `reservesData[...].isolationModeTotalDebt`
   * nextIsolationModeTotalDebt
 
-<figure><img src="../../.gitbook/assets/image (130).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (168).png" alt=""><figcaption></figcaption></figure>
 
 **On decimals:**
 

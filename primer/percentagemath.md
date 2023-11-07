@@ -28,7 +28,7 @@ uint256 internal constant HALF_PERCENTAGE_FACTOR = 0.5e4;
 
 We know this to be true as 1% of `10000` is indeed `100`. Feel free to experiment on remix!
 
-<figure><img src="../.gitbook/assets/image (78).png" alt=""><figcaption><p>percentMul</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (113).png" alt=""><figcaption><p>percentMul</p></figcaption></figure>
 
 ### Multiplication operation
 
@@ -41,7 +41,7 @@ result := div(add(mul(value, percentage), HALF_PERCENTAGE_FACTOR), PERCENTAGE_FA
 [(value * percentage) + HALF_PERCENTAGE_FACTOR] / PERCENTAGE_FACTOR
 ```
 
-<figure><img src="../.gitbook/assets/image (58).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (97).png" alt="" width="563"><figcaption></figcaption></figure>
 
 * Divide by `PERCENTAGE_FACTOR`: To negate the effect of representing `0.01` as `100`
 * Adding HALF\_PERCENTAGE\_FACTOR: For rounding to the nearest integer.&#x20;
@@ -105,7 +105,7 @@ give example on when inputs lead to overflow?
 
 ## percentDiv
 
-<figure><img src="../.gitbook/assets/image (118).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (145).png" alt=""><figcaption></figcaption></figure>
 
 ### Division operation
 
@@ -124,7 +124,7 @@ result := div(add(mul(value, PERCENTAGE_FACTOR), div(percentage, 2)), percentage
 [(value * PERCENTAGE_FACTOR) + percentage/2] / percentage
 ```
 
-<figure><img src="../.gitbook/assets/image (276).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (82).png" alt=""><figcaption></figcaption></figure>
 
 ### overflow
 

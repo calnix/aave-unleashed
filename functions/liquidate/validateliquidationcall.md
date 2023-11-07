@@ -2,7 +2,7 @@
 
 ## Overview
 
-<figure><img src="../../.gitbook/assets/image (292).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (205).png" alt=""><figcaption></figcaption></figure>
 
 ### Execution flow
 
@@ -22,9 +22,9 @@
 
 ## validateLiquidationCall
 
-<figure><img src="../../.gitbook/assets/image (39).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
 
-<img src="../../.gitbook/assets/file.excalidraw (39).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (29).svg" alt="" class="gitbook-drawing">
 
 A valid liquidationCall must fulfil the following criteria:
 

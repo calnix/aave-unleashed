@@ -161,7 +161,7 @@ When $$H_f < 1$$ the position may be liquidated to maintain solvency.
 
 #### Example: Putting it all together
 
-<figure><img src="../.gitbook/assets/image (95).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (124).png" alt=""><figcaption></figcaption></figure>
 
 **Initially, when ETH/USDT = $4000,**
 
@@ -178,7 +178,7 @@ When $$H_f < 1$$ the position may be liquidated to maintain solvency.
 * This is reflected in the account health which falls to **< 1**\[$$\frac{666* 0.75}{500}$$].
 
 {% hint style="info" %}
-To see how health factor is calculated from a code perspective: [calculateUserAccountDataParams](../functions/common-functions/calculateuseraccountdata.md)
+To see how health factor is calculated from a code perspective: [calculateUserAccountDataParams](../functions/common-functions/calculateuseraccountdataparams.md)
 {% endhint %}
 
 ### **Close Factor**
@@ -197,7 +197,7 @@ If user's health factor $$\leq$$**0.95** \[`CLOSE_FACTOR_HF_THRESHOLD`]
 
 **Code Reference:**
 
-<figure><img src="../.gitbook/assets/image (97).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
 
 * Liquidators can set `debtToCover` to `uint(-1)` and the protocol will proceed with the highest possible liquidation allowed by the close factor.
 * Partial Liquidation: In the event that the `debtToCover` is less than maxLiquidatableDebt, the loan position will be liquidated partially, based on `debtToCover`&#x20;

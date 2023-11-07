@@ -54,7 +54,7 @@ wadMul = wadA * wadB / WAD
 wadDiv = wadA * WAD / wadB
 ```
 
-<figure><img src="../../.gitbook/assets/image (72).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (110).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="warning" %}
 Division should always be done **last** to preserve precision
@@ -76,7 +76,7 @@ uint result = 5 / 2;
 uint result = 15 / 4;
 ```
 
-<figure><img src="../../.gitbook/assets/image (150).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (37).png" alt=""><figcaption></figcaption></figure>
 
 So we cannot natively rely on Solidity for rounding to the nearest integer, or similar use cases. Hence, the use of WadRayLibrary in Aave.&#x20;
 
@@ -88,7 +88,7 @@ So we cannot natively rely on Solidity for rounding to the nearest integer, or s
 * Rounding deals with fractional values.&#x20;
 * Since solidity always rounds down, we can allow for rounding to the nearest integer by adding half
 
-<figure><img src="../../.gitbook/assets/image (164).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 * if remainder < 0.5 -> remainder +0.5 < 1  => **rounded down to 0**
 * if remainder $$\geq$$ 0.5 ->  remainder + 0.5 $$\geq$$ 1  => **rounded up to 1**
@@ -101,7 +101,7 @@ wadDiv = a / b + 0.5
 
 As the rounding would have already occurred as part of the division operation. We need to repackage this such that the division occurs last:
 
-<figure><img src="../../.gitbook/assets/image (278).png" alt="" width="530"><figcaption><p>general form: division</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (83).png" alt="" width="530"><figcaption><p>general form: division</p></figcaption></figure>
 
 {% hint style="success" %}
 **General Form**
@@ -115,7 +115,7 @@ Let's connect this understanding with the implementation of `wadDiv` in the libr
 
 * divides two wads, _rounding half_ _wad and above_ _up to the nearest wad_.
 
-<figure><img src="../../.gitbook/assets/image (215).png" alt=""><figcaption><p>wadDiv</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (30).png" alt=""><figcaption><p>wadDiv</p></figcaption></figure>
 
 **The division occurs at:**
 
@@ -172,7 +172,7 @@ The bitwise negation operation, denoted as `not`, flips all the bits in the bina
 
 ### wadMul
 
-<figure><img src="../../.gitbook/assets/image (50).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (90).png" alt=""><figcaption></figcaption></figure>
 
 **The multiplication occurs at:**
 
@@ -203,7 +203,7 @@ Scaling a wad up to ray is easy: simply multiply by the difference in precision:
 uint256 internal constant WAD_RAY_RATIO = 1e9;
 ```
 
-<figure><img src="../../.gitbook/assets/image (81).png" alt=""><figcaption><p>WadRayMath.sol</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (115).png" alt=""><figcaption><p>WadRayMath.sol</p></figcaption></figure>
 
 **All the overflow check does is ensure that** `b/WAD_RAY_RATIO == a`, returns 1, which would be representative of true.
 
@@ -213,7 +213,7 @@ uint256 internal constant WAD_RAY_RATIO = 1e9;
 
 Scaling a ray down involves some loss of precision, as we move from 27 dp to 18 dp.
 
-<figure><img src="../../.gitbook/assets/image (30).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (56).png" alt=""><figcaption></figcaption></figure>
 
 1. reduce the given ray by `1e9` to obtain a wad: 1e27 -> 1e18
 2. get the remainder of `ray/1e9` via modulo operation&#x20;

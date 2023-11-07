@@ -2,7 +2,7 @@
 
 ## Overview
 
-<figure><img src="../../.gitbook/assets/image (151).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (39).png" alt=""><figcaption></figcaption></figure>
 
 * [x] <mark style="color:orange;">cache</mark>
 * [x] <mark style="color:orange;">updateState</mark>
@@ -14,14 +14,14 @@
 * [ ] <mark style="color:orange;">updateInterestRates</mark>
 * [ ] transfer underlying to user
 
-<img src="../../.gitbook/assets/file.excalidraw (36).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (24).svg" alt="" class="gitbook-drawing">
 
 * If stable interest was selected -> mint stable debt tokens&#x20;
 * Else -> mint variable debt tokens
 
 ## mint stableDebtTokens
 
-<figure><img src="../../.gitbook/assets/image (281).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (197).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 rate: reserve.currentStableBorrowRate
@@ -53,7 +53,7 @@ Does not relate to incoming borrow action.
 * `_avgStableRate`: internal storage variable on StableDebtToken.sol
 * `previousSupply`: updated supply value
 
-<figure><img src="../../.gitbook/assets/image (127).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (167).png" alt=""><figcaption></figcaption></figure>
 
 * `principalSupply` => `super.totalSupply` calls `totalSupply` on `IncentivizedERC20` which returns `_totalSupply`
 
@@ -72,7 +72,7 @@ vars.nextSupply = _totalSupply =
 
 * `nextStableRate` is new stable rate, specific to the user
 
-<figure><img src="../../.gitbook/assets/image (237).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (157).png" alt=""><figcaption></figcaption></figure>
 
 {% code overflow="wrap" %}
 ```solidity
@@ -94,7 +94,7 @@ rate: `reserve.currentStableBorrowRate`
 * `_avgStableRate`: internal uint128 on StableDebtToken.sol
 * `vars.currentAvgStableRate` was set to `_avgStableRate` at the start of `mint`
 
-<figure><img src="../../.gitbook/assets/image (190).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (220).png" alt=""><figcaption></figcaption></figure>
 
 {% code overflow="wrap" %}
 ```solidity
@@ -109,7 +109,7 @@ newAvgStableRate =
 
 ### mint tokens
 
-<figure><img src="../../.gitbook/assets/image (111).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (225).png" alt=""><figcaption></figcaption></figure>
 
 Notice that we do not just mint as per the incoming stable debt amount; but also mint for `balanceIncrease`. This serves to update user's prior stable debt based on interest accrued over time elapsed since last update.
 
@@ -117,11 +117,11 @@ Notice that we do not just mint as per the incoming stable debt amount; but also
 
 `mint` calls the internal function `_mint`:
 
-<figure><img src="../../.gitbook/assets/image (79).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (212).png" alt=""><figcaption></figcaption></figure>
 
 ## mint variableDebtTokens
 
-<figure><img src="../../.gitbook/assets/image (290).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (203).png" alt=""><figcaption></figcaption></figure>
 
 * `amountScaled`: scale the borrow amount against variableBorrowIndex
 * See variableDebtToken [mint](../../contracts/variabledebttoken.md#mint)

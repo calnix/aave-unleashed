@@ -2,7 +2,7 @@
 
 ## Overview
 
-<figure><img src="../../.gitbook/assets/image (229).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (233).png" alt=""><figcaption></figcaption></figure>
 
 * [x] <mark style="color:orange;">cache + updateState</mark>
 * [x] get current debt&#x20;
@@ -20,13 +20,13 @@ Previously, we established how much debt user was inclined repay and assigned it
 
 Depending on which kind of debt the user has, stable or variable, the burn function will be called on the corresponding debt token contract.
 
-<img src="../../.gitbook/assets/file.excalidraw (30).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (8).svg" alt="" class="gitbook-drawing">
 
 ## Burn stableDebtToken
 
-<figure><img src="../../.gitbook/assets/image (224).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
 
-* See StableDebtToken: [burn](../../contracts/stabledebttoken/#burn)
+* See StableDebtToken: [burn](../../contracts/stabledebttoken.md#burn)
 
 ## Burn variableDebtToken
 
@@ -36,7 +36,7 @@ Depending on which kind of debt the user has, stable or variable, the burn funct
   * reduces total supply
   * reduces user's balance
 
-<img src="../../.gitbook/assets/file.excalidraw (9).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (30).svg" alt="" class="gitbook-drawing">
 
 **`_burnScaled`**&#x20;
 

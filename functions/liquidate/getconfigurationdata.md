@@ -2,7 +2,7 @@
 
 ## Overview
 
-<figure><img src="../../.gitbook/assets/image (292).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (205).png" alt=""><figcaption></figcaption></figure>
 
 ### Execution flow
 
@@ -22,7 +22,7 @@
 
 ## getConfigurationData
 
-<img src="../../.gitbook/assets/file.excalidraw (34).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (22).svg" alt="" class="gitbook-drawing">
 
 * get liquidation bonus of collateral from its ReserveData struct: `liquidationBonus`
 * get oracle addresses for both debt and collateral assets:&#x20;

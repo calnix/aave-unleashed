@@ -18,7 +18,7 @@ In each interest gathering period:
 * annual interest rate = 5%
 * period = 5 years
 
-<figure><img src="../.gitbook/assets/image (119).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (146).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 Compounding generates greater interest versus simple, for the same parameters.
