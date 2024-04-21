@@ -1,6 +1,6 @@
 # Introduction
 
-## Aave Unleashed
+## The Aave Book
 
 ### A Comprehensive Guide to Lending and Borrowing
 
