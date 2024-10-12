@@ -62,13 +62,13 @@ super.balanceOf(user) * POOL.getReserveNormalizedIncome(_underlyingAsset)
 
 <figure><img src=".gitbook/assets/image (151).png" alt=""><figcaption><p>super.balanceOf(user)</p></figcaption></figure>
 
-#### `super.BalanceOf`&#x20;
+#### `super.balanceOf`&#x20;
 
 * Each user has a struct, `UserState` associated with their address via the mapping `_userState`
 * The `balance` element within the `UserState` stores user's scaled balance&#x20;
 * `super.balanceOf` returns `_userState[account].balance`
 
-`super.BalanceOf` returns the scaled balance for a user.
+`super.balanceOf` returns the scaled balance for a user.
 
 #### `POOL.getReserveNormalizedIncome()`
 
