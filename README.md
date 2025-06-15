@@ -16,4 +16,7 @@ In the chapters that follow, we will unravel the inner workings of the Aave prot
 
 Get ready to embark on a journey that merges the realms of finance and blockchain, as we unravel on-chain lending. By the end of this guidebook, you will be equipped with the knowledge to navigate the intricacies of Aave, harness its power, and contribute to the exciting world of DeFi innovation.
 
-**Let's dive in!**
+**Let's dive in!**\
+\
+\
+**Author:** [**https://x.com/cal\_nix**](https://x.com/cal_nix)
